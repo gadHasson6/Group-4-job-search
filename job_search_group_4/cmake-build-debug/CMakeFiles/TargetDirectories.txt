@@ -1,0 +1,3 @@
+C:/Users/LENOVO/CLionProjects/job_search_group_4/cmake-build-debug/CMakeFiles/job_search_group_4.dir
+C:/Users/LENOVO/CLionProjects/job_search_group_4/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/LENOVO/CLionProjects/job_search_group_4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
