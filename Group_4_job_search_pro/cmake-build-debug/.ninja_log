@@ -1,19 +1,10 @@
 # ninja log v5
-4	461	7302565338095299	CMakeFiles/Group_4_job_search_pro.dir/main.cpp.obj	409b5980ebdf42c4
-463	614	7302565339573892	Group_4_job_search_pro.exe	d689d0383c6bca73
-27	123	7302507169373988	CMakeFiles/Group_4_job_search_pro.dir/User.cpp.obj	9047bf79d2ce9ecd
-124	191	7302507170101144	CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.obj	1bdae1c33da56d23
-34	144	7302507169485988	CMakeFiles/Group_4_job_search_pro.dir/Employer.cpp.obj	bfd32491afd3f5d
-10	153	7302507169676056	CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.obj	77cfdd884e61f561
-15	145	7302507169442451	CMakeFiles/Group_4_job_search_pro.dir/Apply.cpp.obj	7ca994e7799a076b
-10	463	7302565338105244	CMakeFiles/Group_4_job_search_pro.dir/Work_with_data_base.cpp.obj	89b74b67a534a43f
-3	4753	7302527775342341	CMakeFiles/Group_4_job_search_pro.dir/sqlite3.c.obj	b0f90fb3f6fb53f0
-25	118	7302570496082704	CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.obj	75d60a4e6302f835
-30	126	7302570496126407	CMakeFiles/Group_4_job_search_pro.dir/User.cpp.obj	f6157d7476dade23
-18	152	7302570496196425	CMakeFiles/Group_4_job_search_pro.dir/Apply.cpp.obj	8f5822b7aad3d461
-126	203	7302570496986140	CMakeFiles/Group_4_job_search_pro.dir/Employer.cpp.obj	741a81da22a9a0
-119	205	7302570496986140	CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.obj	88080ee6919f23d7
 5	525	7302570500230869	CMakeFiles/Group_4_job_search_pro.dir/main.cpp.obj	a306465ea9518421
+6147	6312	7302570558055843	Group_4_job_search_pro.exe	d689d0383c6bca73
+30	126	7302570496126407	CMakeFiles/Group_4_job_search_pro.dir/User.cpp.obj	f6157d7476dade23
+119	205	7302570496986140	CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.obj	88080ee6919f23d7
+126	203	7302570496986140	CMakeFiles/Group_4_job_search_pro.dir/Employer.cpp.obj	741a81da22a9a0
+25	118	7302570496082704	CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.obj	75d60a4e6302f835
+18	152	7302570496196425	CMakeFiles/Group_4_job_search_pro.dir/Apply.cpp.obj	8f5822b7aad3d461
 35	592	7302570500902503	CMakeFiles/Group_4_job_search_pro.dir/Work_with_data_base.cpp.obj	b40e1180b03bf85a
 13	6147	7302570556342339	CMakeFiles/Group_4_job_search_pro.dir/sqlite3.c.obj	7a0ef0f0cfeb7dd3
-6147	6312	7302570558055843	Group_4_job_search_pro.exe	d689d0383c6bca73
