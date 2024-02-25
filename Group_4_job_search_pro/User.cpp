@@ -21,15 +21,27 @@ string User::getFeedback() {
 }
 
 
-void User::changeFeedback(int newFeedback) {
+void User::changeFeedback(string newFeedback) {
     this->feedback=newFeedback;
-}
-
-void User::changeName(int newName) {
-    this->name=newName;
 }
 
 
 void User::changePassword(int newPassword) {
     this->password=newPassword;
+}
+
+void User::setName(string newName) {
+    this->name=newName;
+}
+
+void User::setId(int newId) {
+    this->id=newId;
+}
+
+void User::setPassword(int newPassword) {
+    this->password=newPassword;
+}
+
+void User::setFeedback(std::string newFeedback) {
+    this->feedback=newFeedback;
 }

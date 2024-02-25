@@ -21,6 +21,10 @@ class User {
         void changeName(string newName);
         void changePassword(int newPassword);
         void changeFeedback(string newFeedback);
+        void setName(string newName);
+        void setId(int newId);
+        void setPassword(int newPassword);
+        void setFeedback(string newFeedback);
 
 
 

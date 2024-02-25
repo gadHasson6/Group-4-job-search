@@ -10,6 +10,8 @@ using namespace std;
 # include "Job.h"
 # include <vector>
 #include <string>
+#include <limits>
+#include <filesystem>
 
 class Candidate : public User {
     private:
@@ -19,14 +21,19 @@ class Candidate : public User {
 
 public:
         Candidate();
-        Candidate(string inputName, long inputId, int inputPassword, string inputFeedback, string inputResumePath,
+        Candidate(char inputTypeOfUser, string inputName, long inputId, int inputPassword,
+                  string inputFeedback, string inputResumePath,
                   vector<Job> inputAppliedJobs, string inputPersonalInformation);
         Candidate(const Candidate &other);
-       void setResumeFilePath(string newResumePath);
+       bool setResumeFilePath(const string& newResumePath);
        void setAppliedJobs(const vector<Job> &newAppliedJobs);
-       void setPersonalInformation(string newPersonalInformation);
+       bool setPersonalInformation(string newPersonalInformation);
        void addJobApplication(Job newJobApplication);
        void deleteJobApplication(int indexToDelete);
+       void editProfile();
+       float calculateSalary();
+       void viewSubmissions();
+
 
 
 
