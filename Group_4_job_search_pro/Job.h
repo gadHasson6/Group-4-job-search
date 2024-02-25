@@ -7,7 +7,9 @@
 
 
 class Job {
-
+private:
+string m_job_name;
+doulbe m_job_salary;
 };
 
 
