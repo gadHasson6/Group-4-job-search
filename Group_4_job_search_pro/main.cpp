@@ -9,6 +9,10 @@ using namespace std;
 int main() {
     const char  * fff = DATA_BASE_PATH;
     sqlite3 * db = openSQLiteFile(fff);
+    cout <<"employers: " << countRowsInEmployersTable(db) << '\n';
+    cout <<"candidates: " << countRowsInCandidatesTable(db) << '\n';
+    cout <<"employer 12 have : " << countRowsByCreatorID(db, 12) << " jobs\n";
+    cout <<"employer 14 have : " << countRowsByCreatorID(db, 14) << " jobs\n";
     closeSQLiteFile(db);
     return 0;
 }
