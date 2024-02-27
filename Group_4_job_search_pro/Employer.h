@@ -6,16 +6,18 @@
 #define GROUP_4_JOB_SEARCH_PRO_EMPLOYER_H
 using namespace std;
 #include "Job.h"
+#include "User.h"
+#include <string>
 
 
-class Employer {
+class Employer :public User{
 private:
     Job* my_job;
 public:
-    void set(Job*item){my_job=item;}
-    Employer();
-    Employer(long id, string full_name,string mail,long phone_num,string paswoord)
+    Employer(){my_job= nullptr;}
+    Employer(long id, string full_name,string mail,long phone_num,string password);
     void edit_job();
+    void set(Job*item){my_job=item;}
     void publich_job();
     void view_job();
 
