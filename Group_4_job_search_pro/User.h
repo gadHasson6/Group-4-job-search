@@ -11,7 +11,7 @@ class User {
     private:
         string name;
         long id;
-        int password;
+        string password;
         string feedback;
     public:
         long getId();
@@ -23,7 +23,7 @@ class User {
         void changeFeedback(string newFeedback);
         void setName(string newName);
         void setId(int newId);
-        void setPassword(int newPassword);
+        void setPassword(string newPassword);
         void setFeedback(string newFeedback);
 
 

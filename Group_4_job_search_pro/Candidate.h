@@ -7,8 +7,7 @@
 using namespace std;
 #include "iostream"
 # include "User.h"
-# include "Job.h"
-# include <vector>
+# include "Apply.h"
 #include <string>
 #include <limits>
 #include <filesystem>
@@ -16,24 +15,28 @@ using namespace std;
 class Candidate : public User {
     private:
     string resumePath;
-    vector<Job> appliedJobs;
+    Apply* appliedJobs;
     string personalInformation;
 
 public:
         Candidate();
-        Candidate(char inputTypeOfUser, string inputName, long inputId, int inputPassword,
-                  string inputFeedback, string inputResumePath,
-                  vector<Job> inputAppliedJobs, string inputPersonalInformation);
+        Candidate(string inputName, long inputId, string inputPassword,
+                  string inputFeedback, string inputResumePath, string inputPersonalInformation);
         Candidate(const Candidate &other);
+        string getResumePath();
+        string getPersonalInformation();
        bool setResumeFilePath(const string& newResumePath);
-       void setAppliedJobs(const vector<Job> &newAppliedJobs);
        bool setPersonalInformation(string newPersonalInformation);
-       void addJobApplication(Job newJobApplication);
-       void deleteJobApplication(int indexToDelete);
        void editProfile();
        float calculateSalary();
        void viewSubmissions();
        void submitResume(string resumePathToSubmit);
+       void editName();
+       void editId();
+       void editPassword();
+       void editFeedback();
+       void editResumePath();
+       void editPersonalInformation();
 
 
 

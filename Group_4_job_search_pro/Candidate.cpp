@@ -12,19 +12,29 @@ Candidate::Candidate() : User() {
 }
 
 //Constructor
-Candidate::Candidate(char inputTypeOfUser, string inputName, long inputId, int inputPassword, string inputFeedback, string inputResumePath,
-                     vector<Job> inputAppliedJobs, string inputPersonalInformation)
-                     : User(inputTypeOfUser,inputName,inputId,inputPassword,inputFeedback), resumePath(inputResumePath),
-                       appliedJobs(inputAppliedJobs),
-                       personalInformation(inputPersonalInformation){
+Candidate::Candidate(string inputName, long inputId, string inputPassword,
+                     string inputFeedback, string inputResumePath, string inputPersonalInformation)
+                     :User(){
 
 }
+
 
 //Copy constructor
 Candidate::Candidate(const Candidate &other) : User(other), resumePath(other.resumePath),
                                                appliedJobs(other.appliedJobs),
                                                personalInformation(other.personalInformation)  {
 
+}
+
+//get resume path
+string Candidate::getResumePath() {
+    return this->resumePath;
+}
+
+
+//get personal information
+string Candidate::getPersonalInformation() {
+    return this->personalInformation;
 }
 
 
@@ -54,11 +64,6 @@ bool Candidate::setResumeFilePath(const string& newResumePath) {
     }
 }
 
-//set applied job
-void Candidate::setAppliedJobs(const vector<Job> &newAppliedJobs) {
-    appliedJobs = newAppliedJobs;
-}
-
 
 //set personal information
 bool Candidate::setPersonalInformation(string newPersonalInformation) {
@@ -73,21 +78,205 @@ bool Candidate::setPersonalInformation(string newPersonalInformation) {
 }
 
 
-//add job application
-void Candidate::addJobApplication(Job newJobApplication) {
-    appliedJobs.push_back(newJobApplication);   //adds the new job application to the end of the appliedJobs vector
-}
+//edit name
+void Candidate::editName() {
+    string newName = "";
+    cout<<"Your current name is: "<< this->getName()<<endl;
+    while (true) {
+        cout << "Enter the new name (no longer than 20 letters): " << endl;
+        getline(cin, newName); // read the entire line
 
+        if (newName.length() > 20) {
+            cout << "Name cannot be longer than 20 letters." << endl;
 
-//delete job
-void Candidate::deleteJobApplication(int indexToDelete) {
-    if (indexToDelete >= 0 && indexToDelete < appliedJobs.size()) {
-        appliedJobs.erase(appliedJobs.begin() + indexToDelete); //removes the job application at the specified index.
-    } else {
-        cout << "Invalid index to delete." << endl;
+            int choice = 0;
+            cout << "Please choose:" << endl;
+            cout << "1. Choose a new name" << endl;
+            cout << "2. Stay with the existing name" << endl;
+            cin >> choice;
+
+            if (choice == 2) {
+                break;
+            } else {
+                // Clear the input buffer before taking a new choice
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        } else {
+            setName(newName);
+            cout << "Name updated successfully!" << endl;
+            break; // Exit the loop if a valid name is provided
+        }
+
+        // Clear the input buffer
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 }
 
+//edit id
+void Candidate::editId() {
+    long newId = 0;
+    cout<<"Your current id is: "<< this->getId()<<endl;
+    while (true) {
+        cout << "Enter new id (no longer than 9 numbers): " << endl;
+        cin >> newId;
+
+        if (cin.fail() || to_string(newId).length() > 9) {
+            // Invalid input (not an integer or longer than 9)
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+
+            int choice = 0;
+            cout << "Invalid input. Please choose:" << endl;
+            cout << "1. Choose a new ID" << endl;
+            cout << "2. Stay with the existing ID" << endl;
+            cin >> choice;
+
+            if (choice == 2) {
+                break;
+            } else {
+                // Clear the input buffer before taking a new choice
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        } else {
+            setId(newId);
+            cout << "ID updated successfully!" << endl;
+            break; // Exit the loop if a valid ID is provided
+        }
+    }
+}
+
+//edit password
+void Candidate::editPassword() {
+    string newPassword = "";
+    cout << "Your current password is: " << this->getPassword() << endl;
+
+    while (true) {
+        cout << "Enter new password (no longer than 10 chars): " << endl;
+        cin >> newPassword;
+
+        int length = newPassword.length();
+
+        if (length > 10) {
+            // Invalid input - longer than 10
+            cout << "Invalid input - longer than 10 characters." << endl;
+
+            int choice = 0;
+            cout << "Please choose:" << endl;
+            cout << "1. Choose a new password" << endl;
+            cout << "2. Stay with the existing password" << endl;
+            cin >> choice;
+
+            if (choice == 2) {
+                break;
+            } else {
+                // Clear the input buffer before taking a new choice
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        } else {
+            setPassword(newPassword);
+            cout << "Password updated successfully!" << endl;
+            break; // Exit the loop if a valid password is provided
+        }
+    }
+}
+
+
+//edit feedback
+void Candidate::editFeedback() {
+    string newFeedback;
+    cout << "Your current feedback is: " << this->getFeedback() << endl;
+
+    while (true) {
+        cout << "Enter new feedback (no longer than 50 chars): " << endl;
+        getline(cin, newFeedback); // read the entire line
+
+        if (newFeedback.length() > 50) {
+            // Invalid input - more than 50 chars
+            cout << "Invalid input - longer than 50 characters." << endl;
+
+            int choice = 0;
+            cout << "Please choose:" << endl;
+            cout << "1. Choose a new feedback" << endl;
+            cout << "2. Stay with the existing feedback" << endl;
+            cin >> choice;
+
+            if (choice == 2) {
+                break;
+            } else {
+                // Clear the input buffer before taking a new choice
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        } else {
+            setFeedback(newFeedback);
+            cout << "Feedback updated successfully!" << endl;
+            break; // Exit the loop if a valid feedback is provided
+        }
+    }
+}
+
+
+//edit resume path
+void Candidate::editResumePath() {
+    string newResumePath;
+    cout << "Your current resume path is: " << this->getResumePath() << endl;
+
+    while (true) {
+        int choice = 0;
+        cout << "Please choose:" << endl;
+        cout << "1. Choose a new resume path" << endl;
+        cout << "2. Stay with the existing resume path" << endl;
+        cin >> choice;
+
+        if (choice == 2) {
+            break;
+        } else {
+            // Clear the input buffer before taking a new choice
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        cout << "Enter new resume path: " << endl;
+        getline(cin, newResumePath); // read the entire line
+
+        if (setResumeFilePath(newResumePath)) {
+            // setResumeFilePath returns true if the path is valid
+            cout << "Resume file path updated successfully!" << endl;
+            break;  // Exit the loop if a valid resume path is provided
+        }
+    }
+}
+
+//edit personal information
+void Candidate::editPersonalInformation() {
+    string newPersonalInformation;
+    cout << "Your current personal information is: " << this->getPersonalInformation() << endl;
+
+    while (true) {
+        int choice = 0;
+        cout << "Please choose:" << endl;
+        cout << "1. Choose a new personal information" << endl;
+        cout << "2. Stay with the existing personal information" << endl;
+        cin >> choice;
+
+        if (choice == 2) {
+            break;
+        } else {
+            // Clear the input buffer before taking a new choice
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        cout << "Enter new personal information (no longer than 50 chars): " << endl;
+        getline(cin, newPersonalInformation); // read the entire line
+
+        if (setPersonalInformation(newPersonalInformation)) {
+            cout << "Personal information updated successfully!" << endl;
+            break; // Exit the loop if a valid information is provided
+        }
+    }
+}
 
 //Edit profile
 void Candidate::editProfile() {
@@ -114,125 +303,28 @@ void Candidate::editProfile() {
 
         switch (choice) {
             case 1: {
-                string newName = "";
-                cout << "Enter the new name (no longer than 20 letters): " << endl;
-                getline(cin, newName); // read the entire line
-                if (newName.length() > 20) {
-                    std::cout << "Name cannot be longer than 20 letters. Please enter again." << std::endl;
-                } else {
-                    setName(newName);
-                    std::cout << "Name updated successfully!" << std::endl;
-                    break; // Exit the loop if a valid name is provided
-                }
-                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
-                while (true); // Continue the loop until a valid name is entered
-
-
+                editName();
+                break;
             }
             case 2: {
-                long newId = 0;
-                do {
-                    cout << "Enter new id (no longer than 9 numbers): " << endl;
-                    cin >> newId;
-
-                    // Convert the integer to a string
-                    string numString = to_string(newId);
-                    // Get the length of the string
-                    int length = numString.length();
-
-
-                    if (cin.fail()) {
-                        // Invalid input (not an integer)
-                        cin.clear(); // Clear the error flag
-                        cin.ignore(); // Discard invalid input
-                        cout << "Invalid input. Please enter a valid integer." << endl;
-                    } else if (length > 9) {
-                        // Invalid input - longer than 9
-                        cin.clear(); // Clear the error flag
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
-                        cout << "Invalid input - longer than 9 numbers" << endl;
-                    } else {
-                        setId(newId);
-                        cout << "Id updated successfully!" << endl;
-                        break; // Exit the loop if a valid id is provided
-                    }
-                } while (true); // Continue the loop until a valid id is entered
-                break; // break out of the switch statement
+                editId();
+                break;
             }
             case 3: {
-                int newPassword = 0;
-                do {
-                    cout << "Enter new password (no longer than 10 numbers): " << endl;
-                    cin >> newPassword;
-
-                    // Convert the integer to a string
-                    string numString = to_string(newPassword);
-                    // Get the length of the string
-                    int length = numString.length();
-
-
-                    if (cin.fail()) {
-                        // Invalid input (not an integer)
-                        cin.clear(); // Clear the error flag
-                        cin.ignore(); // Discard invalid input
-                        cout << "Invalid input. Please enter a valid integer." << endl;
-                    } else if (length > 10) {
-                        // Invalid input - longer than 10
-                        cin.clear(); // Clear the error flag
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
-                        cout << "Invalid input - longer than 10 numbers" << endl;
-                    } else {
-                        setPassword(newPassword);
-                        cout << "Password updated successfully!" << endl;
-                        break; // Exit the loop if a valid id is provided
-                    }
-                } while (true); // Continue the loop until a valid id is entered
-                break; // break out of the switch statement
+                editPassword();
+                break;
             }
             case 4: {
-                string newFeedback;
-                do {
-                    cout << "Enter new feedback (no longer than 50 chars): " << endl;
-                    getline(cin, newFeedback); // read the entire line
-
-                    if (newFeedback.length() > 50) {
-                        // Invalid input - more than 50 chars
-                        cout << "Invalid input." << endl;
-                    } else {
-                        setFeedback(newFeedback);
-                        cout << "Feedback updated successfully!" << endl;
-                        break; // Exit the loop if a valid feedback is provided
-                    }
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
-                } while (true); // Continue the loop until valid feedback is entered
-                break; // break out of the switch statement
+                editFeedback();
+                break;
             }
             case 5: {
-                string newResumePath;
-                do {
-                    cout << "Enter new resume path: " << endl;
-                    getline(cin, newResumePath); // read the entire line
-                    if (setResumeFilePath(newResumePath)) {
-                        // setResumeFilePath returns true if the path is valid
-                        cout << "Resume file path updated successfully!" << endl;
-                        break;  // Exit the loop if a valid resume path is provided
-                    }
-                } while (true); // Continue the loop until a valid resume path is entered
-                break; // break out of the switch statement
+                editResumePath();
+                break;
             }
             case 6: {
-                string newPersonalInformation;
-                do {
-                    cout << "Enter new personal information (no longer than 50 chars): " << endl;
-                    getline(cin, newPersonalInformation); // read the entire line
-
-                    if (setPersonalInformation(newPersonalInformation)) {
-                        cout << "personal information updated successfully!" << endl;
-                        break; // Exit the loop if a valid feedback is provided
-                    }
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
-                } while (true); // Continue the loop until valid feedback is entered
-                break; // break out of the switch statement
+                editPersonalInformation();
+                break;
             }
             case 7:{
                 break;  // Exit the loop if the user chooses to exit
@@ -304,29 +396,8 @@ float Candidate::calculateSalary() {
 
 //view submissions
 void Candidate::viewSubmissions() {
-    if (appliedJobs.empty()) {
-        cout << "No submissions to display." << endl;
-        return;
-    }
 
-    // Iterate through each element in the vector using a range-based for loop
-    // size_t is an unsigned integer type used for sizes and indices) and sets its initial value to 0.
-    for (size_t i = 0; i < appliedJobs.size(); ++i) {
-        const Job& job = appliedJobs[i];
-
-        // 'job' is a reference to each element in the vector
-        // Perform operations on 'job' as needed
-
-        cout << "Job number " << i + 1 << " details:" << endl;
-        // Print details about the job, replace with actual job attributes
-        cout << "Job Title: " << job.getTitle() << endl;
-        cout << "Company: " << job.getCompany() << endl;
-        // Add more attributes as needed
-
-        cout << endl; // Add a line break between jobs for better readability
-    }
 }
-
 
 //submit resume
 void Candidate::submitResume(string resumePathToSubmit) {
