@@ -33,6 +33,7 @@ public:
        void editProfile();
        float calculateSalary();
        void viewSubmissions();
+       void submitResume(string resumePathToSubmit);
 
 
 

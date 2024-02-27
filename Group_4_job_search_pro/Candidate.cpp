@@ -302,18 +302,33 @@ float Candidate::calculateSalary() {
 }
 
 
-//view submission
+//view submissions
 void Candidate::viewSubmissions() {
+    if (appliedJobs.empty()) {
+        cout << "No submissions to display." << endl;
+        return;
+    }
 
-    int i=0;
     // Iterate through each element in the vector using a range-based for loop
-    for (const auto& job : appliedJobs) {
+    // size_t is an unsigned integer type used for sizes and indices) and sets its initial value to 0.
+    for (size_t i = 0; i < appliedJobs.size(); ++i) {
+        const Job& job = appliedJobs[i];
+
         // 'job' is a reference to each element in the vector
         // Perform operations on 'job' as needed
 
-        cout << "job number "<<i+1<<" details:" <<endl;
+        cout << "Job number " << i + 1 << " details:" << endl;
+        // Print details about the job, replace with actual job attributes
+        cout << "Job Title: " << job.getTitle() << endl;
+        cout << "Company: " << job.getCompany() << endl;
+        // Add more attributes as needed
 
-        i++;
+        cout << endl; // Add a line break between jobs for better readability
     }
+}
+
+
+//submit resume
+void Candidate::submitResume(string resumePathToSubmit) {
 
 }
