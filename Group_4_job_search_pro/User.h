@@ -1,6 +1,5 @@
 #ifndef GROUP_4_JOB_SEARCH_PRO_USER_H
 #define GROUP_4_JOB_SEARCH_PRO_USER_H
-
 #include <iostream>
 #include <string>
 
@@ -8,57 +7,61 @@ using namespace std;
 
 class User {
 private:
-    char typeOfUser;
     string name;
     long id;
+    string email;
     string password;
-    string feedback;
-    int rating;
-
-    // Additional variables for employer
-    string companyName;
-    string employerEmail;
-    string contactPhoneNumber;
-
-    // Additional variables for candidate
-    string candidateEmail;
-    string candidatePhoneNumber;
-    int age;
-    string gender;
-    string workExperience;
+    string phoneNumber;
     string residence;
-    string specialization;
-    string description;
+    int rating;
+    string feedback;
+    // int age; TODO: to add only if both will have
+    // string gender; TODO: to add only if both will have
+
 public:
     User(); // Constructor without parameters
-    User(char inputTypeOfUser, const string& inputName, long inputId, const string& inputPassword, const string& inputFeedback); // Constructor with parameters
+    // Constructor with parameters, TODO: add int and gender if need
+    User(const string& inputName, const long inputId, const string& inputPassword, const string& inputEmail,
+         const string& inputPhoneNumber, const string& inputrResidence, int inputRating,
+         const string& inputFeedback);
     User(const User& other); // Copy constructor
-    ~User(); // Destructor
+    ~User(); // Destructor, TODO: how to deallocate what was allocated in constructor, maybe not needed.
 
     // Setters
-    void setUserData(char inputTypeOfUser, const string& inputName, long inputId, const string& inputPassword, const string& inputFeedback);
-    void setFeedback(const string& inputFeedback);
+    void setName(const string& inputName);
+    void setEmail(const string& inputEmail);
+    void setPassword(const string& inputPassword);
+    void setPhoneNumber(const string& inputPhoneNumber);
+    void setResidence(const string& inputrResidence);
     void setRating(int inputRating);
+    void setFeedback(const string& inputFeedback);
+    // TODO: add setAge & setGender if needed
 
     // Getters
-    char getTypeOfUser() const;
     long getId() const;
-    const string& getPassword() const;
-    const string& getName() const;
-    const string& getFeedback() const;
+    string getName() const;
+    string getEmail() const;
+    string getPassword() const;
+    string getPhoneNumber() const;
+    string getResidence() const;
     int getRating() const;
+    string getFeedback() const;
+    // TODO: add getAge & getGender if needed
 
-    // Employer-specific functions
-    void employerRegistration();
-    void employerLogin();
+    // Validators
+    bool isIdValid(long inputId) const;
+    bool isEmailValid(string& inputEmail) const;
+    bool isPasswordValid(string& inputPassword) const;
+    // TODO: phone number might need validation
+    bool isRatingValid(int inputRating) const;
 
-    // Candidate-specific functions
-    void candidateRegistration();
-    void candidateLogin();
 
-    bool isLoginValid(long enteredId, const string& enteredPassword) const;
-    void limitFeedbackLength(int maxLength);
-    void rateSystem();
+    // Helpers
+    // TODO: add isAgeValid & isGenderValid if needed
+    bool isStringBetween(const string& inputString, int min, int max) const;
+    bool isBigLetters(const string& inputString) const;
+    bool isSmallLetters(const string& inputString) const;
+    bool isDigits(const string& inputString) const;
 };
 
 
