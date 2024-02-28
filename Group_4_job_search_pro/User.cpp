@@ -29,24 +29,16 @@ void User::setName(const string &inputName) {
     this->name = inputName;
 }
 
+void User::setId(long inputId) {
+    this->id = inputId;
+}
+
 void User::setEmail(const string &inputEmail) {
-    string newEmail = inputEmail;
-    while (!isEmailValid(newEmail)) {
-        cout << "Error: Invalid email format. Please try again." << endl;
-        cout << "Enter a valid email: ";
-        cin >> newEmail;
-    }
-    this->email = newEmail;
+    this->email = inputEmail;
 }
 
 void User::setPassword(const string &inputPassword) {
-    string newPassword = inputPassword;
-    while (!isPasswordValid(newPassword)) {
-        cout << "Error: The password is not strong. The password should include letters and numbers." << endl;
-        cout << "Enter a valid strong password : ";
-        cin >> newPassword;
-    }
-    this->password = newPassword;
+    this->password = inputPassword;
 }
 
 void User::setPhoneNumber(const string &inputPhoneNumber) {
@@ -58,27 +50,11 @@ void User::setResidence(const string &inputResidence) {
 }
 
 void User::setRating(int inputRating) {
-    cout << "Please rate the system (1-5):" << endl;
-    cout << "1 - Excellent" << endl;
-    cout << "2 - Very Good" << endl;
-    cout << "3 - Good" << endl;
-    cout << "4 - Requires Improvement" << endl;
-    cout << "5 - Bad" << endl;
-    do {
-        cout << "Enter your rating: ";
-        cin >> rating;
-    } while (!isRatingValid(rating));
     this->rating = inputRating;
 }
 
 void User::setFeedback(const string &inputFeedback) {
-    string newFeedback = inputFeedback;
-    while (!isStringBetween(newFeedback, 0, 200)) {
-        cout << "Error: You can write up to 200 characters only. " << endl;
-        cout << "Enter your feedback according to the terms: ";
-        cin >> newFeedback;
-    }
-    this->feedback = newFeedback;
+    this->feedback = inputFeedback;
 }
 
 // Getters

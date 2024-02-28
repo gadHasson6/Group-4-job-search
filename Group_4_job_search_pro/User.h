@@ -29,6 +29,7 @@ public:
 
     // Setters
     void setName(const string& inputName);
+    void setId(long inputId);
     void setEmail(const string& inputEmail);
     void setPassword(const string& inputPassword);
     void setPhoneNumber(const string& inputPhoneNumber);
@@ -38,8 +39,8 @@ public:
     // TODO: add setAge & setGender if needed
 
     // Getters
-    long getId() const;
     string getName() const;
+    long getId() const;
     string getEmail() const;
     string getPassword() const;
     string getPhoneNumber() const;
