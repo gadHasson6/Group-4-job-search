@@ -97,6 +97,12 @@ build CMakeFiles/Group_4_job_search_pro.dir/Work_with_data_base.cpp.obj: CXX_COM
   OBJECT_DIR = CMakeFiles\Group_4_job_search_pro.dir
   OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search_pro.dir
 
+build CMakeFiles/Group_4_job_search_pro.dir/Job_search_system.cpp.obj: CXX_COMPILER__Group_4_job_search_pro_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/Job_search_system.cpp || cmake_object_order_depends_target_Group_4_job_search_pro
+  DEP_FILE = CMakeFiles\Group_4_job_search_pro.dir\Job_search_system.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Group_4_job_search_pro.dir
+  OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search_pro.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Group_4_job_search_pro
@@ -105,7 +111,7 @@ build CMakeFiles/Group_4_job_search_pro.dir/Work_with_data_base.cpp.obj: CXX_COM
 #############################################
 # Link the executable Group_4_job_search_pro.exe
 
-build Group_4_job_search_pro.exe: CXX_EXECUTABLE_LINKER__Group_4_job_search_pro_Debug CMakeFiles/Group_4_job_search_pro.dir/main.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/sqlite3.c.obj CMakeFiles/Group_4_job_search_pro.dir/Apply.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/User.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/Employer.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/Work_with_data_base.cpp.obj
+build Group_4_job_search_pro.exe: CXX_EXECUTABLE_LINKER__Group_4_job_search_pro_Debug CMakeFiles/Group_4_job_search_pro.dir/main.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/sqlite3.c.obj CMakeFiles/Group_4_job_search_pro.dir/Apply.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/User.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/Employer.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/Work_with_data_base.cpp.obj CMakeFiles/Group_4_job_search_pro.dir/Job_search_system.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Group_4_job_search_pro.dir

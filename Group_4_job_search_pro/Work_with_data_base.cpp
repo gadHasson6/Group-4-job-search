@@ -103,6 +103,72 @@ int countRowsInCandidatesTable(sqlite3* db) {
 
 
 ////////////////////////////
+int countRowsInApplyTable(sqlite3* db) {
+    int rowCount = 0;
+    sqlite3_stmt* stmt;
+
+    // SQL query to count rows in the candidates table
+    const char* sql = "SELECT COUNT(*) FROM apply";
+
+    // Prepare the SQL statement
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+
+    if (rc != SQLITE_OK) {
+        cerr << "SQL error: " << sqlite3_errmsg(db) << endl;
+        return -1; // Return -1 to indicate error
+    }
+
+    // Execute the SQL statement
+    rc = sqlite3_step(stmt);
+
+    if (rc == SQLITE_ROW) {
+        // Retrieve the count of rows from the result
+        rowCount = sqlite3_column_int(stmt, 0);
+    } else {
+        cerr << "No rows returned" << endl;
+    }
+
+    // Finalize the prepared statement
+    sqlite3_finalize(stmt);
+
+    return rowCount;
+}
+
+
+////////////////////////////
+int countRowsInJobTable(sqlite3* db) {
+    int rowCount = 0;
+    sqlite3_stmt* stmt;
+
+    // SQL query to count rows in the candidates table
+    const char* sql = "SELECT COUNT(*) FROM job";
+
+    // Prepare the SQL statement
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+
+    if (rc != SQLITE_OK) {
+        cerr << "SQL error: " << sqlite3_errmsg(db) << endl;
+        return -1; // Return -1 to indicate error
+    }
+
+    // Execute the SQL statement
+    rc = sqlite3_step(stmt);
+
+    if (rc == SQLITE_ROW) {
+        // Retrieve the count of rows from the result
+        rowCount = sqlite3_column_int(stmt, 0);
+    } else {
+        cerr << "No rows returned" << endl;
+    }
+
+    // Finalize the prepared statement
+    sqlite3_finalize(stmt);
+
+    return rowCount;
+}
+
+
+////////////////////////////
 int countRowsByCreatorID(sqlite3* db, int idToSearch) {
     int rowCount = 0;
     sqlite3_stmt* stmt;
@@ -208,3 +274,75 @@ int countRowsByJobID(sqlite3* db, int idToSearch) {
 
     return rowCount;
 }
+
+
+////////////////////////////
+vector<EmployerInfo> getEmployerInfo(sqlite3* db) {
+    vector<EmployerInfo> employers;
+    sqlite3_stmt* stmt;
+
+    // SQL query to select all fields from the employer table
+    const char* sql = "SELECT [employer_ID], [employr name], [company name], [employer email], [employer phone number], password FROM employer";
+
+    // Prepare the SQL statement
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+
+    if (rc != SQLITE_OK) {
+        cerr << "SQL error: " << sqlite3_errmsg(db) << endl;
+        return employers; // Return empty vector to indicate error
+    }
+
+    // Execute the SQL statement
+    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        // Retrieve employer information from the result and add it to the vector
+        EmployerInfo employer;
+        employer.employer_id = sqlite3_column_int64(stmt, 0);
+        employer.employer_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+        employer.company_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+        employer.employer_email = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+        employer.employer_phone_number = sqlite3_column_int64(stmt, 4);
+        employer.password = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
+        employers.push_back(employer);
+    }
+
+    // Finalize the prepared statement
+    sqlite3_finalize(stmt);
+
+    return employers;
+}
+
+
+////////////////////////////
+//vector<CandidateInfo> getCandidateInfo(sqlite3* db) {
+//    vector<CandidateInfo> candidates;
+//    sqlite3_stmt* stmt;
+//
+//    // SQL query to select all fields from the employer table
+//    const char* sql = "SELECT [employer_ID], [employr name], [company name], [employer email], [employer phone number], password FROM employer";
+//
+//    // Prepare the SQL statement
+//    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+//
+//    if (rc != SQLITE_OK) {
+//        cerr << "SQL error: " << sqlite3_errmsg(db) << endl;
+//        return employers; // Return empty vector to indicate error
+//    }
+//
+//    // Execute the SQL statement
+//    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+//        // Retrieve employer information from the result and add it to the vector
+//        EmployerInfo employer;
+//        employer.employer_id = sqlite3_column_int64(stmt, 0);
+//        employer.employer_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+//        employer.company_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+//        employer.employer_email = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+//        employer.employer_phone_number = sqlite3_column_int64(stmt, 4);
+//        employer.password = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
+//        employers.push_back(employer);
+//    }
+//
+//    // Finalize the prepared statement
+//    sqlite3_finalize(stmt);
+//
+//    return employers;
+//}
