@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/ariel/CLionProjects/job_search/Group-4-job-search-F/Group_4_job_search_pro/cmake-build-debug",
-		"source" : "C:/Users/ariel/CLionProjects/job_search/Group-4-job-search-F/Group_4_job_search_pro"
+		"build" : "C:/Users/aviga/OneDrive/\u05de\u05e1\u05de\u05db\u05d9\u05dd/GitHub/Group-4-job-search/Group_4_job_search_pro/cmake-build-debug",
+		"source" : "C:/Users/aviga/OneDrive/\u05de\u05e1\u05de\u05db\u05d9\u05dd/GitHub/Group-4-job-search/Group_4_job_search_pro"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 5
 	}
 }
