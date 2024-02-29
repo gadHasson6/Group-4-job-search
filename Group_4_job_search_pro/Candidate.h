@@ -15,7 +15,7 @@ using namespace std;
 class Candidate : public User {
 private:
     string resumePath;
-    Apply* appliedJobs;
+    Apply** appliedJobs;
     string personalInformation;
 
 public:
