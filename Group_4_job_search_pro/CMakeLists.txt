@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.27.8)
 project(Group_4_job_search_pro)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -16,8 +16,8 @@ add_executable(Group_4_job_search_pro main.cpp
         Employer.h
         Candidate.cpp
         Candidate.h
-        Work_with_data_base.cpp
         Work_with_data_base.h
-        Job_search_system.cpp
+        Work_with_data_base.cpp
         Job_search_system.h
+        Job_search_system.cpp
 )
