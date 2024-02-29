@@ -6,9 +6,6 @@
 #define GROUP_4_JOB_SEARCH_PRO_JOB_H
 
 
-class Job {
-
-};
 
 
 #endif //GROUP_4_JOB_SEARCH_PRO_JOB_H

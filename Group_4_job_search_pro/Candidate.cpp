@@ -3,38 +3,231 @@
 //
 
 #include "Candidate.h"
+using namespace std;
 
 //Default constructor
 Candidate::Candidate() : User() {
     this->resumePath="";
-    this->appliedJobs={};
+    this->appliedJobs=NULL;
+    this->appliedJobSize=0;
     this->personalInformation="";
+    this->age=0;
+    this->residence="";
+    this->gender='M';
+    this->workExperience=0;
+    this->specialty="";
 }
 
 //Constructor
-Candidate::Candidate(string inputName, long inputId, string inputPassword,
-                     string inputFeedback, string inputResumePath, string inputPersonalInformation)
-        :User(){
+Candidate::Candidate(string inputName, long inputId, string inputEmail, string inputPassword,
+                     string inputPhoneNumber, int inputRating, string inputFeedback,
+                     string inputResumePath, string inputPersonalInformation, int inputAge, char inputGender,
+                     float inputWorkExperience, string inputSpecialty)
+                     : User(inputName,inputId,inputPassword,inputEmail,inputPhoneNumber,inputRating,inputFeedback){
+    this->appliedJobs=NULL;
+    this->appliedJobSize=0;
 
+    if (!setResumeFilePath(inputResumePath)){
+        this->resumePath="";
+    }
+    if(!setPersonalInformation(inputPersonalInformation)){
+        this->personalInformation="";
+    }
+    if(!setAge(inputAge)){
+        this->age=0;
+    }
+    if (!setGender(inputGender)){
+        this->gender='M';
+    }
+    if(!setResidence()){
+        this->residence="";
+    }
+    if(!setWorkExperience(inputWorkExperience)){
+        this->workExperience=0;
+    }
+    if(!setSpecialty(inputSpecialty)){
+        this->specialty="";
+    }
 }
-
 
 //Copy constructor
 Candidate::Candidate(const Candidate &other) : User(other), resumePath(other.resumePath),
                                                appliedJobs(other.appliedJobs),
-                                               personalInformation(other.personalInformation)  {
+                                               personalInformation(other.personalInformation),
+                                               age(other.age),
+                                               gender(other.gender),
+                                               residence(other.residence),
+                                               workExperience(other.workExperience),
+                                               specialty(other.specialty),
+                                               appliedJobSize(other.appliedJobSize){
 
 }
 
 //get resume path
-string Candidate::getResumePath() {
+string Candidate::getResumePath() const {
     return this->resumePath;
 }
 
 
 //get personal information
-string Candidate::getPersonalInformation() {
+string Candidate::getPersonalInformation() const{
     return this->personalInformation;
+}
+
+
+//get applied jobs
+Apply **Candidate::getAppliedJob() const {
+    return this->appliedJobs;
+}
+
+
+//get age
+int Candidate::getAge() const {
+    return this->age;
+}
+
+
+//get gender
+char Candidate::getGender() const {
+    return this->gender;
+}
+
+
+//get residence
+string Candidate::getResidence() const {
+    return this->residence;
+}
+
+
+
+//get work experience
+float Candidate::getWorkExperience() const {
+    return this->workExperience;
+}
+
+
+//get specialty
+string Candidate::getSpecialty() const {
+    return this->specialty;
+}
+
+
+
+//get applied job size
+int Candidate::getAppliedJobSize() const {
+    return this->appliedJobSize;
+}
+
+//set specialty
+bool Candidate::setSpecialty(string inputSpecialty) {
+    if(inputSpecialty.length()>=2 && inputSpecialty.length()<=25){
+        this->specialty=inputSpecialty;
+        return true;
+    } else{
+        return false;
+    }
+}
+
+//set work experience
+bool Candidate::setWorkExperience(float inputWorkExperience) {
+    if (inputWorkExperience>=0 && inputWorkExperience<=100){
+        this->workExperience=inputWorkExperience;
+        return true;
+    } else{
+        return false;
+    }
+}
+
+
+//set applied jobs
+bool Candidate::setAppliedJobs(Apply **other, int size) {
+    if(other!=NULL && size>0) {
+        this->appliedJobSize=size;
+        this->appliedJobs = new Apply *[size];
+        for (int i = 0; i < size; i++) {
+            appliedJobs[i] = other[i];
+        }
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
+//set residence
+bool Candidate::setResidence() {
+    cout<<"please choose your residence: "<<endl;
+    int choice=0;
+    cout<<"1. Northern District"<<endl;
+    cout<<"2. Haifa District"<<endl;
+    cout<<"3. Tel Aviv District"<<endl;
+    cout<<"4. Central District"<<endl;
+    cout<<"5. Jerusalem District"<<endl;
+    cout<<"6. Southern District"<<endl;
+    cin>>choice;
+    if (!cin.fail() && choice >= 1 && choice <= 6){
+        switch (choice) {
+            case 1:{
+                this->residence='Northern District';
+                break;
+            }
+            case 2: {
+                this->residence='Haifa District';
+                break;
+            }
+            case 3: {
+                this->residence='Tel Aviv District';
+                break;
+            }
+            case 4: {
+                this->residence='Central District';
+                break;
+            }
+            case 5: {
+                this->residence='Jerusalem District';
+                break;
+            }
+            case 6: {
+                this->residence='Southern District';
+                break;
+            }
+        }
+        return true;
+    }
+    else {
+        // Clear the error flag
+        cin.clear();
+        // Discard invalid input from the input buffer
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return false;
+    }
+}
+
+//set gender
+bool Candidate::setGender(char inputGender) {
+    if(inputGender=='W' || inputGender=='w'){
+        this->gender='W';
+        return true;
+    }
+    if(inputGender=='M' || inputGender=='m'){
+        this->gender='M';
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
+//set age
+bool Candidate::setAge(int inputAge) {
+    if(inputAge>=1 && inputAge<=120){
+        this->age=inputAge;
+        return true;
+    } else{
+        return false;
+    }
 }
 
 
@@ -50,6 +243,7 @@ bool Candidate::setResumeFilePath(const string& newResumePath) {
             return true; // Indicate success
         } else {
             std::cout << "Invalid resume path." << std::endl;
+            resumePath="";
             return false; // Indicate failure
         }
     } catch (const std::filesystem::filesystem_error& e) {
@@ -77,6 +271,44 @@ bool Candidate::setPersonalInformation(string newPersonalInformation) {
     }
 }
 
+
+//tips for resume
+void Candidate::printTipsForResume() {
+    cout<<"Here are some tips for writing your resume: "<<endl;
+    cout<<"1- Include your full name, phone number, email address..\n"
+          "Ensure that your contact information is current and professional."<<endl;
+    cout<<"2- Write a concise and targeted objective or summary highlighting your career goals and key qualifications."<<endl;
+    cout<<"3- Use reverse chronological order for your work history.\n"
+          "Include your job title, company name, location, and dates of employment.\n"
+          "Provide a brief description of your responsibilities and achievements in each role."<<endl;
+    cout<<"4- Mention your degree, major, school name, graduation date, and any relevant honors or awards."<<endl;
+    cout<<"5- Keep your resume concise and ideally limit it to one page."<<endl;
+    cout<<"6- Check for typos, grammatical errors, and formatting issues."<<endl;
+}
+
+
+//print
+void Candidate::printThisCandidateInfo() const {
+    cout<<"Candidate details: "<<endl;
+    cout<<"Name: "<<this->getName()<<endl;
+    cout<<"Id: "<<this->getId()<<endl;
+    cout<<"Email: "<<this->getEmail()<<endl;
+    cout<<"Phone number: "<<this->getPhoneNumber()<<endl;
+    cout<<"Resume path: "<<this->getResumePath()<<endl;
+    cout<<"Age: "<<this->getAge()<<endl;
+    cout<<"Gender: "<<this->getGender()<<endl;
+    cout<<"Personal information: "<<this->getPersonalInformation()<<endl;
+    cout<<"Residence: "<<this->getResidence()<<endl;
+    cout<<"Work experience: "<<this->getWorkExperience()<<endl;
+    cout<<"Specialty: "<<this->getSpecialty()<<endl;
+}
+
+
+//add apply
+void Candidate::addApply(const Apply *&addMe) { //need to finish this function
+    for (int i=0; i<appliedJobSize; i++){
+    }
+}
 
 //edit name
 void Candidate::editName() {
