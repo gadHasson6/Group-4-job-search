@@ -1,11 +1,10 @@
 # ninja log v5
-4	807	7309014992074769	CMakeFiles/Group_4_job_search_pro.dir/main.cpp.obj	a306465ea9518421
-516	693	7307821186914815	Group_4_job_search_pro.exe	722ea3b080417ff1
-35	158	7307737797245649	CMakeFiles/Group_4_job_search_pro.dir/User.cpp.obj	f6157d7476dade23
-136	231	7307737797997675	CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.obj	88080ee6919f23d7
-9	481	7307818027064554	CMakeFiles/Group_4_job_search_pro.dir/Employer.cpp.obj	741a81da22a9a0
-30	122	7307737796935035	CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.obj	75d60a4e6302f835
-24	136	7307737796996126	CMakeFiles/Group_4_job_search_pro.dir/Apply.cpp.obj	8f5822b7aad3d461
-43	839	7309014992384896	CMakeFiles/Group_4_job_search_pro.dir/Work_with_data_base.cpp.obj	b40e1180b03bf85a
-4	7199	7307737867603931	CMakeFiles/Group_4_job_search_pro.dir/sqlite3.c.obj	7a0ef0f0cfeb7dd3
-51	816	7309014992139538	CMakeFiles/Group_4_job_search_pro.dir/Job_search_system.cpp.obj	607c7242219c3fa8
+5	525	7302570500230869	CMakeFiles/Group_4_job_search_pro.dir/main.cpp.obj	a306465ea9518421
+6147	6312	7302570558055843	Group_4_job_search_pro.exe	d689d0383c6bca73
+30	126	7302570496126407	CMakeFiles/Group_4_job_search_pro.dir/User.cpp.obj	f6157d7476dade23
+119	205	7302570496986140	CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.obj	88080ee6919f23d7
+126	203	7302570496986140	CMakeFiles/Group_4_job_search_pro.dir/Employer.cpp.obj	741a81da22a9a0
+25	118	7302570496082704	CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.obj	75d60a4e6302f835
+18	152	7302570496196425	CMakeFiles/Group_4_job_search_pro.dir/Apply.cpp.obj	8f5822b7aad3d461
+35	592	7302570500902503	CMakeFiles/Group_4_job_search_pro.dir/Work_with_data_base.cpp.obj	b40e1180b03bf85a
+13	6147	7302570556342339	CMakeFiles/Group_4_job_search_pro.dir/sqlite3.c.obj	7a0ef0f0cfeb7dd3

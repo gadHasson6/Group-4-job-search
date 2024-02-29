@@ -176,30 +176,6 @@ Candidate.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.s
 .PHONY : Candidate.cpp.s
 
-Date.obj: Date.cpp.obj
-.PHONY : Date.obj
-
-# target to build an object file
-Date.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Date.cpp.obj
-.PHONY : Date.cpp.obj
-
-Date.i: Date.cpp.i
-.PHONY : Date.i
-
-# target to preprocess a source file
-Date.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Date.cpp.i
-.PHONY : Date.cpp.i
-
-Date.s: Date.cpp.s
-.PHONY : Date.s
-
-# target to generate assembly for a file
-Date.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Date.cpp.s
-.PHONY : Date.cpp.s
-
 Employer.obj: Employer.cpp.obj
 .PHONY : Employer.obj
 
@@ -247,30 +223,6 @@ Job.s: Job.cpp.s
 Job.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.s
 .PHONY : Job.cpp.s
-
-Job_search_system.obj: Job_search_system.cpp.obj
-.PHONY : Job_search_system.obj
-
-# target to build an object file
-Job_search_system.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Job_search_system.cpp.obj
-.PHONY : Job_search_system.cpp.obj
-
-Job_search_system.i: Job_search_system.cpp.i
-.PHONY : Job_search_system.i
-
-# target to preprocess a source file
-Job_search_system.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Job_search_system.cpp.i
-.PHONY : Job_search_system.cpp.i
-
-Job_search_system.s: Job_search_system.cpp.s
-.PHONY : Job_search_system.s
-
-# target to generate assembly for a file
-Job_search_system.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Job_search_system.cpp.s
-.PHONY : Job_search_system.cpp.s
 
 User.obj: User.cpp.obj
 .PHONY : User.obj
@@ -383,18 +335,12 @@ help:
 	@echo ... Candidate.obj
 	@echo ... Candidate.i
 	@echo ... Candidate.s
-	@echo ... Date.obj
-	@echo ... Date.i
-	@echo ... Date.s
 	@echo ... Employer.obj
 	@echo ... Employer.i
 	@echo ... Employer.s
 	@echo ... Job.obj
 	@echo ... Job.i
 	@echo ... Job.s
-	@echo ... Job_search_system.obj
-	@echo ... Job_search_system.i
-	@echo ... Job_search_system.s
 	@echo ... User.obj
 	@echo ... User.i
 	@echo ... User.s
