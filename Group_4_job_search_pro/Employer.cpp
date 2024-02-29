@@ -26,7 +26,7 @@ void Employer::set(Job **item, int size) {
 
 void Employer::Edit_Job() {
     int numofjob = 0;
-    E_Print_Job();
+    Employer_Print_Job();
     cout << "which job do you want to edit? " << endl;
     cin >> numofjob;
     int num;
@@ -72,7 +72,7 @@ void Employer::Edit_Job() {
 void Employer::Delete_Job() {
     int idnumofjob = 0;
     bool flag = false;
-    E_Print_Job();
+    Employer_Print_Job();
     cout << "Which job do you want to delete? " << endl;
     cin >> idnumofjob;
     for (int i = 0; i < num_of_jobs; i++) {
