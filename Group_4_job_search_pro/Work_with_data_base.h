@@ -17,16 +17,16 @@ using namespace std;
 struct EmployerInfo {
     long employer_id;
     string employer_name;
-    string company_name;
     string employer_email;
-    long employer_phone_number;
+    string employer_phone_number;
     string password;
-};
+    int rating;
+    string feedback;
 
 // Define a structure to hold candidate information
 struct CandidateInfo {
-    long candidate_id;
-    string candidate_name;
+    long candidate_id;///
+    string candidate_name;///
     double candidate_age;
     string candidate_gender;
     long candidate_phone_number;
@@ -34,8 +34,11 @@ struct CandidateInfo {
     string candidate_living_area;
     int candidate_experience;
     string candidate_specialty;
-    string password;
-    string candidate_free_text;
+    string password;///
+    string candidate_free_text;///
+    int rating;
+    string feedback;///
+    string resumePath;///
 };
 
 

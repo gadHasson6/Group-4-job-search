@@ -29,7 +29,7 @@ private:
 public:
     Job_search_system();
     ~Job_search_system();
-
+    Job ** Initializing_jobs(Employer * new_employer);
 };
 
 

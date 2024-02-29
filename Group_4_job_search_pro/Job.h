@@ -7,7 +7,7 @@
 
 #include <cstring>
 #include "iostream"
-enum Job_scope {full_time = 0,part_time};
+enum Job_scope {full_time = 0,part_time=1};
 using namespace std;
 
 class Job {

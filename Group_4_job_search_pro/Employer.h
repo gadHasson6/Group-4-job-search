@@ -4,26 +4,26 @@
 
 #ifndef GROUP_4_JOB_SEARCH_PRO_EMPLOYER_H
 #define GROUP_4_JOB_SEARCH_PRO_EMPLOYER_H
-
-#include "sqlite3.h"
-#include <iostream>
-#include <vector>
+using namespace std;
 #include "Job.h"
 #include "User.h"
+#include <string>
+#include <iostream>
 
-using namespace std;
 
-
-class Employer :public User {
+class Employer :public User{
 private:
-    Job* my_job;
+    Job** my_job;
+    int num_of_jobs;
 public:
-    Employer(){my_job= nullptr;}
-    Employer(long id, string full_name,string mail,long phone_num,string password);
-    void edit_job();
-    void set(Job*item){my_job=item;}
-    void publich_job();
-    void view_job();
+    Employer(){my_job= nullptr; num_of_jobs = 0;}
+    Employer(string full_name,long id,string password,string email,long phone_num ,int rating,string feedback );
+    void set(Job**item, int size);
+    void Employer_Print_Job();
+    void Edit_Job();
+    void Delete_Job();
+    void Publish_Job(Job& job);
+
 
 };
 
