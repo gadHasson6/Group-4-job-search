@@ -1,3 +1,3 @@
-C:/Users/aviga/OneDrive/מסמכים/GitHub/Group-4-job-search/Group_4_job_search_pro/cmake-build-debug/CMakeFiles/Group_4_job_search_pro.dir
-C:/Users/aviga/OneDrive/מסמכים/GitHub/Group-4-job-search/Group_4_job_search_pro/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/aviga/OneDrive/מסמכים/GitHub/Group-4-job-search/Group_4_job_search_pro/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/cmake-build-debug/CMakeFiles/Group_4_job_search_pro.dir
+C:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/cmake-build-debug/CMakeFiles/rebuild_cache.dir
