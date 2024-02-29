@@ -8,10 +8,10 @@
 #include <iostream>
 #include "sqlite3.h"
 #include "Work_with_data_base.h"
-#include "Job.h"
-#include "Employer.h"
 #include "Candidate.h"
 #include "Apply.h"
+#include "Employer.h"
+#include "Job.h"
 
 using namespace std;
 
