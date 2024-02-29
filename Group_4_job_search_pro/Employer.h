@@ -18,7 +18,7 @@ public:
     Employer(long id, string full_name,string mail,long phone_num,string password);
     void edit_job();
     void set(Job*item){my_job=item;}
-    void publich_job();
+    void publish_job();
     void view_job();
 
 
