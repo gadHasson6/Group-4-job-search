@@ -19,8 +19,10 @@ public:
     Employer(){my_job= nullptr; num_of_jobs = 0;}
     Employer(string full_name,long id,string password,string email,long phone_num ,int rating,string feedback );
     void set(Job**item, int size);
-    void E_Print_Job();
+    void Employer_Print_Job();
     void edit_job();
+    void delete_job();
+    void publish_job();
 
 
 };
