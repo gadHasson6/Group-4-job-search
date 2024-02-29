@@ -58,15 +58,21 @@ public:
 
     //Additional functions
     void printThisCandidateInfo() const;
-    void lookForJobs(const Job* &allJobs);  //need to finish this function
     void addApply(const Apply* &addMe);  //need to finish this function
     void cancelApply(const Apply* &deleteMe);  //need to finish this function
+    Apply* SortFromNewToOldByDate(Apply* sortMe); //need to finish this function
     void printTipsForResume();
     float calculateSalary();
     void viewSubmissions();
     void submitResume(string resumePathToSubmit);
 
-    //functions for edit profile
+    //functions for "look for jobs"
+    void lookForJobs(const Job** &allJobs, int size);  //need to finish this function
+    Job** byJobScope(const Job** &allJobs, int size, string name, int &newSize);
+    Job** byJobResident(const Job **&allJobs, int size, string resident, int &newSIze);
+    Job** byJobExperience(const Job** &allJobs, int size);
+
+    //functions for "edit profile"
     void editName();
     void editId();
     void editPassword();

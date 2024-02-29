@@ -169,27 +169,27 @@ bool Candidate::setResidence() {
     if (!cin.fail() && choice >= 1 && choice <= 6){
         switch (choice) {
             case 1:{
-                this->residence='Northern District';
+                this->residence="Northern District";
                 break;
             }
             case 2: {
-                this->residence='Haifa District';
+                this->residence="Haifa District";
                 break;
             }
             case 3: {
-                this->residence='Tel Aviv District';
+                this->residence="Tel Aviv District";
                 break;
             }
             case 4: {
-                this->residence='Central District';
+                this->residence="Central District";
                 break;
             }
             case 5: {
-                this->residence='Jerusalem District';
+                this->residence="Jerusalem District";
                 break;
             }
             case 6: {
-                this->residence='Southern District';
+                this->residence="Southern District";
                 break;
             }
         }
@@ -303,7 +303,41 @@ void Candidate::printThisCandidateInfo() const {
     cout<<"Specialty: "<<this->getSpecialty()<<endl;
 }
 
+//filter by job scope
+Job **Candidate::byJobScope(const Job **&allJobs, int size, string name, int &newSize) {   //send newSize=0 to get the new size
 
+    // Count the number of jobs with the given company name
+    for (int i = 0; i < size; i++) {
+        if (allJobs[i]->get_name() == name) {
+            newSize++;
+        }
+    }
+
+    // Create a new array to store jobs with the given company name and matching scope
+    Job **filteredJobs = new Job *[newSize];
+    int index = 0;
+
+    // Iterate through all jobs and add matching jobs to the filteredJobs array
+    for (int i = 0; i < size; i++) {
+        if (allJobs[i]->get_name() == name) {
+            filteredJobs[index] = new Job(*allJobs[i]);  // Assuming you have a copy constructor in Job class
+            index++;
+        }
+    }
+
+    return filteredJobs;
+}
+
+
+
+//filter by job resident
+Job **Candidate::byJobResident(const Job **&allJobs, int size, string resident, int &newSIze) {
+
+}
+//look for jobs
+void Candidate::lookForJobs(const Job **&allJobs, int size) {
+
+}
 //add apply
 void Candidate::addApply(const Apply *&addMe) { //need to finish this function
     for (int i=0; i<appliedJobSize; i++){

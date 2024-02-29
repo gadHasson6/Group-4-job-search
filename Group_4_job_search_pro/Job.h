@@ -35,7 +35,7 @@ private:
     string m_company_name;
     string m_copmany_location;
     string m_phone_number;
-//    string m_requirements;
+    string m_requirements;
     Job_scope m_scope;
 };
 
