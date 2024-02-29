@@ -169,27 +169,27 @@ bool Candidate::setResidence() {
     if (!cin.fail() && choice >= 1 && choice <= 6){
         switch (choice) {
             case 1:{
-                this->residence='Northern District';
+                this->residence="Northern District";
                 break;
             }
             case 2: {
-                this->residence='Haifa District';
+                this->residence="Haifa District";
                 break;
             }
             case 3: {
-                this->residence='Tel Aviv District';
+                this->residence="Tel Aviv District";
                 break;
             }
             case 4: {
-                this->residence='Central District';
+                this->residence="Central District";
                 break;
             }
             case 5: {
-                this->residence='Jerusalem District';
+                this->residence="Jerusalem District";
                 break;
             }
             case 6: {
-                this->residence='Southern District';
+                this->residence="Southern District";
                 break;
             }
         }
