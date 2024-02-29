@@ -20,9 +20,9 @@ public:
     Employer(string full_name,long id,string password,string email,long phone_num ,int rating,string feedback );
     void set(Job**item, int size);
     void Employer_Print_Job();
-    void edit_job();
-    void delete_job();
-    void publish_job();
+    void Edit_Job();
+    void Delete_Job();
+    void Publish_Job(Job& job);
 
 
 };

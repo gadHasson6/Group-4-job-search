@@ -11,7 +11,7 @@ Employer::Employer(string full_name, long id, string password, string email, lon
 
 void Employer::Employer_Print_Job() {
     for (int i = 0; i < num_of_jobs; i++) {
-        cout << my_job[i].print_job << endl;
+        my_job[i].print_job;
     }
 }
 
@@ -23,7 +23,7 @@ void Employer::set(Job **item, int size) {
     }
 }
 
-void Employer::edit_job() {
+void Employer::Edit_Job() {
     int numofjob = 0;
     E_Print_Job();
     cout << "which job do you want to edit? " << endl;
@@ -65,26 +65,37 @@ void Employer::edit_job() {
         }
     }
     if (!flag)
-        cout << "the job you search is not found " << endl;
+        cout << "The job you search is not found " << endl;
 }
 
-void Employer::delete_job() {
+void Employer::Delete_Job() {
     int idnumofjob = 0;
     bool flag = false;
     E_Print_Job();
-    cout << "which job do you want to delete? " << endl;
+    cout << "Which job do you want to delete? " << endl;
     cin >> idnumofjob;
     for (int i = 0; i < num_of_jobs; i++) {
         if (my_job[i].GetJobId() == idnumofjob) {
-            my_job[i].SetPostingStatus("delete");
+            my_job[i].SetPostingStatus("Delete");
             i = num_of_jobs;
             flag = true;
         }
     }
     if (!flag)
-        cout << "the job you search is not found " << endl;
+        cout << "The job you search is not found " << endl;
 }
 
-void Employer::publish_job() {
-
+void Employer::Publish_Job(Job& job) {
+    num_of_jobs++;
+    Job** temp=new Job * [num_of_jobs];
+    for(int i=0;i<num_of_jobs-1;i++){
+        temp[i]=my_job[i];
+    }
+    temp[num_of_jobs-1]=&job;
+    delete[]my_job;
+    my_job=new Job * [num_of_jobs];
+    for(int i=0;i<num_of_jobs;i++){
+        my_job[i]=temp[i];
+    }
+    cout<<"add successfully"<<endl;
 }
