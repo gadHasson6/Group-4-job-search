@@ -9,23 +9,22 @@
 #include <iostream>
 #include <vector>
 #include "Job.h"
+#include "User.h"
 
 using namespace std;
 
 
-class Employer {
+class Employer :public User {
 private:
-    long employer_id;
-    string employer_name;
-    string company_name;
-    string employer_email;
-    long employer_phone_number;
-    string password;
-    Job ** my_jobs;
+    Job* my_job;
 public:
-    Employer();
-    Employer(long input_id, string input_employer_name, string input_company_name, string input_employer_email
-             , long input_employer_phone_number, string input_password);
+    Employer(){my_job= nullptr;}
+    Employer(long id, string full_name,string mail,long phone_num,string password);
+    void edit_job();
+    void set(Job*item){my_job=item;}
+    void publich_job();
+    void view_job();
+
 };
 
 
