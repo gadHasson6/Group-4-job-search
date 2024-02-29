@@ -14,9 +14,9 @@ private:
     long numberOfSubmission;
     long candidateID;
     long jobID;
-    job* job;
-    candidate* candidate;
-    date dateOfSubmission;
+    Job* job;
+    Candidate* candidate;
+    Date dateOfSubmission;
     string statusOfSubmission;
 
 public:

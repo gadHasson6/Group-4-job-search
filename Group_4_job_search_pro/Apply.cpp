@@ -25,14 +25,14 @@ Aply::Apply(){
 
 }
 
-Apply::Apply(long numberOfSubmission , long candidateID , long jobI , job* job , candidate* candidate , date dateOfSubmission ,string statusOfSubmission){
+Apply::Apply(long numberOfSubmission , long candidateID , long jobI , job* job , candidate* candidate , Date dateOfSubmission ,string statusOfSubmission){
 
     this -> numberOfSubmission = numberOfSubmission;
     this -> candidateID = candidateID;
     this -> jobI = jobI;
     this -> job = &job ;
     this -> candidate = &candidate ;
-    this ->  dateOfSubmission  = dateOfSubmission;
+    this ->  dateOfSubmission  = Date(dateOfSubmission.day , dateOfSubmission.month , dateOfSubmission.year);
     this -> statusOfSubmission = statusOfSubmission;
 
 }
