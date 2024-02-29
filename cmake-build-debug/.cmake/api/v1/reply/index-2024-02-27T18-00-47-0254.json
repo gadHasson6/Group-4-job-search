@@ -1,0 +1,132 @@
+{
+	"cmake" : 
+	{
+		"generator" : 
+		{
+			"multiConfig" : false,
+			"name" : "MinGW Makefiles"
+		},
+		"paths" : 
+		{
+			"cmake" : "C:/Program Files/JetBrains/CLion 2023.2/bin/cmake/win/x64/bin/cmake.exe",
+			"cpack" : "C:/Program Files/JetBrains/CLion 2023.2/bin/cmake/win/x64/bin/cpack.exe",
+			"ctest" : "C:/Program Files/JetBrains/CLion 2023.2/bin/cmake/win/x64/bin/ctest.exe",
+			"root" : "C:/Program Files/JetBrains/CLion 2023.2/bin/cmake/win/x64/share/cmake-3.26"
+		},
+		"version" : 
+		{
+			"isDirty" : false,
+			"major" : 3,
+			"minor" : 26,
+			"patch" : 4,
+			"string" : "3.26.4",
+			"suffix" : ""
+		}
+	},
+	"objects" : 
+	[
+		{
+<<<<<<<< HEAD:Group_4_job_search_pro/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-29T19-51-27-0624.json
+			"jsonFile" : "codemodel-v2-8ff4ece0feca61fb4611.json",
+========
+			"jsonFile" : "codemodel-v2-fb79b3154d58f7867987.json",
+>>>>>>>> origin/Avigail's_branch:cmake-build-debug/.cmake/api/v1/reply/index-2024-02-27T18-00-47-0254.json
+			"kind" : "codemodel",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 5
+			}
+		},
+		{
+<<<<<<<< HEAD:Group_4_job_search_pro/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-29T19-51-27-0624.json
+			"jsonFile" : "cache-v2-aa961428a47fe73049df.json",
+========
+			"jsonFile" : "cache-v2-592a3bcc4ba4871da3ea.json",
+>>>>>>>> origin/Avigail's_branch:cmake-build-debug/.cmake/api/v1/reply/index-2024-02-27T18-00-47-0254.json
+			"kind" : "cache",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 0
+			}
+		},
+		{
+<<<<<<<< HEAD:Group_4_job_search_pro/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-29T19-51-27-0624.json
+			"jsonFile" : "cmakeFiles-v1-39fe56e45179f881f908.json",
+========
+			"jsonFile" : "cmakeFiles-v1-631e2ed11e465c5018ba.json",
+>>>>>>>> origin/Avigail's_branch:cmake-build-debug/.cmake/api/v1/reply/index-2024-02-27T18-00-47-0254.json
+			"kind" : "cmakeFiles",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		},
+		{
+			"jsonFile" : "toolchains-v1-e342d7331276a330d3bb.json",
+			"kind" : "toolchains",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		}
+	],
+	"reply" : 
+	{
+		"cache-v2" : 
+		{
+<<<<<<<< HEAD:Group_4_job_search_pro/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-29T19-51-27-0624.json
+			"jsonFile" : "cache-v2-aa961428a47fe73049df.json",
+========
+			"jsonFile" : "cache-v2-592a3bcc4ba4871da3ea.json",
+>>>>>>>> origin/Avigail's_branch:cmake-build-debug/.cmake/api/v1/reply/index-2024-02-27T18-00-47-0254.json
+			"kind" : "cache",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 0
+			}
+		},
+		"cmakeFiles-v1" : 
+		{
+<<<<<<<< HEAD:Group_4_job_search_pro/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-29T19-51-27-0624.json
+			"jsonFile" : "cmakeFiles-v1-39fe56e45179f881f908.json",
+========
+			"jsonFile" : "cmakeFiles-v1-631e2ed11e465c5018ba.json",
+>>>>>>>> origin/Avigail's_branch:cmake-build-debug/.cmake/api/v1/reply/index-2024-02-27T18-00-47-0254.json
+			"kind" : "cmakeFiles",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		},
+		"codemodel-v2" : 
+		{
+<<<<<<<< HEAD:Group_4_job_search_pro/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-29T19-51-27-0624.json
+			"jsonFile" : "codemodel-v2-8ff4ece0feca61fb4611.json",
+========
+			"jsonFile" : "codemodel-v2-fb79b3154d58f7867987.json",
+>>>>>>>> origin/Avigail's_branch:cmake-build-debug/.cmake/api/v1/reply/index-2024-02-27T18-00-47-0254.json
+			"kind" : "codemodel",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 5
+			}
+		},
+		"toolchains-v1" : 
+		{
+			"jsonFile" : "toolchains-v1-e342d7331276a330d3bb.json",
+			"kind" : "toolchains",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+Index: Group_4_job_search_pro/Employer.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//\r\n// Created by LENOVO on 21/02/2024.\r\n//\r\n\r\n#ifndef GROUP_4_JOB_SEARCH_PRO_EMPLOYER_H\r\n#define GROUP_4_JOB_SEARCH_PRO_EMPLOYER_H\r\nusing namespace std;\r\n#include \"Job.h\"\r\n\r\n\r\nclass Employer {\r\nprivate:\r\n    Job* my_job;\r\npublic:\r\n    void set(Job*item){my_job=item;}\r\n    Employer();\r\n    Employer(long id, string full_name,string mail,long phone_num,string paswoord)\r\n    void edit_job();\r\n    void publich_job();\r\n    void view_job();\r\n\r\n\r\n};\r\n\r\n\r\n#endif //GROUP_4_JOB_SEARCH_PRO_EMPLOYER_H\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Group_4_job_search_pro/Employer.h b/Group_4_job_search_pro/Employer.h
+--- a/Group_4_job_search_pro/Employer.h	(revision 26cda2278ed109d4a49058ca3464c005e7edc415)
++++ b/Group_4_job_search_pro/Employer.h	(date 1709056547012)
+@@ -8,7 +8,7 @@
+ #include "Job.h"
+ 
+ 
+-class Employer {
++class Employer : public User{
+ private:
+     Job* my_job;
+ public:
+@@ -16,7 +16,7 @@
+     Employer();
+     Employer(long id, string full_name,string mail,long phone_num,string paswoord)
+     void edit_job();
+-    void publich_job();
++    void publich_job();jbu
+     void view_job();
+ 
+ 
