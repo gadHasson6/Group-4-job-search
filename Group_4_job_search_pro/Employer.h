@@ -8,15 +8,17 @@ using namespace std;
 #include "Job.h"
 #include "User.h"
 #include <string>
+#include <iostream>
 
 
 class Employer :public User{
 private:
-    Job* my_job;
+    Job** my_job;
+    int num_of_jobs;
 public:
-    Employer(){my_job= nullptr;}
-    Employer(string full_name,long id,string password,string email,long phone_num,string residence,int rating,string feedback );
-    void set(Job*item);
+    Employer(){my_job= nullptr; num_of_jobs = 0;}
+    Employer(string full_name,long id,string password,string email,long phone_num ,int rating,string feedback );
+    void set(Job**item, int size);
     void E_Print_Job();
     void edit_job();
 

@@ -4,28 +4,31 @@
 
 #include "Employer.h"
 
-Employer::Employer(int full_name, long id, int password, int email, long phone_num, int residence, int rating,int feedback)
-{
-    my_job=User( full_name, id, password, email, phone_num  residence, rating, feedback)
+Employer::Employer(string full_name,long id,string password,string email,long phone_num ,int rating,string feedback ) :User(full_name, id, password, email, phone_num ,rating, feedback){
+    my_job= nullptr;
 }
 
 void Employer::E_Print_Job() {
-    for (int i=0; i<len(my_job);i++) {
-        cout<<my_job.print_job[i]<<endl;
+    for (int i=0; i<num_of_jobs;i++) {
+        cout<<my_job[i].print_job<<endl;
     }
 }
 
-void Employer::set(Job *item) {
-    {my_job=item;}
+void Employer::set(Job **item, int size) {
+    num_of_jobs = size;
+    my_job = new Job * [num_of_jobs];
+    for (int i = 0; i < num_of_jobs; ++i) {
+        my_job[i] = item[i];
+    }
 }
 
 void Employer::edit_job() {
-    numofjob= nullptr;
+    int numofjob = 0;
     E_Print_Job();
     cout<<"which job do you want to edit? "<<endl;
-    cin>>numofjob>>endl;
+    cin>>numofjob;
     int num;
-    cout<<"tap 1 for edit your full name, 2 for edit your id, 3 for edit your password, 4 for edit your email, 5 for edit your phone number, 6 for edit your residence"
+    cout<<"tap 1 for edit your full name, 2 for edit your id, 3 for edit your password, 4 for edit your email, 5 for edit your phone number\n";
     switch (num) {
         case 1:
             my_job[numofjob].setName;
@@ -37,8 +40,6 @@ void Employer::edit_job() {
             my_job[numofjob].setEmail;
         case 5:
             my_job[numofjob].setPhoneNumber;
-        case 6:
-            my_job[numofjob].setResidence;
     }
 
 }
