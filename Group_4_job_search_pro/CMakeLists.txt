@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27.8)
+cmake_minimum_required(VERSION 3.27)
 project(Group_4_job_search_pro)
 
 set(CMAKE_CXX_STANDARD 17)

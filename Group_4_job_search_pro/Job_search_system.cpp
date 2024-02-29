@@ -22,10 +22,5 @@ Job_search_system::Job_search_system() {
                                          employers[i].company_name, employers[i].employer_email,
                                          employers[i].employer_phone_number, employers[i].password);
 
-
     }
-}
-
-Job **Job_search_system::Initializing_jobs(Employer *new_employer) {
-
 }
