@@ -1,7 +1,7 @@
 #include <iostream>
 #include "sqlite3.h"
 #include "Work_with_data_base.h"
-using namespace std;
+//using namespace std;
 
 
 #define DATA_BASE_PATH "C:/Users/LENOVO/CLionProjects/search_job.db"
