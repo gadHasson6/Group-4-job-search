@@ -15,11 +15,10 @@ private:
     Job* my_job;
 public:
     Employer(){my_job= nullptr;}
-    Employer(long id, string full_name,string mail,long phone_num,string password);
+    Employer(string full_name,lond id,string password,string email,long phone_num,string residence,int rating,string feedback );
+    void set(Job*item);
+    void E_Print_Job();
     void edit_job();
-    void set(Job*item){my_job=item;}
-    void publish_job();
-    void view_job();
 
 
 };
