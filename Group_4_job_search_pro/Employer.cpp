@@ -7,11 +7,12 @@
 Employer::Employer(string full_name, long id, string password, string email, long phone_num, int rating,
                    string feedback) : User(full_name, id, password, email, phone_num, rating, feedback) {
     my_job = nullptr;
+    num_of_jobs=0;
 }
 
 void Employer::Employer_Print_Job() {
     for (int i = 0; i < num_of_jobs; i++) {
-        my_job[i].print_job;
+        my_job[i].print_job();
     }
 }
 
@@ -36,21 +37,21 @@ void Employer::Edit_Job() {
                     << "tap 1 for edit your company name, 2 for edit your salary, 3 for edit your location, 4 for edit your profession, 5 for edit your job type, 6 for your experience, 7 for your posting status, 8 for your contact number, 9 for cancel \n";
             switch (num) {
                 case 1:
-                    my_job[numofjob].set_name;
+                    my_job[numofjob].set_name();
                 case 2:
-                    my_job[numofjob].setSalary;
+                    my_job[numofjob].setSalary();
                 case 3:
-                    my_job[numofjob].set_location;
+                    my_job[numofjob].set_location();
                 case 4:
-                    my_job[numofjob].set_occupation;
+                    my_job[numofjob].set_occupation();
                 case 5:
-                    my_job[numofjob].setJobType;
+                    my_job[numofjob].setJobType();
                 case 6:
-                    my_job[numofjob].setExperience;
+                    my_job[numofjob].setExperience();
                 case 7:
-                    my_job[numofjob].setPostingStatus;
+                    my_job[numofjob].setPostingStatus();
                 case 8:
-                    my_job[numofjob].set_number;
+                    my_job[numofjob].set_number();
                 case 9: {
                     cout << "cancel successfully\n";
                     return;
