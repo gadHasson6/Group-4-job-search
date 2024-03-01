@@ -20,9 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91f8e96d-9248-4a74-baae-8e3a6141dac5" name="Changes" comment="gad2 commit #2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="91f8e96d-9248-4a74-baae-8e3a6141dac5" name="Changes" comment="gad2 commit #3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,7 +113,7 @@
       <updated>1709047380223</updated>
       <workItem from="1709047381600" duration="7109000" />
       <workItem from="1709250943467" duration="818000" />
-      <workItem from="1709315396770" duration="2326000" />
+      <workItem from="1709315396770" duration="3185000" />
     </task>
     <task id="LOCAL-00001" summary="vbv">
       <option name="closed" value="true" />
@@ -173,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709317110220</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="gad2 commit #3">
+      <option name="closed" value="true" />
+      <created>1709318185430</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1709318185430</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +218,7 @@
     <MESSAGE value="vbv" />
     <MESSAGE value="new branch gad2" />
     <MESSAGE value="gad2 commit #2" />
-    <option name="LAST_COMMIT_MESSAGE" value="gad2 commit #2" />
+    <MESSAGE value="gad2 commit #3" />
+    <option name="LAST_COMMIT_MESSAGE" value="gad2 commit #3" />
   </component>
 </project>
