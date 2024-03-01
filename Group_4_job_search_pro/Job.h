@@ -26,7 +26,7 @@ public:
     void set_requirements(const string& requirements) { m_requirements = requirements; }
     void set_scope(const Job_scope& scope) { m_scope = scope; }
     void set_experience(const int& experience) { m_experience_needed = experience; }
-    void set_applies(Apply** , int );
+    void set_applies(Apply** appliesArray, int size);
     void set_status(const bool status) { m_posting_status=status; }
     const string& get_occupation() const { return m_occupation; }
     const string& get_name() const { return m_company_name; }

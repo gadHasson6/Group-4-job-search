@@ -298,7 +298,7 @@ vector<EmployerInfo> getEmployerInfo(sqlite3* db) {
         EmployerInfo employer;
         employer.employer_id = sqlite3_column_int64(stmt, 0);
         employer.employer_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
-        employer.company_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+//        employer.company_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
         employer.employer_email = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
         employer.employer_phone_number = sqlite3_column_int64(stmt, 4);
         employer.password = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
