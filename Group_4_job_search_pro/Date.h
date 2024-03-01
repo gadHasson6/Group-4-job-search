@@ -5,7 +5,6 @@
 #ifndef GROUP_4_JOB_SEARCH_PRO_DATE_H
 #define GROUP_4_JOB_SEARCH_PRO_DATE_H
 #include <ctime>
-#include <ctime>
 #include <iostream>
 using namespace std;
 
@@ -26,12 +25,14 @@ public:
     void setDay(int inputDay);
     void setMonth(int inputMonth);
     void setYear(int inputYear);
-    void printDate();
+    void printDate() const;
     void printNameOfMonth();
     bool checkIfLeapYear();
     int daysInMonth();
     void theNextDay();
     ~Date();
+    bool operator <(const Date& other) const;
+    bool operator >(const Date& other)const;
 };
 
 

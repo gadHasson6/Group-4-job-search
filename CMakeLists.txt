@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.26)
 project(Group_4_job_search)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 include_directories(Group_4_job_search_pro)
 
@@ -22,4 +22,6 @@ add_executable(Group_4_job_search
         Group_4_job_search_pro/Work_with_data_base.cpp
         Group_4_job_search_pro/Work_with_data_base.h
         Group_4_job_search_pro/Job_search_system.h
-        Group_4_job_search_pro/Job_search_system.cpp)
+        Group_4_job_search_pro/Job_search_system.cpp
+        Group_4_job_search_pro/Date.h
+        Group_4_job_search_pro/Date.cpp)

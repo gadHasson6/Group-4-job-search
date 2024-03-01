@@ -12,6 +12,7 @@ using namespace std;
 #include <string>
 #include <limits>
 #include <filesystem>
+#include <algorithm>  // Include for swap
 
 class Candidate : public User {
 private:
@@ -35,6 +36,9 @@ public:
               float inputWorkExperience, string inputSpecialty);
     Candidate(const Candidate &other);
 
+    //destructor
+    ~Candidate();
+
     //get
     string getResumePath() const;
     string getPersonalInformation() const;
@@ -48,29 +52,32 @@ public:
 
     //set
     bool setResumeFilePath(const string& newResumePath);
-    bool setPersonalInformation(string newPersonalInformation);
+    bool setPersonalInformation(const string &newPersonalInformation);
     bool setAge(int inputAge);
     bool setGender(char inputGender);
     bool setResidence();
     bool setWorkExperience(float inputWorkExperience);
-    bool setSpecialty(string inputSpecialty);
+    bool setSpecialty(const string &inputSpecialty);
     bool setAppliedJobs(Apply** other, int size);
 
     //Additional functions
     void printThisCandidateInfo() const;
-    void addApply(const Apply* &addMe);  //need to finish this function
-    void cancelApply(const Apply* &deleteMe);  //need to finish this function
-    Apply* SortFromNewToOldByDate(Apply* sortMe); //need to finish this function
+    void addApply(Apply* addMe);
+    void cancelApply( Apply* deleteMe);
     void printTipsForResume();
     float calculateSalary();
     void viewSubmissions();
     void submitResume(string resumePathToSubmit);
 
+    //functions for "choose order to see jobs"
+    [[nodiscard]]  Apply** sortFromNewToOldByDate() const ;  //[[nodiscard]] would indicate that the returned array should be used and not ignored.
+    void chooseOrderToSeeSubmissions() const;
+
     //functions for "look for jobs"
-    void lookForJobs(const Job** &allJobs, int size);  //need to finish this function
-    Job** byJobScope(const Job** &allJobs, int size, string name, int &newSize);
-    Job** byJobResident(const Job **&allJobs, int size, string resident, int &newSIze);
-    Job** byJobExperience(const Job** &allJobs, int size);
+    void lookForJobs(const Job** &allJobs, int size);
+    Job** byJobScope(const Job **&allJobs, int size, const string &name, int &newSize);
+    Job** byJobResident(const Job **&allJobs, int size,const string &resident, int &newSize);
+    Job** byJobExperience(const Job **&allJobs, int size, int experience, int &newSize);
 
     //functions for "edit profile"
     void editName();
@@ -80,6 +87,7 @@ public:
     void editResumePath();
     void editPersonalInformation();
     void editProfile();
+
 
 };
 

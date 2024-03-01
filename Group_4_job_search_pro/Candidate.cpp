@@ -8,7 +8,7 @@ using namespace std;
 //Default constructor
 Candidate::Candidate() : User() {
     this->resumePath="";
-    this->appliedJobs=NULL;
+    this->appliedJobs= nullptr;
     this->appliedJobSize=0;
     this->personalInformation="";
     this->age=0;
@@ -23,8 +23,8 @@ Candidate::Candidate(string inputName, long inputId, string inputEmail, string i
                      string inputPhoneNumber, int inputRating, string inputFeedback,
                      string inputResumePath, string inputPersonalInformation, int inputAge, char inputGender,
                      float inputWorkExperience, string inputSpecialty)
-                     : User(inputName,inputId,inputPassword,inputEmail,inputPhoneNumber,inputRating,inputFeedback){
-    this->appliedJobs=NULL;
+        : User(inputName,inputId,inputPassword,inputEmail,inputPhoneNumber,inputRating,inputFeedback){
+    this->appliedJobs= nullptr;
     this->appliedJobSize=0;
 
     if (!setResumeFilePath(inputResumePath)){
@@ -119,7 +119,7 @@ int Candidate::getAppliedJobSize() const {
 }
 
 //set specialty
-bool Candidate::setSpecialty(string inputSpecialty) {
+bool Candidate::setSpecialty(const string &inputSpecialty) {
     if(inputSpecialty.length()>=2 && inputSpecialty.length()<=25){
         this->specialty=inputSpecialty;
         return true;
@@ -141,7 +141,7 @@ bool Candidate::setWorkExperience(float inputWorkExperience) {
 
 //set applied jobs
 bool Candidate::setAppliedJobs(Apply **other, int size) {
-    if(other!=NULL && size>0) {
+    if(other!= nullptr && size>0) {
         this->appliedJobSize=size;
         this->appliedJobs = new Apply *[size];
         for (int i = 0; i < size; i++) {
@@ -260,11 +260,12 @@ bool Candidate::setResumeFilePath(const string& newResumePath) {
 
 
 //set personal information
-bool Candidate::setPersonalInformation(string newPersonalInformation) {
+bool Candidate::setPersonalInformation(const string &newPersonalInformation) {
     if(newPersonalInformation.length()>50){
         cout<<"Personal information can't be more than 50 chars. "<<endl;
         return false;
     }
+
     else {
         personalInformation = newPersonalInformation;
         return true;
@@ -304,7 +305,7 @@ void Candidate::printThisCandidateInfo() const {
 }
 
 //filter by job scope
-Job **Candidate::byJobScope(const Job **&allJobs, int size, string name, int &newSize) {   //send newSize=0 to get the new size
+Job **Candidate::byJobScope(const Job **&allJobs, int size, const string &name, int &newSize) {   //send newSize=0 to get the new size
 
     // Count the number of jobs with the given company name
     for (int i = 0; i < size; i++) {
@@ -320,7 +321,7 @@ Job **Candidate::byJobScope(const Job **&allJobs, int size, string name, int &ne
     // Iterate through all jobs and add matching jobs to the filteredJobs array
     for (int i = 0; i < size; i++) {
         if (allJobs[i]->get_name() == name) {
-            filteredJobs[index] = new Job(*allJobs[i]);  // Assuming you have a copy constructor in Job class
+            filteredJobs[index] = new Job(*allJobs[i]);  // Assuming we have a copy constructor in Job class
             index++;
         }
     }
@@ -331,18 +332,362 @@ Job **Candidate::byJobScope(const Job **&allJobs, int size, string name, int &ne
 
 
 //filter by job resident
-Job **Candidate::byJobResident(const Job **&allJobs, int size, string resident, int &newSIze) {
+Job **Candidate::byJobResident(const Job **&allJobs, int size,const string &resident, int &newSize) {
+    // Count the number of jobs with the given company resident
+    for (int i = 0; i < size; i++) {
+        if (allJobs[i]->get_location() == resident) {
+            newSize++;
+        }
+    }
 
+    // Create a new array to store jobs with the given company resident
+    Job **filteredJobs = new Job *[newSize];
+    int index = 0;
+
+    // Iterate through all jobs and add matching jobs to the filteredJobs array
+    for (int i = 0; i < size; i++) {
+        if (allJobs[i]->get_location() == resident) {
+            filteredJobs[index] = new Job(*allJobs[i]);  // Assuming we have a copy constructor in Job class
+            index++;
+        }
+    }
+
+    return filteredJobs;
 }
+
+
+//filter by job experience
+Job **Candidate::byJobExperience(const Job **&allJobs, int size, int experience, int &newSize) {
+    // Count the number of jobs with the given company needed experience
+    for (int i = 0; i < size; i++) {
+        if (allJobs[i]->get_experience() == experience) {
+            newSize++;
+        }
+    }
+
+    // Create a new array to store jobs with the given company needed experience
+    Job **filteredJobs = new Job *[newSize];
+    int index = 0;
+
+    // Iterate through all jobs and add matching jobs to the filteredJobs array
+    for (int i = 0; i < size; i++) {
+        if (allJobs[i]->get_experience()== experience) {
+            filteredJobs[index] = new Job(*allJobs[i]);  // Assuming we have a copy constructor in Job class
+            index++;
+        }
+    }
+
+    return filteredJobs;
+}
+
+
 //look for jobs
 void Candidate::lookForJobs(const Job **&allJobs, int size) {
+    while (true){
+        int choice = 0;
+        cout << "Please choose how you would like to filter the jobs:" << endl;
+        cout << "1. By Name" << endl;
+        cout << "2. By Resident" << endl;
+        cout << "3. By Experience" << endl;
+        cout << "4. Quit" << endl;
+        cin >> choice;
 
-}
-//add apply
-void Candidate::addApply(const Apply *&addMe) { //need to finish this function
-    for (int i=0; i<appliedJobSize; i++){
+        if (cin.fail() || choice < 1 || choice > 4) {
+            cout << "Invalid choice. Please enter a valid option." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue; // Go back to the beginning of the loop
+        }
+
+        if (choice == 4) {
+            cout << "Exiting the job search." << endl;
+            break; // Exit the loop if the user chooses to quit
+        }
+
+        switch (choice) {
+            case 1: {
+                int newSize = 0;
+                string nameToLook;
+                int maxAttempts = 3; // Set a maximum number of attempts
+
+                for (int attempt = 1; attempt <= maxAttempts; ++attempt) {
+                    cout << "Please enter name of job: " << endl;
+                    getline(cin, nameToLook);
+
+                    // Check if the input is empty or contains only whitespaces
+                    if (nameToLook.find_first_not_of(' ') != string::npos) {
+                        break;
+                    } else {
+                        cout << "Invalid input. Please enter a valid job name." << endl;
+                    }
+
+                    // Check if reached the maximum number of attempts
+                    if (attempt == maxAttempts) {
+                        cout << "Maximum attempts reached. " << endl;
+                        return;
+                    }
+                }
+
+                Job** newArr = byJobScope(allJobs, size, nameToLook, newSize);
+
+                if (newSize == 0) {
+                    cout << "No matching jobs found for the specified job name." << endl;
+                } else {
+                    for (int i = 0; i < newSize; i++) {
+                        newArr[i]->print_job();
+                    }
+
+                    // free the memory allocated for newArr
+                    for (int i = 0; i < newSize; i++) {
+                        delete newArr[i];
+                    }
+                    delete[] newArr;
+                }
+                break;
+            }
+            case 2:  {
+                int newSize = 0;
+                string residentToLook;
+                int maxAttempts = 3; // Set a maximum number of attempts
+
+                for (int attempt = 1; attempt <= maxAttempts; ++attempt) {
+                    cout << "Please enter name of resident: " << endl;
+                    getline(cin, residentToLook);
+
+                    // Check if the input is empty or contains only whitespaces
+                    if (residentToLook.find_first_not_of(' ') != string::npos) {
+                        break;
+                    } else {
+                        cout << "Invalid input. Please enter a valid resident." << endl;
+                    }
+
+                    // Check if reached the maximum number of attempts
+                    if (attempt == maxAttempts) {
+                        cout << "Maximum attempts reached. " << endl;
+                        return;
+                    }
+                }
+
+                Job** newArr = byJobResident(allJobs, size, residentToLook, newSize);
+
+                if (newSize == 0) {
+                    cout << "No matching jobs found for the specified resident." << endl;
+                } else {
+                    for (int i = 0; i < newSize; i++) {
+                        newArr[i]->print_job();
+                    }
+
+                    // free the memory allocated for newArr
+                    for (int i = 0; i < newSize; i++) {
+                        delete newArr[i];
+                    }
+                    delete[] newArr;
+                }
+                break;
+            }
+            case 3: {
+                int newSize = 0;
+                int experienceToLook;
+                int maxAttempts = 3; // Set a maximum number of attempts
+
+                for (int attempt = 1; attempt <= maxAttempts; ++attempt) {
+                    cout << "Please enter experience: " << endl;
+                    cin>>experienceToLook;
+
+                    // Check if the input is empty or contains only whitespaces
+                    if (experienceToLook>=0 && experienceToLook<=100) {
+                        break;
+                    } else {
+                        cout << "Invalid input. Please enter a valid experience." << endl;
+                    }
+
+                    // Check if reached the maximum number of attempts
+                    if (attempt == maxAttempts) {
+                        cout << "Maximum attempts reached. " << endl;
+                        return;
+                    }
+                }
+
+                Job** newArr = byJobExperience(allJobs, size, experienceToLook, newSize);
+
+                if (newSize == 0) {
+                    cout << "No matching jobs found for the specified resident." << endl;
+                } else {
+                    for (int i = 0; i < newSize; i++) {
+                        newArr[i]->print_job();
+                    }
+
+                    // free the memory allocated for newArr
+                    for (int i = 0; i < newSize; i++) {
+                        delete newArr[i];
+                    }
+                    delete[] newArr;
+                }
+                break;
+            }
+
+        }
     }
 }
+
+
+//add apply
+void Candidate::addApply(Apply* addMe) {
+    // Check if the input pointer is valid
+    if (addMe == nullptr) {
+        cout << "Error: Cannot add a null pointer to appliedJobs." << endl;
+        return;
+    }
+
+    // Check if appliedJobs array needs resizing
+    if (appliedJobSize == 0) {
+        appliedJobs = new Apply*[1];
+    } else {
+        // Create a new array with increased size
+        Apply** newAppliedJobs = new Apply*[appliedJobSize + 1];
+
+        // Copy existing elements to the new array
+        for (int i = 0; i < appliedJobSize; ++i) {
+            newAppliedJobs[i] = appliedJobs[i];
+        }
+
+        // Free the memory of the old array
+        delete[] appliedJobs;
+
+        // Point appliedJobs to the new array
+        appliedJobs = newAppliedJobs;
+    }
+
+    // Add the new Apply object to the array
+    appliedJobs[appliedJobSize] = addMe;
+
+    // Increment the size counter
+    ++appliedJobSize;
+
+    cout << "Apply added successfully!" << endl;
+}
+
+
+//cancel apply
+void Candidate::cancelApply(Apply* deleteMe) {
+    // Check if the input pointer is valid
+    if (deleteMe == nullptr) {
+        cout << "Error: Cannot cancel a null pointer in appliedJobs." << endl;
+        return;
+    }
+
+    // Check if appliedJobs array is empty
+    if (appliedJobSize == 0) {
+        cout << "Error: appliedJobs array is empty. Cannot cancel." << endl;
+        return;
+    }
+
+    // Find the index of the Apply object to be canceled
+    int indexToDelete = -1;
+    for (int i = 0; i < appliedJobSize; ++i) {
+        if (appliedJobs[i] == deleteMe) {
+            indexToDelete = i;
+            break;
+        }
+    }
+
+    // Check if the Apply object was found
+    if (indexToDelete == -1) {
+        cout << "Error: Apply object not found in appliedJobs. Cannot cancel." << std::endl;
+        return;
+    }
+
+    // Create a new array with reduced size
+    Apply** newAppliedJobs = new Apply*[appliedJobSize - 1];
+
+    // Copy elements before the deleted one
+    for (int i = 0; i < indexToDelete; ++i) {
+        newAppliedJobs[i] = appliedJobs[i];
+    }
+
+    // Copy elements after the deleted one
+    for (int i = indexToDelete + 1; i < appliedJobSize; ++i) {
+        newAppliedJobs[i - 1] = appliedJobs[i];
+    }
+
+    // Free the memory of the old array
+    delete[] appliedJobs;
+
+    // Point appliedJobs to the new array
+    appliedJobs = newAppliedJobs;
+
+    // Decrement the size counter
+    --appliedJobSize;
+
+    cout << "Apply canceled successfully!" << endl;
+}
+
+
+//sort applied jobs from new to old by date
+Apply** Candidate::sortFromNewToOldByDate() const {
+    // Create a new array to store a copy of appliedJobs
+    Apply **sortedArray = new Apply *[appliedJobSize];
+
+    // Copy elements from appliedJobs to sortedArray
+    for (int i = 0; i < appliedJobSize; ++i) {
+        sortedArray[i] = appliedJobs[i];
+    }
+
+    // Use sort to sort the array based on submission date
+    sort(sortedArray, sortedArray + appliedJobSize, [](const Apply *a, const Apply *b) {
+        return a->getSubmissionDate() > b->getSubmissionDate();
+    });
+
+    // Return the sorted array
+    return sortedArray;
+}
+
+
+// choose order to see submissions
+void Candidate::chooseOrderToSeeSubmissions() const {
+    int attempts = 0;
+
+    while (attempts < 3) {
+        int choice = 0;
+
+        cout << "Please choose order to see your submissions: " << endl;
+        cout << "1. New to old" << endl;
+        cout << "2. Old to new" << endl;
+        cin >> choice;
+
+        if (!cin.fail() && (choice == 1 || choice == 2)) {
+            Apply** sorted = sortFromNewToOldByDate();
+
+            if (choice == 1) {
+                for (int i = 0; i < appliedJobSize; i++) {
+                    sorted[i]->getJob()->print_job();
+                    cout << endl;
+                }
+            } else { // choice == 2
+                for (int i = appliedJobSize - 1; i >= 0; i--) {
+                    sorted[i]->getJob()->print_job();
+                    cout << endl;
+                }
+            }
+
+            // Free the memory allocated for the sorted array
+            for (int i = 0; i < appliedJobSize; i++) {
+                delete sorted[i];
+            }
+            delete[] sorted;
+
+            return;  // exit the function after successful input
+        } else {
+            cout << "Invalid input. Choice can be only 1 or 2. Please enter a valid choice." << endl;
+            cin.clear();  // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Discard invalid input
+            attempts++;
+        }
+    }
+
+    cout << "Maximum attempts reached. Exiting." << endl;
+}
+
 
 //edit name
 void Candidate::editName() {
@@ -662,10 +1007,37 @@ float Candidate::calculateSalary() {
 
 //view submissions
 void Candidate::viewSubmissions() {
-
+    if (appliedJobSize == 0) {
+        cout << "You have not submitted any applications." << endl;
+    } else {
+        cout << "Your submitted applications:" << endl;
+        for (int i = 0; i < appliedJobSize; ++i) {
+            cout << "Submission " << i + 1 << ":" << endl;
+            appliedJobs[i]->getJob()->print_job();
+            cout << "Submission Date: ";
+            appliedJobs[i]->getSubmissionDate().printDate();
+            cout << "Submission Status: " << appliedJobs[i]->getSubmissionStatus() << endl;
+            cout << "------------------------" << endl;
+        }
+    }
 }
 
 //submit resume
 void Candidate::submitResume(string resumePathToSubmit) {
+    // Check if the provided resume path is valid
+    if (setResumeFilePath(resumePathToSubmit)) {
 
+        // Display a confirmation message
+        cout << "Resume submitted successfully!" << endl;
+
+    }
+}
+
+//destructor
+Candidate::~Candidate() {
+    // Release the memory allocated for appliedJobs array
+    for (int i = 0; i < appliedJobSize; ++i) {
+        delete appliedJobs[i];
+    }
+    delete[] appliedJobs;
 }

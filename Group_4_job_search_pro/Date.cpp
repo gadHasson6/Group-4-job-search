@@ -174,7 +174,7 @@ void Date::setYear(int inputYear) {
 
 
 //This function prints the date in the form dd/mm/yyyy
-void Date::printDate() {
+void Date::printDate() const{
     if(day>=1 && day<=9){
         cout<<"0"<<day<<"/";
     }
@@ -318,3 +318,45 @@ void Date::theNextDay() {
 Date::~Date(){
 
 };
+#include "Date.h"
+
+//operator <
+bool Date::operator<(const Date &other) const {
+    // Compare years
+    if (year > other.year) {
+        return true;
+    } else if (year < other.year) {
+        return false;
+    }
+
+    // If years are equal, compare months
+    if (month > other.month) {
+        return true;
+    } else if (month < other.month) {
+        return false;
+    }
+
+    // If years and months are equal, compare days
+    return day > other.day;
+}
+
+
+//operator >
+bool Date::operator>(const Date& other) const {
+    // Compare years
+    if (year > other.year) {
+        return true;
+    } else if (year < other.year) {
+        return false;
+    }
+
+    // If years are equal, compare months
+    if (month > other.month) {
+        return true;
+    } else if (month < other.month) {
+        return false;
+    }
+
+    // If months are equal, compare days
+    return day > other.day;
+}

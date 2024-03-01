@@ -51,35 +51,35 @@ build cmake_object_order_depends_target_Group_4_job_search: phony || CMakeFiles/
 
 build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Apply.cpp.obj: CXX_COMPILER__Group_4_job_search_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/Apply.cpp || cmake_object_order_depends_target_Group_4_job_search
   DEP_FILE = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro\Apply.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro
   OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
   OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro
 
 build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Candidate.cpp.obj: CXX_COMPILER__Group_4_job_search_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/Candidate.cpp || cmake_object_order_depends_target_Group_4_job_search
   DEP_FILE = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro\Candidate.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro
   OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
   OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro
 
 build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Employer.cpp.obj: CXX_COMPILER__Group_4_job_search_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/Employer.cpp || cmake_object_order_depends_target_Group_4_job_search
   DEP_FILE = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro\Employer.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro
   OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
   OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro
 
 build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Job.cpp.obj: CXX_COMPILER__Group_4_job_search_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/Job.cpp || cmake_object_order_depends_target_Group_4_job_search
   DEP_FILE = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro\Job.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro
   OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
   OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro
 
 build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/main.cpp.obj: CXX_COMPILER__Group_4_job_search_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/main.cpp || cmake_object_order_depends_target_Group_4_job_search
   DEP_FILE = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro\main.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro
   OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
   OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro
@@ -93,21 +93,28 @@ build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/sqlite3.c.obj: C_
 
 build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/User.cpp.obj: CXX_COMPILER__Group_4_job_search_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/User.cpp || cmake_object_order_depends_target_Group_4_job_search
   DEP_FILE = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro\User.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro
   OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
   OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro
 
 build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Work_with_data_base.cpp.obj: CXX_COMPILER__Group_4_job_search_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/Work_with_data_base.cpp || cmake_object_order_depends_target_Group_4_job_search
   DEP_FILE = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro\Work_with_data_base.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro
   OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
   OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro
 
 build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Job_search_system.cpp.obj: CXX_COMPILER__Group_4_job_search_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/Job_search_system.cpp || cmake_object_order_depends_target_Group_4_job_search
   DEP_FILE = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro\Job_search_system.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro
+  OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
+  OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro
+
+build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Date.cpp.obj: CXX_COMPILER__Group_4_job_search_unscanned_Debug C$:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro/Date.cpp || cmake_object_order_depends_target_Group_4_job_search
+  DEP_FILE = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro\Date.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/LENOVO/programing_SWing/Group-4-job-search/Group_4_job_search_pro
   OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
   OBJECT_FILE_DIR = CMakeFiles\Group_4_job_search.dir\Group_4_job_search_pro
@@ -120,7 +127,7 @@ build CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Job_search_system
 #############################################
 # Link the executable Group_4_job_search.exe
 
-build Group_4_job_search.exe: CXX_EXECUTABLE_LINKER__Group_4_job_search_Debug CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Apply.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Candidate.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Employer.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Job.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/main.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/sqlite3.c.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/User.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Work_with_data_base.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Job_search_system.cpp.obj
+build Group_4_job_search.exe: CXX_EXECUTABLE_LINKER__Group_4_job_search_Debug CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Apply.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Candidate.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Employer.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Job.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/main.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/sqlite3.c.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/User.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Work_with_data_base.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Job_search_system.cpp.obj CMakeFiles/Group_4_job_search.dir/Group_4_job_search_pro/Date.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Group_4_job_search.dir
