@@ -49,7 +49,6 @@ public:
     string getEmail() const;
     string getPassword() const;
     string getPhoneNumber() const;
-    string getResidence() const;
     int getRating() const;
     string getFeedback() const;
     // TODO: add getAge & getGender if needed
