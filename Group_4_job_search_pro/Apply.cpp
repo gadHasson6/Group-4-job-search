@@ -96,6 +96,8 @@ Job *Apply::getJob() const {
     return this->job;
 }
 
-
+string Apply::getSubmissionStatus() const {
+    return this->submissionStatus;
+}
 
 

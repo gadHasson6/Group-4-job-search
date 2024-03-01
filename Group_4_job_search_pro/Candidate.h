@@ -36,6 +36,9 @@ public:
               float inputWorkExperience, string inputSpecialty);
     Candidate(const Candidate &other);
 
+    //destructor
+    ~Candidate();
+
     //get
     string getResumePath() const;
     string getPersonalInformation() const;

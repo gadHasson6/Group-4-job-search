@@ -1007,10 +1007,37 @@ float Candidate::calculateSalary() {
 
 //view submissions
 void Candidate::viewSubmissions() {
-
+    if (appliedJobSize == 0) {
+        cout << "You have not submitted any applications." << endl;
+    } else {
+        cout << "Your submitted applications:" << endl;
+        for (int i = 0; i < appliedJobSize; ++i) {
+            cout << "Submission " << i + 1 << ":" << endl;
+            appliedJobs[i]->getJob()->print_job();
+            cout << "Submission Date: ";
+            appliedJobs[i]->getSubmissionDate().printDate();
+            cout << "Submission Status: " << appliedJobs[i]->getSubmissionStatus() << endl;
+            cout << "------------------------" << endl;
+        }
+    }
 }
 
 //submit resume
 void Candidate::submitResume(string resumePathToSubmit) {
+    // Check if the provided resume path is valid
+    if (setResumeFilePath(resumePathToSubmit)) {
 
+        // Display a confirmation message
+        cout << "Resume submitted successfully!" << endl;
+
+    }
+}
+
+//destructor
+Candidate::~Candidate() {
+    // Release the memory allocated for appliedJobs array
+    for (int i = 0; i < appliedJobSize; ++i) {
+        delete appliedJobs[i];
+    }
+    delete[] appliedJobs;
 }

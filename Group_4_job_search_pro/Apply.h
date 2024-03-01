@@ -47,6 +47,7 @@ public:
     long const getJobID();
     Job* getJob () const;
     Date getSubmissionDate() const;
+    string getSubmissionStatus() const;
 };
 
 
