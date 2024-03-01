@@ -4,8 +4,9 @@
 
 #include "Employer.h"
 
-Employer::Employer(string full_name, long id, string password, string email, long phone_num, int rating,
-                   string feedback) : User(full_name, id, password, email, phone_num, rating, feedback) {
+Employer::Employer(const string& inputName, const long inputId, const string& inputPassword, const string& inputEmail,
+                   const string& inputPhoneNumber, int inputRating,
+                   const string& inputFeedback) : User(inputName, inputId, inputPassword, inputEmail, inputPhoneNumber, inputRating, inputFeedback) {
     my_job = nullptr;
     num_of_jobs = 0;
 }
@@ -32,9 +33,9 @@ void Employer::Edit_Job() {
     int num;
     bool flag = false;
     for (int i = 0; i < num_of_jobs; i++) {
-        if (my_job[i]->GetIdJob == numofjob) {
+        if (my_job[i]->get_job_id() == numofjob) {
             cout
-                    << "tap 1 for edit your company name, 2 for edit your salary, 3 for edit your location, 4 for edit your profession, 5 for edit your job type, 6 for your experience, 7 for your posting status, 8 for your contact number, 9 for cancel \n";
+                    << "tap 1 for edit your company name, 2 for edit your requirements, 3 for edit your location, 4 for edit your occupation, 5 for edit your job type, 6 for your experience, 7 for your contact number, 8 for cancel \n";
             switch (num) {
                 case 1: {
                     string newName;
@@ -43,10 +44,10 @@ void Employer::Edit_Job() {
                     my_job[numofjob]->set_name(newName);
                 }
                 case 2: {
-                    float newSalary;
-                    cout << "Please enter the new salary : " << endl;
-                    cin >> newSalary;
-                    my_job[numofjob]->setSalary(newSalary);
+                    string newRequirements;
+                    cout << "Please enter the new requirements : " << endl;
+                    cin >> newRequirements;
+                    my_job[numofjob]->set_requirements(newRequirements);
                 }
                 case 3: {
                     string newLocation;
@@ -68,24 +69,24 @@ void Employer::Edit_Job() {
                     my_job[numofjob]->set_scope(x);
                 }
                 case 6: {
-                    string newExperience;
+                    int newExperience;
                     cout << "Please enter the new experience : " << endl;
                     cin >> newExperience;
-                    my_job[numofjob]->setExperience(newExperience);
+                    my_job[numofjob]->set_experience(newExperience);
                 }
+//                case 7: {
+//                    bool newPostingStatus;
+//                    cout << "Please enter the new posting status : " << endl;
+//                    cin >> newPostingStatus;
+//                    my_job[numofjob]->set_status(newPostingStatus);
+//                }
                 case 7: {
-                    string newPostingStatus;
-                    cout << "Please enter the new posting status : " << endl;
-                    cin >> newPostingStatus;
-                    my_job[numofjob]->setPostingStatus(newPostingStatus);
-                }
-                case 8: {
                     string newContactNumber;
                     cout << "Please enter the new contact number : " << endl;
                     cin >> newContactNumber;
                     my_job[numofjob]->set_number(newContactNumber);
                 }
-                case 9: {
+                case 8: {
                     cout << "cancel successfully\n";
                     return;
                 }
@@ -109,8 +110,8 @@ void Employer::Delete_Job() {
     cout << "Which job do you want to delete? " << endl;
     cin >> idnumofjob;
     for (int i = 0; i < num_of_jobs; i++) {
-        if (my_job[i]->GetJobId() == idnumofjob) {
-            my_job[i]->SetPostingStatus("Delete");
+        if (my_job[i]->get_job_id() == idnumofjob) {
+            my_job[i]->set_status(false);
             i = num_of_jobs;
             flag = true;
         }

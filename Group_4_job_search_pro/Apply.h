@@ -28,18 +28,18 @@ public:
     //constructors:
     Apply(); //Default constructor
     Apply(long numberOfSubmission, long candidateID, long jobID,Job* job,
-          Candidate* candidate, Date submissionDate, string submissionStatus); //Parameter constructor
+          Candidate* candidate, Date submissionDate, const string& submissionStatus); //Parameter constructor
     Apply(const Apply& other);  //Copy constructor
 
 
     //set functions:
-    void setNumberOfSubmission(long numberOfSubmission);
-    void setCandidateID(long candidateID);
-    void setJobID(long jobID);
-    void setJob(Job* job);
-    void setCandidate( Candidate* candidate);
-    void setSubmissionDate(const Date& submissionDate);
-    void setSubmissionStatus(const string& submissionStatus);
+    void setNumberOfSubmission(long o_numberOfSubmission);
+    void setCandidateID(long o_candidateID);
+    void setJobID(long o_jobID);
+    void setJob(Job* o_job);
+    void setCandidate( Candidate* o_candidate);
+    void setSubmissionDate(const Date& o_submissionDate);
+    void setSubmissionStatus(const string& o_submissionStatus);
 
 
     //get functions:

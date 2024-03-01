@@ -6,21 +6,23 @@ using namespace std;
 
 #define DATA_BASE_PATH "C:/Users/LENOVO/CLionProjects/search_job.db"
 int main() {
-    int x =0, y= 2, z=3;
-    int * h = &y;
-    int * k[3];
-    k[1] = h;
-    k[0] = h;
-    k[2] = new int(5);
+    cout << true << endl;
+    cout << false << endl;
+//    int x =0, y= 2, z=3;
+//    int * h = &y;
+//    int * k[3];
+//    k[1] = h;
+//    k[0] = h;
+//    k[2] = new int(5);
 //    int ** k = &h;
-    cout << *h << '\n';
-    cout << *k[1] << '\n';
-    *h += 7;
-    cout << *h << '\n';
-    cout << *k[1] << '\n';
-    for (const auto& employer : k) {
-        cout << *employer <<'\n';
-    }
+//    cout << *h << '\n';
+//    cout << *k[1] << '\n';
+//    *h += 7;
+//    cout << *h << '\n';
+//    cout << *k[1] << '\n';
+//    for (const auto& employer : k) {
+//        cout << *employer <<'\n';
+//    }
 //    const char  * fff = DATA_BASE_PATH;
 //    sqlite3 * db = openSQLiteFile(fff);
 //    cout <<"employers: " << countRowsInEmployersTable(db) << '\n';
