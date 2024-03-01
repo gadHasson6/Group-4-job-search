@@ -7,7 +7,7 @@
 Employer::Employer(string full_name, long id, string password, string email, long phone_num, int rating,
                    string feedback) : User(full_name, id, password, email, phone_num, rating, feedback) {
     my_job = nullptr;
-    num_of_jobs=0;
+    num_of_jobs = 0;
 }
 
 void Employer::Employer_Print_Job() {
@@ -36,38 +36,38 @@ void Employer::Edit_Job() {
             cout
                     << "tap 1 for edit your company name, 2 for edit your salary, 3 for edit your location, 4 for edit your profession, 5 for edit your job type, 6 for your experience, 7 for your posting status, 8 for your contact number, 9 for cancel \n";
             switch (num) {
-                case 1:{
-                     string newName;
-                     cout<<"Please enter the new company name: "<<endl;
-                     cin>>newName;
+                case 1: {
+                    string newName;
+                    cout << "Please enter the new company name: " << endl;
+                    cin >> newName;
                     my_job[numofjob]->set_name(newName);
-                    }
+                }
                 case 2: {
                     float newSalary;
-                    cout<<"Please enter the new salary : "<<endl;
-                    cin>>newSalary;
+                    cout << "Please enter the new salary : " << endl;
+                    cin >> newSalary;
                     my_job[numofjob]->setSalary(newSalary);
                 }
                 case 3: {
                     string newLocation;
-                    cout<<"Please enter the new location : "<<endl;
-                    cin>>newLocation;
+                    cout << "Please enter the new location : " << endl;
+                    cin >> newLocation;
                     my_job[numofjob]->set_location(newLocation);
                 }
                 case 4: {
                     string newOccupation;
-                    cout<<"Please enter the new occupation : "<<endl;
-                    cin>>newOccupation;
+                    cout << "Please enter the new occupation : " << endl;
+                    cin >> newOccupation;
                     my_job[numofjob]->set_occupation(newOccupation);
                 }
                 case 5: {
                     int newJobType;
                     cout << "Please enter for full time job 0 and for part time job 1 : " << endl;
                     cin >> newJobType;
-                    auto x=Job_scope(newJobType);
+                    auto x = Job_scope(newJobType);
                     my_job[numofjob]->set_scope(x);
                 }
-                case 6:{
+                case 6: {
                     string newExperience;
                     cout << "Please enter the new experience : " << endl;
                     cin >> newExperience;
@@ -119,17 +119,17 @@ void Employer::Delete_Job() {
         cout << "The job you search is not found " << endl;
 }
 
-void Employer::Publish_Job(Job& job) {
+void Employer::Publish_Job(Job &job) {
     num_of_jobs++;
-    Job** temp=new Job * [num_of_jobs];
-    for(int i=0;i<num_of_jobs-1;i++){
-        temp[i]=my_job[i];
+    Job **temp = new Job *[num_of_jobs];
+    for (int i = 0; i < num_of_jobs - 1; i++) {
+        temp[i] = my_job[i];
     }
-    temp[num_of_jobs-1]=&job;
+    temp[num_of_jobs - 1] = &job;
     delete[]my_job;
-    my_job=new Job * [num_of_jobs];
-    for(int i=0;i<num_of_jobs;i++){
-        my_job[i]=temp[i];
+    my_job = new Job *[num_of_jobs];
+    for (int i = 0; i < num_of_jobs; i++) {
+        my_job[i] = temp[i];
     }
-    cout<<"add successfully"<<endl;
+    cout << "add successfully" << endl;
 }
