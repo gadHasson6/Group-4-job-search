@@ -9,48 +9,80 @@ User::User() : id(0), rating(0) {}
 
 // Constructor with parameters
 User::User(const string &inputName, long inputId, const string &inputPassword, const string &inputEmail,
-           const string &inputPhoneNumber, const string &inputResidence, int inputRating,
+           const string &inputPhoneNumber, int inputRating,
            const string &inputFeedback)
         : name(inputName), id(inputId), password(inputPassword), email(inputEmail),
-          phoneNumber(inputPhoneNumber), residence(inputResidence), rating(inputRating),
+          phoneNumber(inputPhoneNumber), rating(inputRating),
           feedback(inputFeedback) {}
 
 // Copy constructor
 User::User(const User &other)
         : name(other.name), id(other.id), password(other.password), email(other.email),
-          phoneNumber(other.phoneNumber), residence(other.residence), rating(other.rating),
+          phoneNumber(other.phoneNumber), rating(other.rating),
           feedback(other.feedback) {}
 
 // Destructor
 User::~User() {}
 
 // Setters
-void User::setName(const string &inputName) {
-    this->name = inputName;
+bool User::setName(const string &inputName) {
+    if (inputName.find(' ') != string::npos) {
+        this->name = inputName;
+        return true;
+    } else {
+        cout << "The name must contain at least one space." << endl;
+        return false;
+    }
 }
 
-void User::setId(long inputId) {
-    this->id = inputId;
+bool User::setId(long inputId) {
+    if (isIdValid(inputId)) {
+        this->id = inputId;
+        return true;
+    } else {
+        cout << "ID must be exactly 9 digits and contain only numbers." << endl;
+        return false;
+    }
 }
 
-void User::setEmail(const string &inputEmail) {
-    this->email = inputEmail;
+bool User::setEmail(const string &inputEmail) {
+    if (isEmailValid(const_cast<string &>(inputEmail))){
+        this->email = inputEmail;
+        return true;
+    } else {
+        cout << "The email must include the character @ ." << endl;
+        return false;
+    }
 }
 
-void User::setPassword(const string &inputPassword) {
-    this->password = inputPassword;
+bool User::setPassword(const string &inputPassword) {
+    if (isPasswordValid(const_cast<string &>(inputPassword))){
+        this->password = inputPassword;
+        return true;
+    } else {
+        cout <<"A strong password must contain lowercase letters, uppercase letters and numbers. " << endl;
+        return false;
+    }
 }
 
-void User::setPhoneNumber(const string &inputPhoneNumber) {
-    this->phoneNumber = inputPhoneNumber;
+bool User::setPhoneNumber(const string &inputPhoneNumber) {
+    if(isPhoneNumValid(const_cast<string &>(inputPhoneNumber))){
+        this->phoneNumber = inputPhoneNumber;
+        return true;
+    } else {
+        cout << "Phone number must contain only digits (10 characters) " << endl;
+        return false;
+    }
 }
 
-void User::setResidence(const string &inputResidence) {
-    this->residence = inputResidence;
-}
-
-void User::setRating(int inputRating) {
-    this->rating = inputRating;
+bool User::setRating(int inputRating) {
+    if(isRatingValid(inputRating)){
+        this->rating = inputRating;
+        return true;
+    } else {
+        cout << "The rating is only 1-5. " << endl;
+        return false;
+    }
 }
 
 bool User::setFeedback(const string &inputFeedback) {
@@ -83,10 +115,6 @@ string User::getPassword() const {
 
 string User::getPhoneNumber() const {
     return this->phoneNumber;
-}
-
-string User::getResidence() const {
-    return this->residence;
 }
 
 int User::getRating() const {
@@ -135,6 +163,12 @@ bool User::isPasswordValid(string &inputPassword) const {
     return false;
 }
 
+bool User::isPhoneNumValid(string& inputPhoneNumber) const {
+    if (isStringBetween(inputPhoneNumber, 10, 10) && isDigits(inputPhoneNumber))
+        return true;
+    else return false;
+}
+
 bool User::isRatingValid(int inputRating) const {
     if (inputRating >= 1 && inputRating <= 5)
         return true;
@@ -176,10 +210,4 @@ bool User::isDigits(const string &inputString) const {
         }
     }
     return false;
-}
-
-bool User::isPhoneNumValid(std::string &inputPoneNum) const {
-    if (isStringBetween(inputPoneNum, 10, 10) && isDigits(inputPoneNum))
-        return true;
-    else return false;
 }
