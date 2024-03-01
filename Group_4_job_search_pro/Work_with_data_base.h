@@ -22,7 +22,7 @@ struct EmployerInfo {
     string password;
     int rating;
     string feedback;
-
+};
 // Define a structure to hold candidate information
 struct CandidateInfo {
     long candidate_id;///
