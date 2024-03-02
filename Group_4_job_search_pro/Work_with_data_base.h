@@ -20,8 +20,6 @@ struct EmployerInfo {
     string employer_email;
     string employer_phone_number;
     string password;
-    int rating;
-    string feedback;
 };
 // Define a structure to hold candidate information
 struct CandidateInfo {
@@ -29,15 +27,13 @@ struct CandidateInfo {
     string candidate_name;///
     double candidate_age;
     string candidate_gender;
-    long candidate_phone_number;
+    string candidate_phone_number;
     string candidate_email;
     string candidate_living_area;
     int candidate_experience;
     string candidate_specialty;
     string password;///
     string candidate_free_text;///
-    int rating;
-    string feedback;///
     string resumePath;///
 };
 
