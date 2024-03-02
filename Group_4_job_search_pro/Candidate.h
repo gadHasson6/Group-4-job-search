@@ -7,8 +7,8 @@
 using namespace std;
 #include "iostream"
 # include "User.h"
-# include "Apply.h"
-#include "Job.h"
+//# include "Apply.h"
+//#include "Job.h"
 #include <string>
 #include <limits>
 #include <filesystem>
@@ -17,7 +17,7 @@ using namespace std;
 class Candidate : public User {
 private:
     string resumePath;
-    Apply** appliedJobs;
+//    Apply** appliedJobs;
     int appliedJobSize;
     string personalInformation;
     int age;
@@ -42,7 +42,7 @@ public:
     //get
     string getResumePath() const;
     string getPersonalInformation() const;
-    Apply** getAppliedJob() const;
+//    Apply** getAppliedJob() const;
     int getAge() const;
     char getGender() const;
     string getResidence() const;
@@ -58,26 +58,26 @@ public:
     bool setResidence();
     bool setWorkExperience(float inputWorkExperience);
     bool setSpecialty(const string &inputSpecialty);
-    bool setAppliedJobs(Apply** other, int size);
+//    bool setAppliedJobs(Apply** other, int size);
 
     //Additional functions
     void printThisCandidateInfo() const;
-    void addApply(Apply* addMe);
-    void cancelApply( Apply* deleteMe);
+//    void addApply(Apply* addMe);
+//    void cancelApply( Apply* deleteMe);
     void printTipsForResume();
     float calculateSalary();
     void viewSubmissions();
     void submitResume(string resumePathToSubmit);
 
     //functions for "choose order to see jobs"
-    [[nodiscard]]  Apply** sortFromNewToOldByDate() const ;  //[[nodiscard]] would indicate that the returned array should be used and not ignored.
+//    [[nodiscard]]  Apply** sortFromNewToOldByDate() const ;  //[[nodiscard]] would indicate that the returned array should be used and not ignored.
     void chooseOrderToSeeSubmissions() const;
 
     //functions for "look for jobs"
-    void lookForJobs(const Job** &allJobs, int size);
-    Job** byJobScope(const Job **&allJobs, int size, const string &name, int &newSize);
-    Job** byJobResident(const Job **&allJobs, int size,const string &resident, int &newSize);
-    Job** byJobExperience(const Job **&allJobs, int size, int experience, int &newSize);
+//    void lookForJobs(const Job** &allJobs, int size);
+//    Job** byJobScope(const Job **&allJobs, int size, const string &name, int &newSize);
+//    Job** byJobResident(const Job **&allJobs, int size,const string &resident, int &newSize);
+//    Job** byJobExperience(const Job **&allJobs, int size, int experience, int &newSize);
 
     //functions for "edit profile"
     void editName();

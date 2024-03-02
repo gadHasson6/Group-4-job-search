@@ -23,7 +23,8 @@ using namespace std;
 class Job_search_system {
 private:
     int num_of_candidates, num_of_employers, num_of_jobs, num_of_submissions;
-    User * current_user;
+    Candidate * current_candidate;
+    Employer * current_employer;
     Employer ** employers_list;
     Candidate ** candidates_list;
     Job ** jobs_list;
