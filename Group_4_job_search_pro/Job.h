@@ -7,9 +7,11 @@
 
 #include <cstring>
 #include "iostream"
-#include "Apply.h"
+//#include "Apply.h"
 enum Job_scope {full_time = 0,part_time=1};
 using namespace std;
+
+class Apply;
 
 class Job {
 public:
@@ -28,15 +30,15 @@ public:
     void set_experience(const int& experience) { m_experience_needed = experience; }
     void set_applies(Apply** appliesArray, int size);
     void set_status(const bool status) { m_posting_status=status; }
-    const string& get_occupation() const { return m_occupation; }
-    const string& get_name() const { return m_company_name; }
-    const string& get_number() const { return m_phone_number; }
-    const string& get_location() const { return m_copmany_location; }
-    const string& get_requirements() const { return m_requirements; }
-    const Job_scope& get_scope() const { return m_scope; }
-    const int& get_experience() const { return m_experience_needed; }
-    const int& get_job_id() const { return m_job_id; }
-    const bool get_status () const {return m_posting_status; }
+    string get_occupation() const { return m_occupation; }
+    string get_name() const { return m_company_name; }
+    string get_number() const { return m_phone_number; }
+    string get_location() const { return m_copmany_location; }
+    string get_requirements() const { return m_requirements; }
+    Job_scope get_scope() const { return m_scope; }
+    int get_experience() const { return m_experience_needed; }
+    int get_job_id() const { return m_job_id; }
+    bool get_status () const {return m_posting_status; }
     void Add_Apply(Apply* apply);
 
 private:
