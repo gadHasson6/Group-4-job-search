@@ -87,6 +87,11 @@ public:
     void editFeedback();
     void editResumePath();
     void editPersonalInformation();
+    void editEmail();
+    void editPhoneNumber();
+    void editExperience();
+    void editResidence();
+    void editSpecialty();
     void editProfile();
 
 };

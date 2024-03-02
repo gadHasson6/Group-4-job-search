@@ -777,6 +777,12 @@ void Candidate::editName() {
             cout << "1. Choose a new name" << endl;
             cout << "2. Stay with the existing name" << endl;
             cin >> choice;
+            if (choice != 1 && choice != 2) {
+                cout << "Invalid choice. Please enter either 1 or 2." << endl;
+                cin.clear(); // Clear the error flag
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                continue; // Go back to the beginning of the loop
+            }
 
             if (choice == 2) {
                 break;
@@ -813,6 +819,12 @@ void Candidate::editId() {
             cout << "1. Choose a new ID" << endl;
             cout << "2. Stay with the existing ID" << endl;
             cin >> choice;
+            if (choice != 1 && choice != 2) {
+                cout << "Invalid choice. Please enter either 1 or 2." << endl;
+                cin.clear(); // Clear the error flag
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                continue; // Go back to the beginning of the loop
+            }
 
             if (choice == 2) {
                 break;
@@ -848,6 +860,12 @@ void Candidate::editPassword() {
             cout << "1. Choose a new password" << endl;
             cout << "2. Stay with the existing password" << endl;
             cin >> choice;
+            if (choice != 1 && choice != 2) {
+                cout << "Invalid choice. Please enter either 1 or 2." << endl;
+                cin.clear(); // Clear the error flag
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                continue; // Go back to the beginning of the loop
+            }
 
             if (choice == 2) {
                 break;
@@ -883,6 +901,12 @@ void Candidate::editFeedback() {
             cout << "1. Choose a new feedback" << endl;
             cout << "2. Stay with the existing feedback" << endl;
             cin >> choice;
+            if (choice != 1 && choice != 2) {
+                cout << "Invalid choice. Please enter either 1 or 2." << endl;
+                cin.clear(); // Clear the error flag
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                continue; // Go back to the beginning of the loop
+            }
 
             if (choice == 2) {
                 break;
@@ -911,6 +935,12 @@ void Candidate::editResumePath() {
         cout << "1. Choose a new resume path" << endl;
         cout << "2. Stay with the existing resume path" << endl;
         cin >> choice;
+        if (choice != 1 && choice != 2) {
+            cout << "Invalid choice. Please enter either 1 or 2." << endl;
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            continue; // Go back to the beginning of the loop
+        }
 
         if (choice == 2) {
             break;
@@ -942,6 +972,12 @@ void Candidate::editPersonalInformation() {
         cout << "1. Choose a new personal information" << endl;
         cout << "2. Stay with the existing personal information" << endl;
         cin >> choice;
+        if (choice != 1 && choice != 2) {
+            cout << "Invalid choice. Please enter either 1 or 2." << endl;
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            continue; // Go back to the beginning of the loop
+        }
 
         if (choice == 2) {
             break;
@@ -961,25 +997,223 @@ void Candidate::editPersonalInformation() {
     }
 }
 
+
+//edit email
+void Candidate::editEmail() {
+    string newEmail;
+    cout << "Your current email is: " << this->getEmail() << endl;
+
+    bool editEmailLoop = true;
+    while (editEmailLoop) {
+        int choice = 0;
+        cout << "Please choose:" << endl;
+        cout << "1. Enter a new Email" << endl;
+        cout << "2. Stay with the existing Email" << endl;
+        cin >> choice;
+        if (choice != 1 && choice != 2) {
+            cout << "Invalid choice. Please enter either 1 or 2." << endl;
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            continue; // Go back to the beginning of the loop
+        }
+
+        if (choice == 2) {
+            editEmailLoop = false;
+        } else {
+            // Clear the input buffer before taking a new choice
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            cout << "Enter your new email address (no longer than 50 characters): " << endl;
+            getline(cin, newEmail);
+
+            if (setEmail(newEmail)) {
+                cout << "Email updated successfully!" << endl;
+                editEmailLoop = false;
+            }
+        }
+    }
+}
+
+
+//edit experience
+void Candidate::editExperience() {
+    float newWorkExperience;
+    cout << "Your current experience is: " << this->getWorkExperience() << endl;
+
+    bool editExperienceLoop = true;
+    while (editExperienceLoop) {
+        int choice = 0;
+        cout << "Please choose:" << endl;
+        cout << "1. Enter a new experience" << endl;
+        cout << "2. Stay with the existing experience" << endl;
+        cin >> choice;
+        if (choice != 1 && choice != 2) {
+            cout << "Invalid choice. Please enter either 1 or 2." << endl;
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            continue; // Go back to the beginning of the loop
+        }
+
+        if (choice == 2) {
+            editExperienceLoop = false;
+        } else {
+            // Clear the input buffer before taking a new choice
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            cout << "Enter your new experience (between 0 to 100): " << endl;
+            cin>>newWorkExperience;
+
+            if (setWorkExperience(newWorkExperience)) {
+                cout << "Work experience updated successfully!" << endl;
+                editExperienceLoop = false;
+            }
+        }
+    }
+}
+
+
+//edit resident
+void Candidate::editResidence() {
+    string newResidence;
+    cout << "Your current residence is: " << this->getResidence() << endl;
+
+    bool editResidenceLoop = true;
+    while (editResidenceLoop) {
+        int choice = 0;
+        cout << "Please choose:" << endl;
+        cout << "1. Enter a new residence" << endl;
+        cout << "2. Stay with the existing residence" << endl;
+        cin >> choice;
+        if (choice != 1 && choice != 2) {
+            cout << "Invalid choice. Please enter either 1 or 2." << endl;
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            continue; // Go back to the beginning of the loop
+        }
+
+        if (choice == 2) {
+            editResidenceLoop = false;
+        } else {
+            // Clear the input buffer before taking a new choice
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+
+            if (setResidence()) {
+                cout << "residence updated successfully!" << endl;
+                editResidenceLoop = false;
+            }
+        }
+    }
+}
+
+
+
+//edit specialty
+void Candidate::editSpecialty() {
+    string newSpecialty;
+    cout << "Your current Specialty is: " << this->getSpecialty() << endl;
+
+    bool editSpecialtyLoop = true;
+    while (editSpecialtyLoop) {
+        int choice = 0;
+        cout << "Please choose:" << endl;
+        cout << "1. Enter a new Specialty" << endl;
+        cout << "2. Stay with the existing Specialty" << endl;
+        cin >> choice;
+        if (choice != 1 && choice != 2) {
+            cout << "Invalid choice. Please enter either 1 or 2." << endl;
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            continue; // Go back to the beginning of the loop
+        }
+
+        if (choice == 2) {
+            editSpecialtyLoop = false;
+        } else {
+            // Clear the input buffer before taking a new choice
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            cout << "Enter your new Specialty (no longer than 25 characters): " << endl;
+            getline(cin, newSpecialty);
+
+            if (setSpecialty(newSpecialty)) {
+                cout << "Specialty updated successfully!" << endl;
+                editSpecialtyLoop = false;
+            }
+        }
+    }
+}
+
+//edit phone number
+void Candidate::editPhoneNumber() {
+    string newPhoneNumber;
+    cout << "Your current phone number is: " << this->getPhoneNumber() << endl;
+
+    bool editPhoneNumberLoop = true;
+    while (editPhoneNumberLoop) {
+        int choice = 0;
+        cout << "Please choose:" << endl;
+        cout << "1. Enter a new phone number" << endl;
+        cout << "2. Stay with the existing phone number" << endl;
+        // Check if the input is a valid float
+        if (!(cin >> choice)) {
+            cout << "Invalid input. Please enter a valid choice (1 or 2)." << endl;
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            continue; // Go back to the beginning of the loop
+        }
+        else if (choice != 1 && choice != 2) {
+            cout << "Invalid choice. Please enter either 1 or 2." << endl;
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            continue; // Go back to the beginning of the loop
+        }
+
+        if (choice == 2) {
+            editPhoneNumberLoop = false;
+        } else {
+            // Clear the input buffer before taking a new choice
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            cout << "Enter your new phone number (Only numbers and no more than 10): " << endl;
+            getline(cin, newPhoneNumber);
+
+            if (setPhoneNumber(newPhoneNumber)) {
+                cout << "Phone number updated successfully!" << endl;
+                editPhoneNumberLoop = false;
+            }
+        }
+    }
+}
+
+
 //Edit profile
 void Candidate::editProfile() {
     while (true) {
         cout << "Please select what you would like to edit in your profile: " << endl;
         cout << "1. name" << endl;
-        cout << "2. id" << endl;
-        cout << "3. password" << endl;
-        cout << "4. feedback" << endl;
-        cout << "5. resume path" << endl;
-        cout << "6. personal information" << endl;
-        cout << "7. Exit menu" << endl;
+        cout << "2. password" << endl;
+        cout << "3. experience" << endl;
+        cout << "4. resume path" << endl;
+        cout << "5. personal information" << endl;
+        cout << "6. specialty" << endl;
+        cout << "7. email" << endl;
+        cout << "8. phone number" << endl;
+        cout << "9. residence" << endl;
+        cout << "10. Exit menu" << endl;
         int choice = 0;
         cin >> choice;
 
         // Validate input
-        if (cin.fail()) {
+        if (cin.fail() || choice < 1 || choice > 10) {
             cin.clear(); // Clear the error flag
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
-            cout << "Invalid input. Please enter a valid integer." << endl;
+            cout << "Invalid input. Please enter a valid integer between 1 and 10." << endl;
             continue; // Go to the next iteration of the loop
         }
 
@@ -990,26 +1224,38 @@ void Candidate::editProfile() {
                 break;
             }
             case 2: {
-                editId();
-                break;
-            }
-            case 3: {
                 editPassword();
                 break;
             }
-            case 4: {
-                editFeedback();
+            case 3: {
+                editExperience();
                 break;
             }
-            case 5: {
+            case 4: {
                 editResumePath();
                 break;
             }
-            case 6: {
+            case 5: {
                 editPersonalInformation();
                 break;
             }
-            case 7:{
+            case 6: {
+                editSpecialty();
+                break;
+            }
+            case 7: {
+                editEmail();
+                break;
+            }
+            case 8: {
+                editPhoneNumber();
+                break;
+            }
+            case 9: {
+                editResidence();
+                break;
+            }
+            case 10:{
                 break;  // Exit the loop if the user chooses to exit
             }
         }
