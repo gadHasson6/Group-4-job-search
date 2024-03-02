@@ -106,6 +106,12 @@
 		<Unit filename="C:/Users/aviga/OneDrive/מסמכים/GitHub/Group-4-job-search/Group_4_job_search_pro/Job.h">
 			<Option target="Group_4_job_search_pro"/>
 		</Unit>
+		<Unit filename="C:/Users/aviga/OneDrive/מסמכים/GitHub/Group-4-job-search/Group_4_job_search_pro/Job_search_system.cpp">
+			<Option target="Group_4_job_search_pro"/>
+		</Unit>
+		<Unit filename="C:/Users/aviga/OneDrive/מסמכים/GitHub/Group-4-job-search/Group_4_job_search_pro/Job_search_system.h">
+			<Option target="Group_4_job_search_pro"/>
+		</Unit>
 		<Unit filename="C:/Users/aviga/OneDrive/מסמכים/GitHub/Group-4-job-search/Group_4_job_search_pro/User.cpp">
 			<Option target="Group_4_job_search_pro"/>
 		</Unit>

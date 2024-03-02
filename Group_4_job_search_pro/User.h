@@ -17,31 +17,26 @@ private:
     string email;
     string password;
     string phoneNumber;
-//    string residence;
     int rating;
     string feedback;
-    // int age; TODO: to add only if both will have
-    // string gender; TODO: to add only if both will have
 
 public:
     User(); // Constructor without parameters
-    // Constructor with parameters, TODO: add int and gender if need
+    // Constructor with parameters
     User(const string& inputName, const long inputId, const string& inputPassword, const string& inputEmail,
-         const string& inputPhoneNumber, const string& inputrResidence, int inputRating,
+         const string& inputPhoneNumber, int inputRating,
          const string& inputFeedback);
     User(const User& other); // Copy constructor
     ~User(); // Destructor, TODO: how to deallocate what was allocated in constructor, maybe not needed.
 
     // Setters
-    void setName(const string& inputName);
-    void setId(long inputId);
-    void setEmail(const string& inputEmail);
-    void setPassword(const string& inputPassword);
-    void setPhoneNumber(const string& inputPhoneNumber);
-    void setResidence(const string& inputrResidence);
-    void setRating(int inputRating);
+    bool setName(const string& inputName);
+    bool setId(long inputId);
+    bool setEmail(const string& inputEmail);
+    bool setPassword(const string& inputPassword);
+    bool setPhoneNumber(const string& inputPhoneNumber);
+    bool setRating(int inputRating);
     bool setFeedback(const string& inputFeedback);
-    // TODO: add setAge & setGender if needed
 
     // Getters
     string getName() const;
@@ -49,10 +44,9 @@ public:
     string getEmail() const;
     string getPassword() const;
     string getPhoneNumber() const;
-    string getResidence() const;
     int getRating() const;
     string getFeedback() const;
-    // TODO: add getAge & getGender if needed
+
 
     // Validators
     bool isIdValid(long inputId) const;
@@ -63,7 +57,6 @@ public:
 
 
     // Helpers
-    // TODO: add isAgeValid & isGenderValid if needed
     bool isStringBetween(const string& inputString, int min, int max) const;
     bool isBigLetters(const string& inputString) const;
     bool isSmallLetters(const string& inputString) const;

@@ -9,6 +9,7 @@ using namespace std;
 #include "User.h"
 #include <string>
 #include <iostream>
+#include <limits>
 
 
 class Employer :public User{
@@ -16,8 +17,10 @@ private:
     Job** my_job;
     int num_of_jobs;
 public:
-    Employer(){my_job= nullptr; num_of_jobs = 0;}
-    Employer(string full_name,long id,string password,string email,long phone_num ,int rating,string feedback );
+    Employer():User(){my_job= nullptr; num_of_jobs = 0;}
+    Employer(const string& inputName, const long inputId, const string& inputPassword, const string& inputEmail,
+             const string& inputPhoneNumber, int inputRating,
+             const string& inputFeedback);
     void set(Job**item, int size);
     void Employer_Print_Job();
     void Edit_Job();

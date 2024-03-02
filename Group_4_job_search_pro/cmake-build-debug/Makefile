@@ -224,6 +224,30 @@ Job.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.s
 .PHONY : Job.cpp.s
 
+Job_search_system.obj: Job_search_system.cpp.obj
+.PHONY : Job_search_system.obj
+
+# target to build an object file
+Job_search_system.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Job_search_system.cpp.obj
+.PHONY : Job_search_system.cpp.obj
+
+Job_search_system.i: Job_search_system.cpp.i
+.PHONY : Job_search_system.i
+
+# target to preprocess a source file
+Job_search_system.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Job_search_system.cpp.i
+.PHONY : Job_search_system.cpp.i
+
+Job_search_system.s: Job_search_system.cpp.s
+.PHONY : Job_search_system.s
+
+# target to generate assembly for a file
+Job_search_system.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Job_search_system.cpp.s
+.PHONY : Job_search_system.cpp.s
+
 User.obj: User.cpp.obj
 .PHONY : User.obj
 
@@ -341,6 +365,9 @@ help:
 	@echo ... Job.obj
 	@echo ... Job.i
 	@echo ... Job.s
+	@echo ... Job_search_system.obj
+	@echo ... Job_search_system.i
+	@echo ... Job_search_system.s
 	@echo ... User.obj
 	@echo ... User.i
 	@echo ... User.s
