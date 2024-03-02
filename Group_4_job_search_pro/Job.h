@@ -7,7 +7,6 @@
 
 #include <cstring>
 #include "iostream"
-//#include "Apply.h"
 enum Job_scope {full_time = 0,part_time=1};
 using namespace std;
 

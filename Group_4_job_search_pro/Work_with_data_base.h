@@ -36,6 +36,14 @@ struct CandidateInfo {
     string candidate_free_text;///
     string resumePath;///
 };
+// Define a structure to hold candidate ids
+struct CandidateId {
+    long candidate_id;///
+};
+// Define a structure to hold employer ids
+struct EmployerId {
+    long employer_id;///
+};
 
 
 ////////////////////////////opening a file
@@ -68,5 +76,11 @@ int countRowsByJobID(sqlite3* db, int idToSearch);
 ////////////////////////////Function to retrieve employer information from the employer table
 vector<EmployerInfo> getEmployerInfo(sqlite3* db);
 
-////////////////////////////Function to retrieve eandidate information from the employer table
+////////////////////////////Function to retrieve candidate information from the employer table
 vector<CandidateInfo> getCandidateInfo(sqlite3* db);
+
+////////////////////////////Function to retrieve candidate id from the candidate table
+vector<CandidateId> getCandidateId(sqlite3* db);
+
+////////////////////////////Function to retrieve employer id from the employer table
+vector<EmployerId> getEmployerId(sqlite3* db);

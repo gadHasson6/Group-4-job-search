@@ -26,10 +26,18 @@ void Employer::set(Job **item, int size) {
 }
 
 void Employer::Edit_Job() {
+    bool flag3 = true;
     int numofjob = 0;
     Employer_Print_Job();
-    cout << "which job do you want to edit? " << endl;
-    cin >> numofjob;
+    while (flag3){
+        cout << "which job do you want to edit? " << endl;
+        cin >> numofjob;
+        if (cin.fail()) {
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            cout << "Invalid input. Please enter a valid integer." << endl;
+        } else flag3 = false;
+    }
     int num;
     bool flag = false;
     for (int i = 0; i < num_of_jobs; i++) {
@@ -102,6 +110,8 @@ void Employer::Edit_Job() {
     if (!flag)
         cout << "The job you search is not found " << endl;
 }
+}
+
 
 void Employer::Delete_Job() {
     int idnumofjob = 0;

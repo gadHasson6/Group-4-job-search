@@ -346,3 +346,65 @@ vector<EmployerInfo> getEmployerInfo(sqlite3* db) {
 //
 //    return employers;
 //}
+
+
+////////////////////////////
+vector<CandidateId> getCandidateId(sqlite3* db) {
+    vector<CandidateId> candidate_ids;
+    sqlite3_stmt* stmt;
+
+    // SQL query to select candidateID field from the candidate table
+    const char* sql = "SELECT [candidateID] FROM candidate";
+
+    // Prepare the SQL statement
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+
+    if (rc != SQLITE_OK) {
+        cerr << "SQL error: " << sqlite3_errmsg(db) << endl;
+        return candidate_ids; // Return empty vector to indicate error
+    }
+
+    // Execute the SQL statement
+    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        // Retrieve employer information from the result and add it to the vector
+        CandidateId c_id;
+        c_id.candidate_id = sqlite3_column_int64(stmt, 0);
+        candidate_ids.push_back(c_id);
+    }
+
+    // Finalize the prepared statement
+    sqlite3_finalize(stmt);
+
+    return candidate_ids;
+}
+
+
+////////////////////////////
+vector<EmployerId> getEmployerId(sqlite3* db) {
+    vector<EmployerId> employer_ids;
+    sqlite3_stmt* stmt;
+
+    // SQL query to select ID field from the employer table
+    const char* sql = "SELECT [ID] FROM employer";
+
+    // Prepare the SQL statement
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+
+    if (rc != SQLITE_OK) {
+        cerr << "SQL error: " << sqlite3_errmsg(db) << endl;
+        return employer_ids; // Return empty vector to indicate error
+    }
+
+    // Execute the SQL statement
+    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        // Retrieve employer information from the result and add it to the vector
+        EmployerId e_id;
+        e_id.employer_id = sqlite3_column_int64(stmt, 0);
+        employer_ids.push_back(e_id);
+    }
+
+    // Finalize the prepared statement
+    sqlite3_finalize(stmt);
+
+    return employer_ids;
+}
