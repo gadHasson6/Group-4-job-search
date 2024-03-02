@@ -304,6 +304,33 @@ void Candidate::printThisCandidateInfo() const {
     cout<<"Specialty: "<<this->getSpecialty()<<endl;
 }
 
+
+
+//filter by job occupation
+Job **Candidate::byJobOccupation(const Job **&allJobs, int size, const std::string &occupation, int &newSize) {
+    // Count the number of jobs with the given occupation
+    for (int i = 0; i < size; i++) {
+        if (allJobs[i]->get_occupation()== occupation) {
+            newSize++;
+        }
+    }
+
+    // Create a new array to store jobs with the given occupation
+    Job **filteredJobs = new Job *[newSize];
+    int index = 0;
+
+    // Iterate through all jobs and add matching jobs to the filteredJobs array
+    for (int i = 0; i < size; i++) {
+        if (allJobs[i]->get_occupation() == occupation) {
+            filteredJobs[index] = new Job(*allJobs[i]);  // Assuming we have a copy constructor in Job class
+            index++;
+        }
+    }
+
+    return filteredJobs;
+}
+
+
 //filter by job scope
 Job **Candidate::byJobScope(const Job **&allJobs, int size, const string &name, int &newSize) {   //send newSize=0 to get the new size
 
@@ -389,17 +416,18 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
     cout << "1. By Name" << endl;
     cout << "2. By Resident" << endl;
     cout << "3. By Experience" << endl;
-    cout << "4. Quit" << endl;
+    cout << "4. By occupation" << endl;
+    cout << "5. Quit" << endl;
     cin >> choice;
 
-    if (cin.fail() || choice < 1 || choice > 4) {
+    if (cin.fail() || choice < 1 || choice > 5) {
         cout << "Invalid choice. Please enter a valid option." << endl;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         continue; // Go back to the beginning of the loop
     }
 
-    if (choice == 4) {
+    if (choice == 5) {
         cout << "Exiting the job search." << endl;
         break; // Exit the loop if the user chooses to quit
     }
@@ -435,6 +463,7 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                 } else {
                     for (int i = 0; i < newSize; i++) {
                         newArr[i]->print_job();
+                        cout<<endl;
                     }
 
                     // free the memory allocated for newArr
@@ -451,7 +480,7 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                 int maxAttempts = 3; // Set a maximum number of attempts
 
                 for (int attempt = 1; attempt <= maxAttempts; ++attempt) {
-                    cout << "Please enter name of resident: " << endl;
+                    cout << "Please enter resident: " << endl;
                     getline(cin, residentToLook);
 
                     // Check if the input is empty or contains only whitespaces
@@ -475,6 +504,7 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                 } else {
                     for (int i = 0; i < newSize; i++) {
                         newArr[i]->print_job();
+                        cout<<endl;
                     }
 
                     // free the memory allocated for newArr
@@ -511,10 +541,52 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                 Job** newArr = byJobExperience(allJobs, size, experienceToLook, newSize);
 
                 if (newSize == 0) {
-                    cout << "No matching jobs found for the specified resident." << endl;
+                    cout << "No matching jobs found for the specified experience." << endl;
                 } else {
                     for (int i = 0; i < newSize; i++) {
                         newArr[i]->print_job();
+                        cout<<endl;
+                    }
+
+                    // free the memory allocated for newArr
+                    for (int i = 0; i < newSize; i++) {
+                        delete newArr[i];
+                    }
+                    delete[] newArr;
+                }
+                break;
+            }
+            case 4: {
+                int newSize = 0;
+                string occupationToLook;
+                int maxAttempts = 3; // Set a maximum number of attempts
+
+                for (int attempt = 1; attempt <= maxAttempts; ++attempt) {
+                    cout << "Please enter occupation: " << endl;
+                    getline(cin, occupationToLook);
+
+                    // Check if the input is empty or contains only whitespaces
+                    if (occupationToLook.find_first_not_of(' ') != string::npos) {
+                        break;
+                    } else {
+                        cout << "Invalid input. Please enter a valid occupation." << endl;
+                    }
+
+                    // Check if reached the maximum number of attempts
+                    if (attempt == maxAttempts) {
+                        cout << "Maximum attempts reached. " << endl;
+                        return;
+                    }
+                }
+
+                Job** newArr = byJobOccupation(allJobs, size, occupationToLook, newSize);
+
+                if (newSize == 0) {
+                    cout << "No matching jobs found for the specified occupation." << endl;
+                } else {
+                    for (int i = 0; i < newSize; i++) {
+                        newArr[i]->print_job();
+                        cout<<endl;
                     }
 
                     // free the memory allocated for newArr

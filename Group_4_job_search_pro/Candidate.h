@@ -75,6 +75,7 @@ public:
 
     //functions for "look for jobs"
     void lookForJobs(const Job** &allJobs, int size);
+    Job** byJobOccupation(const Job** &allJobs, int size, const string &occupation, int &newSize);
     Job** byJobScope(const Job **&allJobs, int size, const string &name, int &newSize);
     Job** byJobResident(const Job **&allJobs, int size,const string &resident, int &newSize);
     Job** byJobExperience(const Job **&allJobs, int size, int experience, int &newSize);
