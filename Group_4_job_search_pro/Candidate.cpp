@@ -307,7 +307,7 @@ void Candidate::printThisCandidateInfo() const {
 
 
 //filter by job occupation
-Job **Candidate::byJobOccupation(const Job **&allJobs, int size, const std::string &occupation, int &newSize) {
+Job **Candidate::byJobOccupation(Job **allJobs, int size, const std::string &occupation, int &newSize) {
     // Count the number of jobs with the given occupation
     for (int i = 0; i < size; i++) {
         if (allJobs[i]->get_occupation()== occupation) {
@@ -332,11 +332,11 @@ Job **Candidate::byJobOccupation(const Job **&allJobs, int size, const std::stri
 
 
 //filter by job scope
-Job **Candidate::byJobScope(const Job **&allJobs, int size, const string &name, int &newSize) {   //send newSize=0 to get the new size
+Job **Candidate::byJobScope(Job **allJobs, int size, const string &name, int &newSize) {   //send newSize=0 to get the new size
 
-    // Count the number of jobs with the given company name
+    // Count the number of jobs with the given job name
     for (int i = 0; i < size; i++) {
-        if (allJobs[i]->get_name() == name) {
+        if (allJobs[i]->get_job_name() == name) {
             newSize++;
         }
     }
@@ -347,7 +347,7 @@ Job **Candidate::byJobScope(const Job **&allJobs, int size, const string &name, 
 
     // Iterate through all jobs and add matching jobs to the filteredJobs array
     for (int i = 0; i < size; i++) {
-        if (allJobs[i]->get_name() == name) {
+        if (allJobs[i]->get_job_name() == name) {
             filteredJobs[index] = new Job(*allJobs[i]);  // Assuming we have a copy constructor in Job class
             index++;
         }
@@ -359,7 +359,7 @@ Job **Candidate::byJobScope(const Job **&allJobs, int size, const string &name, 
 
 
 //filter by job resident
-Job **Candidate::byJobResident(const Job **&allJobs, int size,const string &resident, int &newSize) {
+Job **Candidate::byJobResident( Job **allJobs, int size,const string &resident, int &newSize) {
     // Count the number of jobs with the given company resident
     for (int i = 0; i < size; i++) {
         if (allJobs[i]->get_location() == resident) {
@@ -384,7 +384,7 @@ Job **Candidate::byJobResident(const Job **&allJobs, int size,const string &resi
 
 
 //filter by job experience
-Job **Candidate::byJobExperience(const Job **&allJobs, int size, int experience, int &newSize) {
+Job **Candidate::byJobExperience(Job **allJobs, int size, int experience, int &newSize) {
     // Count the number of jobs with the given company needed experience
     for (int i = 0; i < size; i++) {
         if (allJobs[i]->get_experience() == experience) {
@@ -409,7 +409,7 @@ Job **Candidate::byJobExperience(const Job **&allJobs, int size, int experience,
 
 
 //look for jobs
-void Candidate::lookForJobs(const Job **&allJobs, int size) {
+vector<JobId> Candidate::lookForJobs(Job **allJobs, int size) {
     while (true){
         int choice = 0;
         cout << "Please choose how you would like to filter the jobs:" << endl;
@@ -453,16 +453,21 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                     // Check if reached the maximum number of attempts
                     if (attempt == maxAttempts) {
                         cout << "Maximum attempts reached. " << endl;
-                        return;
+                        vector<JobId>non;
+                        return non;
                     }
                 }
 
                 Job** newArr = byJobScope(allJobs, size, nameToLook, newSize);
-
+                vector<JobId> jobs_id_list;
                 if (newSize == 0) {
                     cout << "No matching jobs found for the specified job name." << endl;
+                    delete[] newArr;
                 } else {
                     for (int i = 0; i < newSize; i++) {
+                        JobId new_id;
+                        new_id.job_id = newArr[i]->get_job_id();
+                        jobs_id_list.push_back(new_id);
                         newArr[i]->print_job();
                         cout<<endl;
                     }
@@ -472,6 +477,7 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                         delete newArr[i];
                     }
                     delete[] newArr;
+                    return jobs_id_list;
                 }
                 break;
             }
@@ -494,16 +500,21 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                     // Check if reached the maximum number of attempts
                     if (attempt == maxAttempts) {
                         cout << "Maximum attempts reached. " << endl;
-                        return;
+                        vector<JobId>non;
+                        return non;
                     }
                 }
 
                 Job** newArr = byJobResident(allJobs, size, residentToLook, newSize);
-
+                vector<JobId> jobs_id_list;
                 if (newSize == 0) {
                     cout << "No matching jobs found for the specified resident." << endl;
+                    delete[] newArr;
                 } else {
                     for (int i = 0; i < newSize; i++) {
+                        JobId new_id;
+                        new_id.job_id = newArr[i]->get_job_id();
+                        jobs_id_list.push_back(new_id);
                         newArr[i]->print_job();
                         cout<<endl;
                     }
@@ -513,6 +524,7 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                         delete newArr[i];
                     }
                     delete[] newArr;
+                    return jobs_id_list;
                 }
                 break;
             }
@@ -535,16 +547,20 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                     // Check if reached the maximum number of attempts
                     if (attempt == maxAttempts) {
                         cout << "Maximum attempts reached. " << endl;
-                        return;
+                        vector<JobId>non;
+                        return non;
                     }
                 }
 
                 Job** newArr = byJobExperience(allJobs, size, experienceToLook, newSize);
-
+                vector<JobId> jobs_id_list;
                 if (newSize == 0) {
                     cout << "No matching jobs found for the specified experience." << endl;
                 } else {
                     for (int i = 0; i < newSize; i++) {
+                        JobId new_id;
+                        new_id.job_id = newArr[i]->get_job_id();
+                        jobs_id_list.push_back(new_id);
                         newArr[i]->print_job();
                         cout<<endl;
                     }
@@ -554,6 +570,7 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                         delete newArr[i];
                     }
                     delete[] newArr;
+                    return jobs_id_list;
                 }
                 break;
             }
@@ -576,16 +593,20 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                     // Check if reached the maximum number of attempts
                     if (attempt == maxAttempts) {
                         cout << "Maximum attempts reached. " << endl;
-                        return;
+                        vector<JobId>non;
+                        return non;
                     }
                 }
 
                 Job** newArr = byJobOccupation(allJobs, size, occupationToLook, newSize);
-
+                vector<JobId> jobs_id_list;
                 if (newSize == 0) {
                     cout << "No matching jobs found for the specified occupation." << endl;
                 } else {
                     for (int i = 0; i < newSize; i++) {
+                        JobId new_id;
+                        new_id.job_id = newArr[i]->get_job_id();
+                        jobs_id_list.push_back(new_id);
                         newArr[i]->print_job();
                         cout<<endl;
                     }
@@ -595,14 +616,20 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                         delete newArr[i];
                     }
                     delete[] newArr;
+                    return jobs_id_list;
                 }
                 break;
             }
             case 5: {
+                vector<JobId> jobs_id_list;
                 for(int i=0; i<size; i++){
+                    JobId new_id;
+                    new_id.job_id = allJobs[i]->get_job_id();
+                    jobs_id_list.push_back(new_id);
                     allJobs[i]->print_job();
                     cout<<endl;
                 }
+                return jobs_id_list;
             }
 
         }
@@ -893,7 +920,7 @@ void Candidate::editPassword() {
 //edit feedback
 void Candidate::editFeedback() {
     string newFeedback;
-    cout << "Your current feedback is: " << this->getFeedback() << endl;
+//    cout << "Your current feedback is: " << this->getFeedback() << endl;
 
     while (true) {
         cout << "Enter new feedback (no longer than 50 chars): " << endl;

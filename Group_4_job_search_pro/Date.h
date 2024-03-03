@@ -13,15 +13,16 @@ private:
     int day;
     int month;
     int year;
-    bool isCorrectDay (int inputDay);
-    bool isCorrectMonth(int inputMonth);
-    bool isCorrectYear(int inputYear);
+
 public:
     Date ();
     Date(int inputDay, int inputMonth, int inputYear);
-    int getDay ();
-    int getMonth();
-    int getYear();
+    bool isCorrectDay (int inputDay);
+    bool isCorrectMonth(int inputMonth);
+    bool isCorrectYear(int inputYear);
+    int getDay () const;
+    int getMonth() const;
+    int getYear() const;
     void setDay(int inputDay);
     void setMonth(int inputMonth);
     void setYear(int inputYear);
@@ -33,9 +34,9 @@ public:
     ~Date();
     bool operator <(const Date& other) const;
     bool operator >(const Date& other)const;
-    bool operator==(const Date& other) const;
-
+    Date& operator = (const Date& other);
 };
+
 
 
 #endif //GROUP_4_JOB_SEARCH_PRO_DATE_H

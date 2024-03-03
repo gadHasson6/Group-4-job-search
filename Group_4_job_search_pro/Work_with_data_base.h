@@ -60,7 +60,6 @@ struct JobInfo {
     string company_name ;
     string contact;
     bool posting_status;
-    int num_of_submmissions;
     int posting_day;
     int posting_month;
     int posting_year;
@@ -128,3 +127,15 @@ vector<ApplyInfo> getSubmissionsForApplicant(sqlite3* db, long applicantID);
 
 ////////////////////////////Function to retrieve jobs list information by jobID from the job table
 vector<JobInfo> getJobsByID(sqlite3* db, long jobID);
+
+////////////////////////////The function will update the data in the candidate table
+void updateCandidateData(sqlite3* db, const CandidateInfo& candidate);
+
+////////////////////////////The function will update the data in the job table
+void updateJobData(sqlite3* db, const JobInfo& job);
+
+////////////////////////////The function will update the data in the apply table
+void updateApplyData(sqlite3* db, const ApplyInfo& apply);
+
+////////////////////////////The function will insert  the data in the candidate table
+void insertCandidateData(sqlite3* db, const CandidateInfo& candidate);

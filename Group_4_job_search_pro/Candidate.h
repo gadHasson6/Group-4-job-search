@@ -13,6 +13,13 @@ using namespace std;
 #include <limits>
 #include <filesystem>
 #include <algorithm>  // Include for swap
+#include <vector>
+
+// Define a structure to hold job ids
+struct JobId {
+    int job_id;///
+};
+
 
 class Candidate : public User {
 private:
@@ -75,11 +82,11 @@ public:
     void chooseOrderToSeeSubmissions() const;
 
     //functions for "look for jobs"
-    void lookForJobs(const Job** &allJobs, int size);
-    Job** byJobOccupation(const Job** &allJobs, int size, const string &occupation, int &newSize);
-    Job** byJobScope(const Job **&allJobs, int size, const string &name, int &newSize);
-    Job** byJobResident(const Job **&allJobs, int size,const string &resident, int &newSize);
-    Job** byJobExperience(const Job **&allJobs, int size, int experience, int &newSize);
+    vector<JobId> lookForJobs(Job** allJobs, int size);
+    Job** byJobOccupation(Job** allJobs, int size, const string &occupation, int &newSize);
+    Job** byJobScope(Job **allJobs, int size, const string &name, int &newSize);
+    Job** byJobResident(Job **allJobs, int size,const string &resident, int &newSize);
+    Job** byJobExperience(Job **allJobs, int size, int experience, int &newSize);
 
     //functions for "edit profile"
     void editName();

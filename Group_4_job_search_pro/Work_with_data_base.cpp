@@ -512,7 +512,6 @@ vector<JobInfo> getAllJobs(sqlite3* db) {
         job.company_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 7));
         job.contact = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8));
         job.posting_status = sqlite3_column_int(stmt, 9) != 0;
-        job.num_of_submmissions = sqlite3_column_int(stmt, 10);
         job.posting_day = sqlite3_column_int(stmt, 11);
         job.posting_month = sqlite3_column_int(stmt, 12);
         job.posting_year = sqlite3_column_int(stmt, 13);
@@ -598,7 +597,6 @@ vector<JobInfo> getJobsByID(sqlite3* db, long jobID) {
         job.company_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 7));
         job.contact = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8));
         job.posting_status = sqlite3_column_int(stmt, 9) != 0;
-        job.num_of_submmissions = sqlite3_column_int(stmt, 10);
         job.posting_day = sqlite3_column_int(stmt, 11);
         job.posting_month = sqlite3_column_int(stmt, 12);
         job.posting_year = sqlite3_column_int(stmt, 13);
@@ -609,4 +607,176 @@ vector<JobInfo> getJobsByID(sqlite3* db, long jobID) {
     sqlite3_finalize(stmt);
 
     return jobs;
+}
+
+
+////////////////////////////
+void updateCandidateData(sqlite3* db, const CandidateInfo& candidate) {
+    // Prepare the SQL statement
+    string sql = "UPDATE candidate SET "
+                 "candidateName = ?, "
+                 "candidateAge = ?, "
+                 "candidateGender = ?, "
+                 "candidatePhoneNumber = ?, "
+                 "candidateMail = ?, "
+                 "candidateLivingArea = ?, "
+                 "cadidateExperience = ?, "
+                 "candidateSpecialty = ?, "
+                 "candidatePassword = ?, "
+                 "candidateFreeText = ?, "
+                 "resumePath = ? "
+                 "WHERE candidateID = ?";
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) {
+        // Handle error
+        return;
+    }
+
+    // Bind parameters
+    sqlite3_bind_text(stmt, 1, candidate.candidate_name.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 2, candidate.candidate_age);
+    sqlite3_bind_text(stmt, 3, &candidate.candidate_gender, 1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, candidate.candidate_phone_number.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 5, candidate.candidate_email.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 6, candidate.candidate_living_area.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_double(stmt, 7, candidate.candidate_experience);
+    sqlite3_bind_text(stmt, 8, candidate.candidate_specialty.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 9, candidate.password.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 10, candidate.candidate_free_text.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 11, candidate.resumePath.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int64(stmt, 12, candidate.candidate_id);
+
+    // Execute the SQL statement
+    rc = sqlite3_step(stmt);
+    if (rc != SQLITE_DONE) {
+        // Handle error
+    }
+
+    // Finalize the statement
+    sqlite3_finalize(stmt);
+}
+
+
+////////////////////////////
+void updateJobData(sqlite3* db, const JobInfo& job) {
+    // Prepare the SQL statement
+    string sql = "UPDATE job SET "
+                 "location = ?, "
+                 "profession = ?, "
+                 "job_type = ?, "
+                 "experience = ?, "
+                 "name = ?, "
+                 "company_name = ?, "
+                 "contact = ?, "
+                 "posting_status = ?, "
+                 "posting_day = ?, "
+                 "posting_month = ?, "
+                 "posting_year = ? "
+                 "WHERE ID = ?";
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) {
+        // Handle error
+        return;
+    }
+
+    // Bind parameters
+    sqlite3_bind_text(stmt, 1, job.location.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, job.profession.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 3, job.job_type);
+    sqlite3_bind_int(stmt, 4, job.experience);
+    sqlite3_bind_text(stmt, 5, job.name.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 6, job.company_name.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 7, job.contact.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 8, job.posting_status ? 1 : 0);
+    sqlite3_bind_int(stmt, 9, job.posting_day);
+    sqlite3_bind_int(stmt, 10, job.posting_month);
+    sqlite3_bind_int(stmt, 11, job.posting_year);
+    sqlite3_bind_int(stmt, 12, job.jobID);
+
+    // Execute the SQL statement
+    rc = sqlite3_step(stmt);
+    if (rc != SQLITE_DONE) {
+        // Handle error
+    }
+
+    // Finalize the statement
+    sqlite3_finalize(stmt);
+}
+
+
+////////////////////////////
+void updateApplyData(sqlite3* db, const ApplyInfo& apply) {
+    // Prepare the SQL statement
+    string sql = "UPDATE apply SET "
+                 "submissionDay = ?, "
+                 "submissionMonth = ?, "
+                 "submissionYear = ?, "
+                 "submissionStatus = ?, "
+                 "job_name = ?, "
+                 "company_name = ? "
+                 "WHERE applyID = ?";
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) {
+        // Handle error
+        return;
+    }
+
+    // Bind parameters
+    sqlite3_bind_int(stmt, 1, apply.submissionDay);
+    sqlite3_bind_int(stmt, 2, apply.submissionMonth);
+    sqlite3_bind_int(stmt, 3, apply.submissionYear);
+    sqlite3_bind_text(stmt, 4, apply.submissionStatus.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 5, apply.jobName.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 6, apply.companyName.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 7, apply.applyID);
+
+    // Execute the SQL statement
+    rc = sqlite3_step(stmt);
+    if (rc != SQLITE_DONE) {
+        // Handle error
+    }
+
+    // Finalize the statement
+    sqlite3_finalize(stmt);
+}
+
+
+////////////////////////////
+void insertCandidateData(sqlite3* db, const CandidateInfo& candidate) {
+    // Prepare the SQL statement
+    string sql = "INSERT INTO candidate (candidateName, candidateAge, candidateGender, candidatePhoneNumber, "
+                 "candidateMail, candidateLivingArea, cadidateExperience, candidateSpecialty, candidatePassword, "
+                 "candidateFreeText, resumePath) "
+                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) {
+        // Handle error
+        return;
+    }
+
+    // Bind parameters
+    sqlite3_bind_text(stmt, 1, candidate.candidate_name.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 2, candidate.candidate_age);
+    sqlite3_bind_text(stmt, 3, &candidate.candidate_gender, 1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, candidate.candidate_phone_number.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 5, candidate.candidate_email.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 6, candidate.candidate_living_area.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_double(stmt, 7, candidate.candidate_experience);
+    sqlite3_bind_text(stmt, 8, candidate.candidate_specialty.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 9, candidate.password.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 10, candidate.candidate_free_text.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 11, candidate.resumePath.c_str(), -1, SQLITE_STATIC);
+
+    // Execute the SQL statement
+    rc = sqlite3_step(stmt);
+    if (rc != SQLITE_DONE) {
+        // Handle error
+    }
+
+    // Finalize the statement
+    sqlite3_finalize(stmt);
 }

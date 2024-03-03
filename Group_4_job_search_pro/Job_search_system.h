@@ -22,7 +22,7 @@ using namespace std;
 
 class Job_search_system {
 private:
-    int num_of_candidates, num_of_employers, num_of_jobs, num_of_submissions;
+    int num_of_candidates, num_of_employers, num_of_jobs, num_of_submissions, num_of_all_submissions;
     Candidate * current_candidate;
     Employer * current_employer;
     Employer ** employers_list;
@@ -33,15 +33,16 @@ public:
     Job_search_system();/////V
     ~Job_search_system();
     void employer_candidate_menu();/////V
-    void candidate_login_registration_menu();////// TODO: Add a function that will update the values in the database
+    void candidate_login_registration_menu();//////
     void employer_login_registration_menu();/////V
-    bool candidate_login();/////TODO: Fix jobs_list initialization with fixed job class constructor
+    bool candidate_login();/////
     bool employer_login();
-    bool candidate_registration(); ///////TODO: call a function that adds a candidate to the database
+    bool candidate_registration(); ///////
     bool employer_registration();
     void candidate_main_menu();
-    void employer_main_menu();
-//    Job ** Initializing_jobs(Employer * new_employer);
+    void employer_main_menu();///////TODO: call a function that adds a diteals to the database
+    void updateForCandidate_login();
+//    Implementations are missing for the menus that manipulate the employer class
 };
 
 

@@ -1,9 +1,9 @@
-//
-// Created by LENOVO on 29/02/2024.
-//
-
 #include "Date.h"
-
+#include <ctime>
+#include <iostream>
+using namespace std;
+//
+// Created by ariel on 09/07/2023.
 
 //default constructor:
 Date::Date(){
@@ -39,17 +39,17 @@ Date::Date(int inputDay, int inputMonth, int inputYear) {
 }
 
 //get day:
-int Date::getDay() {
+int Date::getDay() const{
     return day;
 }
 
 //get month:
-int Date::getMonth() {
+int Date::getMonth() const {
     return month;
 }
 
 //get year:
-int Date::getYear() {
+int Date::getYear() const {
     return year;
 }
 
@@ -142,6 +142,7 @@ bool Date::isCorrectDay(int inputDay) {
     return false;
 }
 
+
 // This function redefines a day
 void Date::setDay(int inputDay) {
     if(isCorrectDay(inputDay)) {
@@ -174,7 +175,7 @@ void Date::setYear(int inputYear) {
 
 
 //This function prints the date in the form dd/mm/yyyy
-void Date::printDate() const{
+void Date::printDate() const {
     if(day>=1 && day<=9){
         cout<<"0"<<day<<"/";
     }
@@ -320,11 +321,6 @@ Date::~Date(){
 };
 #include "Date.h"
 
-//operator ==
-bool Date::operator==(const Date& other) const {
-    return (day == other.day) && (month == other.month) && (year == other.year);
-}
-
 //operator <
 bool Date::operator<(const Date &other) const {
     // Compare years
@@ -364,4 +360,15 @@ bool Date::operator>(const Date& other) const {
 
     // If months are equal, compare days
     return day > other.day;
+}
+
+
+//operator =
+Date& Date::operator=(const Date& other) {
+    if (this != &other) {
+        day = other.day;
+        month = other.month;
+        year = other.year;
+    }
+    return *this;
 }
