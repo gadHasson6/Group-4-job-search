@@ -7,15 +7,12 @@
 using namespace std;
 #include "iostream"
 # include "User.h"
-//# include "Apply.h"
+# include "Apply.h"
 #include "Job.h"
 #include <string>
 #include <limits>
 #include <filesystem>
 #include <algorithm>  // Include for swap
-
-class Apply;
-//class Job;
 
 class Candidate : public User {
 private:
@@ -77,10 +74,11 @@ public:
     void chooseOrderToSeeSubmissions() const;
 
     //functions for "look for jobs"
-    void lookForJobs(Job** allJobs, int size);
-    Job** byJobScope(Job **allJobs, int size, const string &name, int &newSize) const;
-    Job** byJobResident(Job **allJobs, int size,const string &resident, int &newSize) const;
-    Job** byJobExperience(Job **allJobs, int size, int experience, int &newSize) const;
+    void lookForJobs(const Job** &allJobs, int size);
+    Job** byJobOccupation(const Job** &allJobs, int size, const string &occupation, int &newSize);
+    Job** byJobScope(const Job **&allJobs, int size, const string &name, int &newSize);
+    Job** byJobResident(const Job **&allJobs, int size,const string &resident, int &newSize);
+    Job** byJobExperience(const Job **&allJobs, int size, int experience, int &newSize);
 
     //functions for "edit profile"
     void editName();
@@ -89,8 +87,12 @@ public:
     void editFeedback();
     void editResumePath();
     void editPersonalInformation();
+    void editEmail();
+    void editPhoneNumber();
+    void editExperience();
+    void editResidence();
+    void editSpecialty();
     void editProfile();
-
 
 };
 

@@ -45,6 +45,8 @@ public:
     const bool get_status () const {return m_posting_status; }
     bool isExactly10Digits(const string& );
     bool Checkdigit(const string& );
+
+    void Add_Apply(Apply* apply);
 private:
     bool m_posting_status;
     int m_job_id;

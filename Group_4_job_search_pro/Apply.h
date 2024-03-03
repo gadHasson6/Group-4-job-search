@@ -7,10 +7,13 @@
 
 // Include necessary headers
 #include "Date.h"
-#include "Job.h"
-#include "Candidate.h"
+//#include "Job.h"
+//#include "Candidate.h"
 #include <string>
 #include <iostream>
+
+class Job;
+class Candidate;
 
 class Apply {
 private:

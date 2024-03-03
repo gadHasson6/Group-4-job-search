@@ -258,6 +258,44 @@ bool Job_search_system::candidate_registration() {
             cout << "Please try again\n";
         }
     }
+    string newPersonalInformation = "";
+    flag = true;
+    while (flag) {
+        cout << "Enter new personal information (no longer than 50 chars):  " << endl;
+        getline(cin, newResumePath); // read the entire line
+        flag = !(current_candidate->setPersonalInformation(newPersonalInformation));
+
+        if (flag) {
+            // Clear the input buffer before taking a new choice
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Please try again\n";
+        }
+    }
+    flag = true;
+    while (flag){
+        flag = current_candidate->setResidence();
+    }
+    char gender = 'm';
+    flag = true;
+    while (flag) {
+        cout << "Please enter your gender: M if you are a man or W if you are a woman: " << endl;
+        cin >> gender;
+        if (cin.fail() || to_string(newId).length() > 1) {
+            // Invalid input (not a char)
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+
+            cout << "Invalid input. try again\n" ;
+
+        } else {
+            flag = !(current_candidate->setGender(gender));
+            if (!flag){
+                cout << "ID updated successfully!" << endl;
+            } else{
+                cout << "Invalid input. try again\n" ;
+            }
+        }
+    }
 }
 
 //Please enter the path of your resume file

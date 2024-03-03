@@ -109,18 +109,18 @@ bool Job::set_occupation(const string& occupation) {
         return false;
 }
 bool Job::set_job_name(const string& job_name){
-    if(Checkdigit(occupation))
+    if(Checkdigit(job_name))
     {
-        m_occupation=occupation;
+        m_occupation=job_name;
         return true;
     }
     else
         return false;
 }
 bool Job::set_name(const string& name) {
-    if(Checkdigit(occupation))
+    if(Checkdigit(name))
     {
-        m_occupation=occupation;
+        m_company_name=name;
         return true;
     }
     else
