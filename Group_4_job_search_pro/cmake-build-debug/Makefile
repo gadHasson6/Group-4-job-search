@@ -176,6 +176,30 @@ Candidate.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.s
 .PHONY : Candidate.cpp.s
 
+Date.obj: Date.cpp.obj
+.PHONY : Date.obj
+
+# target to build an object file
+Date.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Date.cpp.obj
+.PHONY : Date.cpp.obj
+
+Date.i: Date.cpp.i
+.PHONY : Date.i
+
+# target to preprocess a source file
+Date.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Date.cpp.i
+.PHONY : Date.cpp.i
+
+Date.s: Date.cpp.s
+.PHONY : Date.s
+
+# target to generate assembly for a file
+Date.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Group_4_job_search_pro.dir\build.make CMakeFiles/Group_4_job_search_pro.dir/Date.cpp.s
+.PHONY : Date.cpp.s
+
 Employer.obj: Employer.cpp.obj
 .PHONY : Employer.obj
 
@@ -335,6 +359,9 @@ help:
 	@echo ... Candidate.obj
 	@echo ... Candidate.i
 	@echo ... Candidate.s
+	@echo ... Date.obj
+	@echo ... Date.i
+	@echo ... Date.s
 	@echo ... Employer.obj
 	@echo ... Employer.i
 	@echo ... Employer.s

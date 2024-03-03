@@ -18,4 +18,4 @@ add_executable(Group_4_job_search_pro main.cpp
         Candidate.h
         Work_with_data_base.cpp
         Work_with_data_base.h
-)
+        Date.cpp Date.h)

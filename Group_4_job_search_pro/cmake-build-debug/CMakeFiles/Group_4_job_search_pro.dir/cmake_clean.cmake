@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Group_4_job_search_pro.dir/Apply.cpp.obj.d"
   "CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.obj"
   "CMakeFiles/Group_4_job_search_pro.dir/Candidate.cpp.obj.d"
+  "CMakeFiles/Group_4_job_search_pro.dir/Date.cpp.obj"
+  "CMakeFiles/Group_4_job_search_pro.dir/Date.cpp.obj.d"
   "CMakeFiles/Group_4_job_search_pro.dir/Employer.cpp.obj"
   "CMakeFiles/Group_4_job_search_pro.dir/Employer.cpp.obj.d"
   "CMakeFiles/Group_4_job_search_pro.dir/Job.cpp.obj"

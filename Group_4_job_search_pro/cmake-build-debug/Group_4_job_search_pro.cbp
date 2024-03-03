@@ -94,6 +94,12 @@
 		<Unit filename="C:/Users/User/CLionProjects/Group-4-job-search/Group_4_job_search_pro/Candidate.h">
 			<Option target="Group_4_job_search_pro"/>
 		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/Group-4-job-search/Group_4_job_search_pro/Date.cpp">
+			<Option target="Group_4_job_search_pro"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/Group-4-job-search/Group_4_job_search_pro/Date.h">
+			<Option target="Group_4_job_search_pro"/>
+		</Unit>
 		<Unit filename="C:/Users/User/CLionProjects/Group-4-job-search/Group_4_job_search_pro/Employer.cpp">
 			<Option target="Group_4_job_search_pro"/>
 		</Unit>
