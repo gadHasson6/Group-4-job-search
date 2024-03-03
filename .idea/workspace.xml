@@ -20,14 +20,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91f8e96d-9248-4a74-baae-8e3a6141dac5" name="Changes" comment="update after fixing link problems and circular inclusion #4">
+    <list default="true" id="91f8e96d-9248-4a74-baae-8e3a6141dac5" name="Changes" comment="update after fixing link problems and circular inclusion #5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Apply.h" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Apply.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Candidate.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Candidate.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Candidate.h" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Candidate.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Job.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Job.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Job.h" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Job.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.h" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Work_with_data_base.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Work_with_data_base.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Work_with_data_base.h" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Work_with_data_base.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +118,7 @@
       <workItem from="1709250943467" duration="818000" />
       <workItem from="1709315396770" duration="3685000" />
       <workItem from="1709327112294" duration="14949000" />
-      <workItem from="1709387677307" duration="31540000" />
+      <workItem from="1709387677307" duration="38175000" />
     </task>
     <task id="LOCAL-00001" summary="vbv">
       <option name="closed" value="true" />
@@ -266,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709419182815</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="update after fixing link problems and circular inclusion #5">
+      <option name="closed" value="true" />
+      <created>1709424711087</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1709424711087</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,6 +322,7 @@
     <MESSAGE value="update after fixing link problems and circular inclusion #2" />
     <MESSAGE value="update after fixing link problems and circular inclusion #3" />
     <MESSAGE value="update after fixing link problems and circular inclusion #4" />
-    <option name="LAST_COMMIT_MESSAGE" value="update after fixing link problems and circular inclusion #4" />
+    <MESSAGE value="update after fixing link problems and circular inclusion #5" />
+    <option name="LAST_COMMIT_MESSAGE" value="update after fixing link problems and circular inclusion #5" />
   </component>
 </project>

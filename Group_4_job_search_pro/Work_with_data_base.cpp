@@ -205,7 +205,7 @@ int countRowsByCreatorID(sqlite3* db, int idToSearch) {
 
 
 ////////////////////////////
-int countRowsByApplyingID(sqlite3* db, int idToSearch) {
+int countRowsByApplyingID(sqlite3* db, long idToSearch) {
     int rowCount = 0;
     sqlite3_stmt* stmt;
 
@@ -407,4 +407,41 @@ vector<EmployerId> getEmployerId(sqlite3* db) {
     sqlite3_finalize(stmt);
 
     return employer_ids;
+}
+
+
+////////////////////////////
+CandidateInfo getCandidateByID(sqlite3* db, long candidateID) {
+    CandidateInfo candidate;
+
+    // SQL query to retrieve data for a specific candidate ID
+    string sql = "SELECT * FROM candidate WHERE candidateID = " + to_string(candidateID);
+
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+
+    if (rc != SQLITE_OK) {
+        // Handle error (e.g., return empty CandidateInfo struct)
+        return candidate;
+    }
+
+    // Retrieve data for the candidate
+    if (sqlite3_step(stmt) == SQLITE_ROW) {
+        candidate.candidate_id = sqlite3_column_int64(stmt, 0);
+        candidate.candidate_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+        candidate.candidate_age = sqlite3_column_int(stmt, 2);
+        candidate.candidate_gender = *reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+        candidate.candidate_phone_number = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+        candidate.candidate_email = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
+        candidate.candidate_living_area = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6));
+        candidate.candidate_experience = static_cast<float>(sqlite3_column_double(stmt, 7));
+        candidate.candidate_specialty = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8));
+        candidate.password = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 9));
+        candidate.candidate_free_text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 10));
+        candidate.resumePath = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 11));
+    }
+
+    sqlite3_finalize(stmt);
+
+    return candidate;
 }

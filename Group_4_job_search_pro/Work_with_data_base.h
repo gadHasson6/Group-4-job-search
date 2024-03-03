@@ -23,18 +23,18 @@ struct EmployerInfo {
 };
 // Define a structure to hold candidate information
 struct CandidateInfo {
-    long candidate_id;///
-    string candidate_name;///
-    double candidate_age;
-    string candidate_gender;
+    long candidate_id;
+    string candidate_name;
+    int candidate_age;
+    char candidate_gender;
     string candidate_phone_number;
     string candidate_email;
     string candidate_living_area;
-    int candidate_experience;
+    float candidate_experience;
     string candidate_specialty;
-    string password;///
-    string candidate_free_text;///
-    string resumePath;///
+    string password;
+    string candidate_free_text;
+    string resumePath;
 };
 // Define a structure to hold candidate ids
 struct CandidateId {
@@ -68,7 +68,7 @@ int countRowsInJobTable(sqlite3* db);
 int countRowsByCreatorID(sqlite3* db, int idToSearch);
 
 ////////////////////////////Count submissions of a candidate by ID
-int countRowsByApplyingID(sqlite3* db, int idToSearch);
+int countRowsByApplyingID(sqlite3* db, long idToSearch);
 
 ////////////////////////////Counts job application submissions by ID
 int countRowsByJobID(sqlite3* db, int idToSearch);
@@ -76,7 +76,7 @@ int countRowsByJobID(sqlite3* db, int idToSearch);
 ////////////////////////////Function to retrieve employer information from the employer table
 vector<EmployerInfo> getEmployerInfo(sqlite3* db);
 
-////////////////////////////Function to retrieve candidate information from the employer table
+////////////////////////////Function to retrieve candidates information from the candidate table
 vector<CandidateInfo> getCandidateInfo(sqlite3* db);
 
 ////////////////////////////Function to retrieve candidate id from the candidate table
@@ -84,3 +84,6 @@ vector<CandidateId> getCandidateId(sqlite3* db);
 
 ////////////////////////////Function to retrieve employer id from the employer table
 vector<EmployerId> getEmployerId(sqlite3* db);
+
+////////////////////////////Function to retrieve candidate information from the candidate table by ID
+CandidateInfo getCandidateByID(sqlite3* db, long candidateID);

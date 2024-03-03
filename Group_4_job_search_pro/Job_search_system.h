@@ -30,14 +30,14 @@ private:
     Job ** jobs_list;
     Apply ** submissions_list;
 public:
-    Job_search_system();
+    Job_search_system();/////V
     ~Job_search_system();
-    void employer_candidate_menu();
+    void employer_candidate_menu();/////V
     void candidate_login_registration_menu();
     void employer_login_registration_menu();
     bool candidate_login();
     bool employer_login();
-    bool candidate_registration();
+    bool candidate_registration(); ////V
     bool employer_registration();
     void candidate_main_menu();
     void employer_main_menu();

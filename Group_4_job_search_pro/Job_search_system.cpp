@@ -185,6 +185,24 @@ bool Job_search_system::candidate_registration() {
                     cout << "ID already exists in the system, please choose another ID\n";
                     i = size;
                     already_exists = true;
+                    int choice = 0;
+                    while (choice != 1){
+                        cout << "This ID already exists in the system, would you like to continue the registration process?\n"
+                                "1) Yes, I got my ID number wrong.\n"
+                                "2) No, I already have a user.\n";
+                        cin >> choice;
+                        if (cin.fail() || choice < 1 || choice > 2) {
+                            // Invalid input (not a char)
+                            cin.clear(); // Clear the error flag
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                            cout << "Invalid input. try again\n";
+                        }
+                        if (choice == 2){
+                            delete [] current_candidate;
+                            return true;
+                        }
+                    }
+
                 }
             }
             if (!already_exists)
@@ -280,7 +298,7 @@ bool Job_search_system::candidate_registration() {
     while (flag) {
         cout << "Please enter your gender: M if you are a man or W if you are a woman: " << endl;
         cin >> gender;
-        if (cin.fail() || to_string(newId).length() > 1) {
+        if (cin.fail() ) {
             // Invalid input (not a char)
             cin.clear(); // Clear the error flag
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
@@ -290,13 +308,169 @@ bool Job_search_system::candidate_registration() {
         } else {
             flag = !(current_candidate->setGender(gender));
             if (!flag){
-                cout << "ID updated successfully!" << endl;
+                cout << "Gender updated successfully!" << endl;
             } else{
                 cout << "Invalid input. try again\n" ;
             }
         }
     }
+    int Age = 0;
+    flag = true;
+    while (flag) {
+        cout << "Please enter your age (age must be a integer number in range 1-120): " << endl;
+        cin >> Age;
+        if (cin.fail() ) {
+            // Invalid input (not a char)
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+
+            cout << "Invalid input. try again\n" ;
+
+        } else {
+            flag = !(current_candidate->setAge(Age));
+            if (!flag){
+                cout << "Age updated successfully!" << endl;
+            } else{
+                cout << "Invalid input. try again\n" ;
+            }
+        }
+    }
+    float workExperience;
+    flag = true;
+    while (flag) {
+        cout << "Please enter your experience in years (a number in the range 0-100): " << endl;
+        cin >> workExperience;
+        if (cin.fail() || workExperience < 0 || workExperience > 100) {
+            // Invalid input (not a char)
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+
+            cout << "Invalid input. try again\n" ;
+
+        } else {
+            flag = !(current_candidate->setWorkExperience(workExperience));
+            if (!flag){
+                cout << "Experience updated successfully!" << endl;
+            } else{
+                cout << "Invalid input. try again\n" ;
+            }
+        }
+    }
+    string specialty = "";
+    flag = true;
+    while (flag) {
+        cout << "Enter your new Specialty (no longer than 25 characters): " << endl;
+        getline(cin, specialty); // read the entire line
+        flag = !(current_candidate->setSpecialty(specialty));
+
+        if (!flag) {
+            cout << "Specialty Number updated successfully!" << endl;
+            // Clear the input buffer before taking a new choice
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        } else {
+            // Clear the input buffer before taking a new choice
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input please try again\n";
+        }
+    }
+    cout << "A new user has been created!\n"
+            "Welcome and good luck!\n";
+/////////////////////////////////////////TODO: call a function that adds a candidate to the database
+    return true;
 }
+
+
+bool Job_search_system::candidate_login() {
+    const char  * fff = DATA_BASE_PATH;
+    sqlite3 * db = openSQLiteFile(fff);
+    vector<CandidateId> c_id_list = getCandidateId(db);
+    int size = countRowsInCandidatesTable(db);
+    closeSQLiteFile(db);
+    bool flag = true;
+    long newId = 0;
+    while (flag) {
+        cout << "Enter your id (no longer than 9 numbers): " << endl;
+        cin >> newId;
+        if (cin.fail() || to_string(newId).length() > 9) {
+            // Invalid input (not an integer or longer than 9)
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+
+            cout << "Invalid input. try again\n" ;
+
+        } else {
+            for (int i = 0; i < size; ++i) {
+                if (newId == c_id_list[i].candidate_id) {
+                    i = size;
+                    flag = false;
+                }
+            }
+        }
+        if (flag){
+            int choice = 0;
+            while (choice != 1){
+                cout << "The ID number you registered does not appear in the system, would you like to continue the registration process?\n"
+                        "1) Yes, I must have got my ID number wrong.\n"
+                        "2) No, I want to register.\n";
+                cin >> choice;
+                if (cin.fail() || choice < 1 || choice > 2) {
+                    // Invalid input (not a char)
+                    cin.clear(); // Clear the error flag
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                    cout << "Invalid input. try again\n";
+                }
+                if (choice == 2){
+                    return true;
+                }
+            }
+        }
+    }
+    sqlite3 * db1 = openSQLiteFile(fff);
+    CandidateInfo c_candidate = getCandidateByID(db1,newId);
+    closeSQLiteFile(db1);
+    string password = " ";
+    flag = true;
+    while (flag){
+        cout << "Please enter your password:\n";
+        getline(cin, password);
+        if (password == c_candidate.password){
+            flag = false;
+            current_candidate = new Candidate(c_candidate.candidate_name, c_candidate.candidate_id,
+                                              c_candidate.candidate_email, c_candidate.password, c_candidate.candidate_phone_number,
+                                              0, "null", c_candidate.resumePath, c_candidate.candidate_free_text,
+                                              c_candidate.candidate_age, c_candidate.candidate_gender, c_candidate.candidate_experience,
+                                              c_candidate.candidate_specialty);
+        } else{
+            int choice = 0;
+            while (choice != 1){
+                cout << "Incorrect password, would you like to continue the login process?\n"
+                        "1) Yes, I must have been wrong.\n"
+                        "2) No, exit the login page.\n";
+                cin >> choice;
+                if (cin.fail() || choice < 1 || choice > 2) {
+                    // Invalid input (not a char)
+                    cin.clear(); // Clear the error flag
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                    cout << "Invalid input. try again\n";
+                }
+                if (choice == 2){
+                    return true;
+                }
+            }
+        }
+    }
+    sqlite3 * db2 = openSQLiteFile(fff);
+    int appliedJobSize = countRowsByApplyingID(db2,newId);
+    Apply** appliedJob = new Apply * [appliedJobSize];
+    for (int i = 0; i < appliedJobSize; ++i) {
+        appliedJob[i] = new Apply()
+    }
+    closeSQLiteFile(db2);
+
+}
+
+
+
 
 //Please enter the path of your resume file
 //sqlite3 * db = openSQLiteFile(DATA_BASE_PATH);
