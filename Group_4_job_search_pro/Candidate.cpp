@@ -417,7 +417,8 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
     cout << "2. By Resident" << endl;
     cout << "3. By Experience" << endl;
     cout << "4. By occupation" << endl;
-    cout << "5. Quit" << endl;
+    cout << "5. No filter" << endl;
+    cout << "6. Quit" << endl;
     cin >> choice;
 
     if (cin.fail() || choice < 1 || choice > 5) {
@@ -427,7 +428,7 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
         continue; // Go back to the beginning of the loop
     }
 
-    if (choice == 5) {
+    if (choice == 6) {
         cout << "Exiting the job search." << endl;
         break; // Exit the loop if the user chooses to quit
     }
@@ -596,6 +597,12 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                     delete[] newArr;
                 }
                 break;
+            }
+            case 5: {
+                for(int i=0; i<size; i++){
+                    allJobs[i]->print_job();
+                    cout<<endl;
+                }
             }
 
         }
