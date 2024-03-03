@@ -1,10 +1,10 @@
 #include <iostream>
 #include "sqlite3.h"
-#include "Work_with_data_base.h"
+//#include "Work_with_data_base.h"
+#include "Job_search_system.h"
 using namespace std;
 
 
-#define DATA_BASE_PATH "C:/Users/LENOVO/CLionProjects/search_job.db"
 int main() {
     cout << true << endl;
     cout << false << endl;

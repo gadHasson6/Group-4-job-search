@@ -33,15 +33,15 @@ public:
     Job_search_system();/////V
     ~Job_search_system();
     void employer_candidate_menu();/////V
-    void candidate_login_registration_menu();
-    void employer_login_registration_menu();
-    bool candidate_login();
+    void candidate_login_registration_menu();////// TODO: Add a function that will update the values in the database
+    void employer_login_registration_menu();/////V
+    bool candidate_login();/////TODO: Fix jobs_list initialization with fixed job class constructor
     bool employer_login();
-    bool candidate_registration(); ////V
+    bool candidate_registration(); ///////TODO: call a function that adds a candidate to the database
     bool employer_registration();
     void candidate_main_menu();
     void employer_main_menu();
-    Job ** Initializing_jobs(Employer * new_employer);
+//    Job ** Initializing_jobs(Employer * new_employer);
 };
 
 

@@ -50,6 +50,7 @@ public:
     string getSpecialty() const;
     int getAppliedJobSize() const;
 
+
     //set
     bool setResumeFilePath(const string& newResumePath);
     bool setPersonalInformation(const string &newPersonalInformation);

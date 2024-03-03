@@ -417,7 +417,8 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
         cout << "2. By Resident" << endl;
         cout << "3. By Experience" << endl;
         cout << "4. By occupation" << endl;
-        cout << "5. Quit" << endl;
+        cout << "5. No filter" << endl;
+        cout << "6. Quit" << endl;
         cin >> choice;
 
         if (cin.fail() || choice < 1 || choice > 5) {
@@ -427,7 +428,7 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
             continue; // Go back to the beginning of the loop
         }
 
-        if (choice == 5) {
+        if (choice == 6) {
             cout << "Exiting the job search." << endl;
             break; // Exit the loop if the user chooses to quit
         }
@@ -597,6 +598,12 @@ void Candidate::lookForJobs(const Job **&allJobs, int size) {
                 }
                 break;
             }
+            case 5: {
+                for(int i=0; i<size; i++){
+                    allJobs[i]->print_job();
+                    cout<<endl;
+                }
+            }
 
         }
     }
@@ -732,12 +739,12 @@ void Candidate::chooseOrderToSeeSubmissions() const {
 
             if (choice == 1) {
                 for (int i = 0; i < appliedJobSize; i++) {
-                    sorted[i]->getJob()->print_job();
+                    sorted[i]->printCandidate();
                     cout << endl;
                 }
             } else { // choice == 2
                 for (int i = appliedJobSize - 1; i >= 0; i--) {
-                    sorted[i]->getJob()->print_job();
+                    sorted[i]->printCandidate();
                     cout << endl;
                 }
             }
@@ -1324,14 +1331,14 @@ float Candidate::calculateSalary() {
 
 
 //view submissions
-void Candidate::viewSubmissions() { //TODO: Print in the form of submission details ("submission number", "job title", "company name", "submission date", "submission status").
+void Candidate::viewSubmissions() {
     if (appliedJobSize == 0) {
         cout << "You have not submitted any applications." << endl;
     } else {
         cout << "Your submitted applications:" << endl;
         for (int i = 0; i < appliedJobSize; ++i) {
             cout << "Submission " << i + 1 << ":" << endl;
-            appliedJobs[i]->getJob()->print_job();
+            appliedJobs[i]->printCandidate();
             cout << "Submission Date: ";
             appliedJobs[i]->getSubmissionDate().printDate();
             cout << "Submission Status: " << appliedJobs[i]->getSubmissionStatus() << endl;

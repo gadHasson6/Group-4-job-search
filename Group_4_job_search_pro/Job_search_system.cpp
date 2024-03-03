@@ -121,6 +121,13 @@ void Job_search_system::candidate_login_registration_menu() {
         switch (choice) {
             case 1: {
                 flag = candidate_login();
+                if (current_candidate){
+                    candidate_main_menu();
+                    // TODO: Add a function that will update the values in the database
+                    delete [] current_candidate;
+                    delete [] jobs_list;
+                    delete [] submissions_list;
+                }
                 break;
             }
             case 2: {
@@ -375,8 +382,8 @@ bool Job_search_system::candidate_registration() {
     }
     cout << "A new user has been created!\n"
             "Welcome and good luck!\n";
-    delete [] current_candidate;
 /////////////////////////////////////////TODO: call a function that adds a candidate to the database
+    delete [] current_candidate;
     return true;
 }
 
@@ -461,19 +468,81 @@ bool Job_search_system::candidate_login() {
         }
     }
     sqlite3 * db2 = openSQLiteFile(fff);
-    int appliedJobSize = countRowsByApplyingID(db2,newId);
-    submissions_list = new Apply * [appliedJobSize];
+    num_of_submissions = countRowsByApplyingID(db2,newId);
+    submissions_list = new Apply * [num_of_submissions];
     vector <ApplyInfo> apply_list = getSubmissionsForApplicant(db2, newId);
-    for (int i = 0; i < appliedJobSize; ++i) {
-        if (apply_list[i].candidateID == current_candidate->getId()){
-            Date t_date (apply_list[i].submissionDay, apply_list[i].submissionMonth, apply_list[i].submissionYear);
-            submissions_list[i] = new Apply(apply_list[i].applyID, apply_list[i].candidateID, apply_list[i].jobID, t_date, apply_list[i].submissionStatus, apply_list[i].jobName, apply_list[i].companyName);
-        }
+    for (int i = 0; i < num_of_submissions; ++i) {
+        Date t_date (apply_list[i].submissionDay, apply_list[i].submissionMonth, apply_list[i].submissionYear);
+        submissions_list[i] = new Apply(apply_list[i].applyID, apply_list[i].candidateID, apply_list[i].jobID, t_date, apply_list[i].submissionStatus, apply_list[i].jobName, apply_list[i].companyName);
+    }
+    num_of_jobs = countRowsInJobTable(db2);
+    vector<JobInfo> job_list = getAllJobs(db2);
+    jobs_list = new Job * [num_of_jobs];
+    for (int i = 0; i < num_of_jobs; ++i) {
+        Date t_date(job_list[i].posting_day, job_list[i].posting_month, job_list[i].posting_year);
+//        jobs_list[i] = new Job(job_list[i].name, job_list[i].jobID, job_list[i].profession, job_list[i].company_name, job_list[i].location, job_list[i].contact, job_list[i].)
+//TODO: Fix jobs_list initialization with fixed job class constructor
     }
     closeSQLiteFile(db2);
-
+    return true;
 }
 
+
+void Job_search_system::candidate_main_menu() {
+    bool flag = true;
+    while (flag){
+        cout << "Please enter the action you want to perform:\n"
+                "1) Look for a job.\n"
+                "2) Get tips for writing a resume.\n"
+                "3) View my submission history.\n"
+                "4) Edit my profile.\n"
+                "5) Salary calculator.\n"
+                "6) Submit feedback on the system.\n"
+                "7) Disconnect.\n";
+        int choice = 0;
+        cin >> choice;
+        if (cin.fail() || choice < 1 || choice > 7) {
+            // Invalid input (not a char)
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            cout << "Invalid input. try again\n";
+        }
+        if (choice == 7){
+            return ;
+        }
+        switch (choice) {
+            case 1: {
+
+                for (int i = 0; i < ; ++i) {
+
+                }
+                current_candidate->lookForJobs(jobs_list, num_of_jobs);
+                break;
+            }
+            case 2: {
+
+                break;
+            }
+            case 3: {
+
+                break;
+            }
+            case 4: {
+
+                break;
+            }
+            case 5: {
+
+                break;
+            }
+            case 6: {
+
+                break;
+            }
+        }
+
+    }
+}
 
 
 
