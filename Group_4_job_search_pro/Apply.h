@@ -16,45 +16,43 @@ class Job;
 class Candidate;
 
 class Apply {
+
 private:
 
-    long candidateID;
-    long jobID;
-//    Job* job;
-//    Candidate* candidate;
+    int numberOfSubmission;
+    int candidateID;
+    int jobID;
     Date submissionDate;
-    long numberOfSubmission;
-    string submissionStatus;// should have 3 options: - 1.. 2.
+    string submissionStatus;
     string jobName;
     string companyName;
 
 public:
- //להוסיף אופציה רביעית שיהיה להשאיר אתז ה בתהליך  פונקציה שמבצעת עריכה לסטטוס -מתודה שמופעלת על אובייקט APPLY אבל היא לא מקבלת סטרינג או מספר ברגע שעשיתי
+
     //constructors:
     Apply(); //Default constructor
-    Apply(long numberOfSubmission, long candidateID, long jobID,Job* job,
-          Candidate* candidate, Date submissionDate, const string& submissionStatus); //Parameter constructor
+    Apply(int numberOfSubmission, int candidateID, int jobID, Date submissionDate,string submissionStatus , string jobName,  string companyName); //Parameter constructor
     Apply(const Apply& other);  //Copy constructor
 
 
     //set functions:
-    void setNumberOfSubmission(long o_numberOfSubmission);
-    void setCandidateID(long o_candidateID);
-    void setJobID(long o_jobID);
-    void setJob(Job* o_job);
-    void setCandidate( Candidate* o_candidate);
+    void setNumberOfSubmission(int o_numberOfSubmission);
+    void setCandidateID(int o_candidateID);
+    void setJobID(int o_jobID);
     void setSubmissionDate(const Date& o_submissionDate);
     void setSubmissionStatus(const string& o_submissionStatus);
+    void setJobName(string o_jobName);
+    void setCompanyName(string o_companyName);
 
 
     //get functions:
-    long getNumberOfSubmission() const;
-    long getCandidateID() const;
-    long getJobID() const;
-    const Job* getJob() const;
-    const Candidate* getCandidate() const;
+    int getNumberOfSubmission() const;
+    int getCandidateID() const;
+    int getJobID() const;
     Date getSubmissionDate() const;
     string getSubmissionStatus() const;
+    string getJobName() const;
+    string getCompanyName() const;
 
     //other functions:
     bool operator==(const Apply& other) const; // == operator

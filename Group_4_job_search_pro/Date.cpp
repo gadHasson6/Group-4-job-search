@@ -320,6 +320,11 @@ Date::~Date(){
 };
 #include "Date.h"
 
+//operator ==
+bool Date::operator==(const Date& other) const {
+    return (day == other.day) && (month == other.month) && (year == other.year);
+}
+
 //operator <
 bool Date::operator<(const Date &other) const {
     // Compare years
