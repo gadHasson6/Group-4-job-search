@@ -10,9 +10,11 @@
 
 
 
+#include <limits>
 #include "Apply.h"
 
 //Default constructor:
+
 Apply::Apply() {
 
     this -> numberOfSubmission = 0;
@@ -47,11 +49,7 @@ Apply::Apply(const Apply& other)
           submissionDate(other.submissionDate),
           submissionStatus(other.submissionStatus),
           jobName(other.jobName),
-          companyName(other.companyName){
-
-}
-
-
+          companyName(other.companyName){}
 
 
 //  == operator :
@@ -134,6 +132,46 @@ string Apply::getCompanyName() const {
 Apply::~Apply() {
 
 }
+
+void Apply::editStatus(Apply &other) {
+
+    cout<<"please choose the status: "<<endl;
+    int choice=0;
+    cout<<"1. not relevant"<<endl;
+    cout<<"2. invited to a job interview"<<endl;
+    cout<<"3. accepted"<<endl;
+    cout<<"4. In progress"<<endl;
+    cin>>choice;
+    if (!cin.fail() && choice >= 1 && choice <= 4){
+        switch (choice) {
+            case 1:{
+                this-> submissionStatus = "not relevant";
+                break;
+            }
+            case 2: {
+                this-> submissionStatus = "invited to a job interview";
+                break;
+            }
+            case 3: {
+                this-> submissionStatus = "accepted";
+                break;
+            }
+            case 4: {
+                this-> submissionStatus = "In progress";
+                break;
+            }
+        }
+    }
+    else {
+        // Clear the error flag
+        cin.clear();
+        // Discard invalid input from the input buffer
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+    }
+}
+
+
+
 
 
 

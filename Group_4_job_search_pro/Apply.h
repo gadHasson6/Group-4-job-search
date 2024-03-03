@@ -56,6 +56,7 @@ public:
 
     //other functions:
     bool operator==(const Apply& other) const; // == operator
+    void editStatus(Apply& other);
 
     // Print functions:
     void printEmployer() const;
