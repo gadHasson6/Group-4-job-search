@@ -22,7 +22,7 @@ Apply::Apply() {
     this -> job = nullptr;
     this -> candidate = nullptr;
     this->submissionDate = Date();
-    this -> submissionStatus = "no submissions found";
+    this -> submissionStatus = "In progress";
 
 }
 

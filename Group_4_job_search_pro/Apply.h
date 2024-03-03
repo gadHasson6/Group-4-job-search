@@ -18,16 +18,18 @@ class Candidate;
 class Apply {
 private:
 
-    long numberOfSubmission;
     long candidateID;
     long jobID;
-    Job* job;
-    Candidate* candidate;
+//    Job* job;
+//    Candidate* candidate;
     Date submissionDate;
-    string submissionStatus;
+    long numberOfSubmission;
+    string submissionStatus;// should have 3 options: - 1.. 2.
+    string jobName;
+    string companyName;
 
 public:
-
+ //להוסיף אופציה רביעית שיהיה להשאיר אתז ה בתהליך  פונקציה שמבצעת עריכה לסטטוס -מתודה שמופעלת על אובייקט APPLY אבל היא לא מקבלת סטרינג או מספר ברגע שעשיתי
     //constructors:
     Apply(); //Default constructor
     Apply(long numberOfSubmission, long candidateID, long jobID,Job* job,

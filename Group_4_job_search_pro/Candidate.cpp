@@ -192,6 +192,7 @@ bool Candidate::setResidence() {
                 this->residence="Southern District";
                 break;
             }
+
         }
         return true;
     }
