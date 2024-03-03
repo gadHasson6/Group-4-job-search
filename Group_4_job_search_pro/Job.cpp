@@ -41,6 +41,7 @@ void Job::print_job() const{
     cout << "Requirements: " << m_requirements << endl;
     cout << m_experience_needed << " of experience needed!" << endl;
 }
+
 void Job::set_applies(Apply** appliesArray, int size) {
     // Release previously allocated memory
     if (m_Applies != nullptr) {
@@ -58,7 +59,7 @@ void Job::set_applies(Apply** appliesArray, int size) {
     }
 }
 
-Job::~Job(){
+Job::~Job() {
     if (m_Applies != nullptr) {
         for (int i = 0; i < m_applies_size; ++i) {
             delete m_Applies[i];
@@ -85,18 +86,17 @@ void Job::Add_Apply(Apply* apply) {
 
     cout << "Apply added successfully" << endl;
 }
-bool Job::set_status(const bool status){
-    if(status == 1 || status == 0)
-    {
-        m_posting_status=status;
+
+bool Job::set_status(const bool status) {
+    if (status == 1 || status == 0) {
+        m_posting_status = status;
         return true;
-    }
-    else
-    {
+    } else {
         cout << "Status can be only active or inactive " << endl;
         return false;
     }
 }
+
 bool Job::set_occupation(const string& occupation) {
     if(Checkdigit(occupation))
     {
@@ -106,24 +106,24 @@ bool Job::set_occupation(const string& occupation) {
     else
         return false;
 }
-bool Job::set_job_name(const string& job_name){
-    if(Checkdigit(occupation))
-    {
-        m_occupation=occupation;
+bool Job::set_job_name(const string& job_name) {
+    if (Checkdigit(job_name)) {
+        m_job_name = job_name;
         return true;
-    }
-    else
+    } else {
         return false;
+    }
 }
-bool Job::set_name(const string& name) {
-    if(Checkdigit(occupation))
-    {
-        m_occupation=occupation;
+
+bool Job::set_company_name(const string& company_name) {
+    if (Checkdigit(company_name)) {
+        m_company_name = company_name;
         return true;
-    }
-    else
+    } else {
         return false;
+    }
 }
+
 bool Job::set_location() {
     cout<<"please choose your residence: "<<endl;
     int choice=0;
@@ -172,19 +172,22 @@ bool Job::set_location() {
     }
 }
 bool Job::set_number(const string& number) {
-    if(isExactly10Digits(number)){
+    if (isExactly10Digits(number)) {
         m_phone_number = number;
         return true;
-    }
-    else
+    } else {
         cout << "Invalid phone number" << endl;
+        return false;
+    }
 }
+
 bool Job::set_requirements(const string& requirements) {
     m_requirements = requirements;
+    return true;
 }
 
 bool Job::set_scope(const Job_scope& scope) {
-    if(scope==1 || scope == 0)
+    if(scope== full_time || scope == part_time)
     {
         m_scope = scope;
         return true;
@@ -192,23 +195,25 @@ bool Job::set_scope(const Job_scope& scope) {
     else
         cout << "Invalid input" << endl;
 }
+
 bool Job::set_experience() {
-    int number;
-    cin >> number;
+    cout << "Please enter new experience: ";
+    int experience;
+    cin >> experience;
     if (cin.fail()) {
-        cout << "Invalid input. Please enter an integer." << std::endl;
-        cin.clear(); // Clear the fail state flag
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+        cout << "Invalid input. Please enter an integer." << endl;
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return false;
     } else {
-        m_experience_needed=experience;
+        m_experience_needed = experience;
         return true;
     }
 }
 
-bool Job::isExactly10Digits(const std::string& str) {
+bool Job::isExactly10Digits(const string& number) {
     int digitCount = 0;
-    for (char ch : str) {
+    for (char ch : number) {
         if (isdigit(ch)) {
             digitCount++;
         } else {
@@ -220,10 +225,11 @@ bool Job::isExactly10Digits(const std::string& str) {
     return (digitCount == 10);
 }
 
-bool Job::Checkdigit(const string& str){
-    for (char ch : occupation) {
+
+bool Job::Checkdigit(const string& input) {
+    for (char ch : input) {
         if (isdigit(ch)) {
-            cout << "Only letters are allowed " << endl;
+            cout << "Only letters are allowed." << endl;
             return false;
         }
     }
