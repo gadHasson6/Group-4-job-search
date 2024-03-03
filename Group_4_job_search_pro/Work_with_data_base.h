@@ -36,6 +36,35 @@ struct CandidateInfo {
     string candidate_free_text;
     string resumePath;
 };
+// Define a structure to hold Apply information
+struct ApplyInfo {
+    long candidateID;
+    int jobID;
+    int submissionDay;
+    int submissionMonth;
+    int submissionYear;
+    int applyID;
+    string submissionStatus;
+    string jobName;
+    string companyName;
+};
+// Define a structure to hold Job information
+struct JobInfo {
+    int jobID;
+    long employerID;
+    string location;
+    string profession;
+    int job_type;
+    int experience;
+    string name;
+    string company_name ;
+    string contact;
+    bool posting_status;
+    int num_of_submmissions;
+    int posting_day;
+    int posting_month;
+    int posting_year;
+};
 // Define a structure to hold candidate ids
 struct CandidateId {
     long candidate_id;///
@@ -87,3 +116,15 @@ vector<EmployerId> getEmployerId(sqlite3* db);
 
 ////////////////////////////Function to retrieve candidate information from the candidate table by ID
 CandidateInfo getCandidateByID(sqlite3* db, long candidateID);
+
+////////////////////////////Function to retrieve apply list information from the apply table
+vector<ApplyInfo> getAllApplies(sqlite3* db);
+
+////////////////////////////Function to retrieve jobs list information from the job table
+vector<JobInfo> getAllJobs(sqlite3* db);
+
+////////////////////////////Function to retrieve apply list information by candidateID from the apply table
+vector<ApplyInfo> getSubmissionsForApplicant(sqlite3* db, long applicantID);
+
+////////////////////////////Function to retrieve jobs list information by jobID from the job table
+vector<JobInfo> getJobsByID(sqlite3* db, long jobID);

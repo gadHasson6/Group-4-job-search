@@ -445,3 +445,168 @@ CandidateInfo getCandidateByID(sqlite3* db, long candidateID) {
 
     return candidate;
 }
+
+
+////////////////////////////
+vector<ApplyInfo> getAllApplies(sqlite3* db) {
+    vector<ApplyInfo> applies;
+
+    // SQL query to retrieve data for all apply objects
+    string sql = "SELECT * FROM apply";
+
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+
+    if (rc != SQLITE_OK) {
+        // Handle error (e.g., return empty vector)
+        return applies;
+    }
+
+    // Retrieve data for all apply objects
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        ApplyInfo apply;
+        apply.candidateID = sqlite3_column_int64(stmt, 1);
+        apply.jobID = sqlite3_column_int(stmt, 2);
+        apply.submissionDay = sqlite3_column_int(stmt, 5);
+        apply.submissionMonth = sqlite3_column_int(stmt, 6);
+        apply.submissionYear = sqlite3_column_int(stmt, 7);
+        apply.applyID = sqlite3_column_int(stmt, 0);
+        apply.submissionStatus = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8));
+        apply.jobName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+        apply.companyName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+
+        applies.push_back(apply);
+    }
+
+    sqlite3_finalize(stmt);
+
+    return applies;
+}
+
+
+////////////////////////////
+vector<JobInfo> getAllJobs(sqlite3* db) {
+    vector<JobInfo> jobs;
+
+    // SQL query to retrieve data for all job objects
+    string sql = "SELECT * FROM job";
+
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+
+    if (rc != SQLITE_OK) {
+        // Handle error (e.g., return empty vector)
+        return jobs;
+    }
+
+    // Retrieve data for all job objects
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        JobInfo job;
+        job.jobID = sqlite3_column_int(stmt, 0);
+        job.employerID = sqlite3_column_int64(stmt, 1);
+        job.location = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+        job.profession = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+        job.job_type = sqlite3_column_int(stmt, 4);
+        job.experience = sqlite3_column_int(stmt, 5);
+        job.name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6));
+        job.company_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 7));
+        job.contact = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8));
+        job.posting_status = sqlite3_column_int(stmt, 9) != 0;
+        job.num_of_submmissions = sqlite3_column_int(stmt, 10);
+        job.posting_day = sqlite3_column_int(stmt, 11);
+        job.posting_month = sqlite3_column_int(stmt, 12);
+        job.posting_year = sqlite3_column_int(stmt, 13);
+
+        jobs.push_back(job);
+    }
+
+    sqlite3_finalize(stmt);
+
+    return jobs;
+}
+
+
+////////////////////////////
+vector<ApplyInfo> getSubmissionsForApplicant(sqlite3* db, long applicantID) {
+    vector<ApplyInfo> submissions;
+
+    // SQL query to retrieve data for submissions of a specific applicant
+    string sql = "SELECT * FROM apply WHERE applyingID = ?";
+
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+
+    if (rc != SQLITE_OK) {
+        // Handle error (e.g., return empty vector)
+        return submissions;
+    }
+
+    // Bind the applicantID parameter to the SQL statement
+    sqlite3_bind_int64(stmt, 1, applicantID);
+
+    // Retrieve data for submissions of the specified applicant
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        ApplyInfo submission;
+        submission.candidateID = sqlite3_column_int64(stmt, 1);
+        submission.jobID = sqlite3_column_int(stmt, 2);
+        submission.submissionDay = sqlite3_column_int(stmt, 5);
+        submission.submissionMonth = sqlite3_column_int(stmt, 6);
+        submission.submissionYear = sqlite3_column_int(stmt, 7);
+        submission.applyID = sqlite3_column_int(stmt, 0);
+        submission.submissionStatus = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8));
+        submission.jobName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+        submission.companyName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+
+        submissions.push_back(submission);
+    }
+
+    sqlite3_finalize(stmt);
+
+    return submissions;
+}
+
+
+
+////////////////////////////
+vector<JobInfo> getJobsByID(sqlite3* db, long jobID) {
+    vector<JobInfo> jobs;
+
+    // SQL query to retrieve data for jobs with a specific ID
+    string sql = "SELECT * FROM job WHERE ID = ?";
+
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+
+    if (rc != SQLITE_OK) {
+        // Handle error (e.g., return empty vector)
+        return jobs;
+    }
+
+    // Bind the jobID parameter to the SQL statement
+    sqlite3_bind_int64(stmt, 1, jobID);
+
+    // Retrieve data for jobs with the specified ID
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        JobInfo job;
+        job.jobID = sqlite3_column_int(stmt, 0);
+        job.employerID = sqlite3_column_int64(stmt, 1);
+        job.location = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+        job.profession = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+        job.job_type = sqlite3_column_int(stmt, 4);
+        job.experience = sqlite3_column_int(stmt, 5);
+        job.name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6));
+        job.company_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 7));
+        job.contact = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8));
+        job.posting_status = sqlite3_column_int(stmt, 9) != 0;
+        job.num_of_submmissions = sqlite3_column_int(stmt, 10);
+        job.posting_day = sqlite3_column_int(stmt, 11);
+        job.posting_month = sqlite3_column_int(stmt, 12);
+        job.posting_year = sqlite3_column_int(stmt, 13);
+
+        jobs.push_back(job);
+    }
+
+    sqlite3_finalize(stmt);
+
+    return jobs;
+}

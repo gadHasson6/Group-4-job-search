@@ -1324,7 +1324,7 @@ float Candidate::calculateSalary() {
 
 
 //view submissions
-void Candidate::viewSubmissions() {
+void Candidate::viewSubmissions() { //TODO: Print in the form of submission details ("submission number", "job title", "company name", "submission date", "submission status").
     if (appliedJobSize == 0) {
         cout << "You have not submitted any applications." << endl;
     } else {

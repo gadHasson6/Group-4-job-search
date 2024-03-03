@@ -375,6 +375,7 @@ bool Job_search_system::candidate_registration() {
     }
     cout << "A new user has been created!\n"
             "Welcome and good luck!\n";
+    delete [] current_candidate;
 /////////////////////////////////////////TODO: call a function that adds a candidate to the database
     return true;
 }
@@ -461,9 +462,13 @@ bool Job_search_system::candidate_login() {
     }
     sqlite3 * db2 = openSQLiteFile(fff);
     int appliedJobSize = countRowsByApplyingID(db2,newId);
-    Apply** appliedJob = new Apply * [appliedJobSize];
+    submissions_list = new Apply * [appliedJobSize];
+    vector <ApplyInfo> apply_list = getSubmissionsForApplicant(db2, newId);
     for (int i = 0; i < appliedJobSize; ++i) {
-        appliedJob[i] = new Apply()
+        if (apply_list[i].candidateID == current_candidate->getId()){
+            Date t_date (apply_list[i].submissionDay, apply_list[i].submissionMonth, apply_list[i].submissionYear);
+            submissions_list[i] = new Apply(apply_list[i].applyID, apply_list[i].candidateID, apply_list[i].jobID, t_date, apply_list[i].submissionStatus, apply_list[i].jobName, apply_list[i].companyName);
+        }
     }
     closeSQLiteFile(db2);
 

@@ -19,10 +19,10 @@ Apply::Apply() {
     this -> numberOfSubmission = 0;
     this -> candidateID = 0;
     this -> jobID = 0;
-    this -> job = nullptr;
-    this -> candidate = nullptr;
+//    this -> job = nullptr;
+//    this -> candidate = nullptr;
     this->submissionDate = Date();
-    this -> submissionStatus = "no submissions found";
+    this -> submissionStatus = "In progress";
 
 }
 
@@ -30,14 +30,13 @@ Apply::Apply() {
 //Parameter constructor:
 //******************************* note: check is missing parameters for the submissionDate.Date() ******///
 
-Apply::Apply(long numberOfSubmission, long candidateID, long jobID,Job* job,
-             Candidate* candidate, Date submissionDate, const string& submissionStatus) {
+Apply::Apply(int numberOfSubmission, long candidateID, int jobID, Date submissionDate, const string& submissionStatus) {
 
     this -> numberOfSubmission = numberOfSubmission;
     this -> candidateID = candidateID;
     this -> jobID = jobID;
-    this -> job = job;
-    this -> candidate = candidate;
+//    this -> job = job;
+//    this -> candidate = candidate;
     this -> submissionDate = Date(submissionDate.getDay(),submissionDate.getMonth(), submissionDate.getYear());
     this -> submissionStatus = submissionStatus;
 
@@ -50,8 +49,8 @@ Apply::Apply(const Apply& other)
         : numberOfSubmission(other.numberOfSubmission),
           candidateID(other.candidateID),
           jobID(other.jobID),
-          job(nullptr),
-          candidate(nullptr),
+//          job(nullptr),
+//          candidate(nullptr),
           submissionDate(other.submissionDate),
           submissionStatus(other.submissionStatus) {
 
@@ -116,11 +115,11 @@ void Apply::printCandidate() const {
 
 
 //SET FUNCTIONS:
-void Apply::setNumberOfSubmission(long o_numberOfSubmission) {
+void Apply::setNumberOfSubmission(int o_numberOfSubmission) {
     this ->  numberOfSubmission = o_numberOfSubmission;}
 void Apply::setCandidateID(long o_candidateID) {
     this ->  candidateID = o_candidateID;}
-void Apply::setJobID(long o_jobID) {
+void Apply::setJobID(int o_jobID) {
     this ->  jobID = o_jobID;}
 void Apply::setJob(Job* o_job) {
     this->job = o_job;}
@@ -135,11 +134,11 @@ void Apply::setSubmissionStatus(const std::string& o_submissionStatus) {
 
 
 //GET FUNCTIONS:
-long Apply::getNumberOfSubmission() const {
+int Apply::getNumberOfSubmission() const {
     return this -> numberOfSubmission;}
 long Apply::getCandidateID() const {
     return this -> candidateID;}
-long Apply::getJobID() const {
+int Apply::getJobID() const {
     return this -> jobID;}
 Date Apply::getSubmissionDate() const {
     return this-> submissionDate;}
