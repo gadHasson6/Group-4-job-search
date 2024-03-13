@@ -466,7 +466,7 @@ bool Job_search_system::candidate_login() {
     flag = true;
     while (flag){
         cout << "Please enter your password:\n";
-        getline(cin, password);
+        cin >> password;
         if (password == c_candidate.password){
             flag = false;
             current_candidate = new Candidate(c_candidate.candidate_name, c_candidate.candidate_id,
@@ -567,7 +567,7 @@ bool Job_search_system::candidate_login() {
 }
 
 
-void Job_search_system::candidate_main_menu() {
+void Job_search_system::candidate_main_menu() { //TODO:Correct printing according to the case numbers and add a calculator
     bool flag = true;
     while (flag){
         cout << "Please enter the action you want to perform:\n"
@@ -587,6 +587,7 @@ void Job_search_system::candidate_main_menu() {
             cout << "Invalid input. try again\n";
         }
         if (choice == 7){
+            cout << "Logout operation\n";
             return ;
         }
         switch (choice) {
@@ -632,7 +633,7 @@ void Job_search_system::candidate_main_menu() {
                 break;
             }
             case 3: {
-                current_candidate->viewSubmissions();
+                current_candidate->viewSubmissions(); //Add a condition that checks that there are submissions for the candidate
                 cout << "Enter the submission number you wish to cancel:\n";
                 int apply_to_delete = 0;
                 cin >> apply_to_delete;

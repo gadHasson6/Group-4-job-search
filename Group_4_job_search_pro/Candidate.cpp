@@ -27,18 +27,13 @@ Candidate::Candidate(string inputName, long inputId, string inputEmail, string i
     this->appliedJobs= nullptr;
     this->appliedJobSize=0;
 
-    if (!setResumeFilePath(inputResumePath)){
-        this->resumePath="";
-    }
-    if(!setPersonalInformation(inputPersonalInformation)){
-        this->personalInformation="";
-    }
-    if(!setAge(inputAge)){
-        this->age=0;
-    }
-    if (!setGender(inputGender)){
-        this->gender='M';
-    }
+    this->resumePath=inputResumePath;
+
+    this->personalInformation=inputPersonalInformation;
+
+    this->age=inputAge;
+
+    this->gender=inputGender;
     if(!setResidence()){
         this->residence="";
     }
@@ -924,7 +919,7 @@ void Candidate::editFeedback() {
 
     while (true) {
         cout << "Enter new feedback (no longer than 50 chars): " << endl;
-        getline(cin, newFeedback); // read the entire line
+        cin >> newFeedback; // read the entire line
 
         if (newFeedback.length() > 50) {
             // Invalid input - more than 50 chars
@@ -1290,6 +1285,7 @@ void Candidate::editProfile() {
                 break;
             }
             case 10:{
+                return;
                 break;  // Exit the loop if the user chooses to exit
             }
         }

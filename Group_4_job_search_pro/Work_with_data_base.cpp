@@ -745,38 +745,29 @@ void updateApplyData(sqlite3* db, const ApplyInfo& apply) {
 
 
 ////////////////////////////
-void insertCandidateData(sqlite3* db, const CandidateInfo& candidate) {
-    // Prepare the SQL statement
-    string sql = "INSERT INTO candidate (candidateName, candidateAge, candidateGender, candidatePhoneNumber, "
-                 "candidateMail, candidateLivingArea, cadidateExperience, candidateSpecialty, candidatePassword, "
-                 "candidateFreeText, resumePath) "
-                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+void insertCandidateData(sqlite3* db, const CandidateInfo& candidate)  {
     sqlite3_stmt* stmt;
-    int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
-    if (rc != SQLITE_OK) {
-        // Handle error
-        return;
+    string sql = "INSERT INTO candidate (candidateID, candidateName, candidateAge, candidateGender, candidatePhoneNumber, candidateMail, candidateLivingArea, cadidateExperience, candidateSpecialty, candidatePassword, candidateFreeText, resumePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) == SQLITE_OK) {
+        sqlite3_bind_int64(stmt, 1, candidate.candidate_id);
+        sqlite3_bind_text(stmt, 2, candidate.candidate_name.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 3, candidate.candidate_age);
+        sqlite3_bind_text(stmt, 4, &candidate.candidate_gender, 1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 5, candidate.candidate_phone_number.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 6, candidate.candidate_email.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 7, candidate.candidate_living_area.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_double(stmt, 8, candidate.candidate_experience);
+        sqlite3_bind_text(stmt, 9, candidate.candidate_specialty.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 10, candidate.password.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 11, candidate.candidate_free_text.c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 12, candidate.resumePath.c_str(), -1, SQLITE_STATIC);
+
+        if (sqlite3_step(stmt) != SQLITE_DONE) {
+            // Handle insertion failure
+        }
+        sqlite3_finalize(stmt);
+    } else {
+        // Handle SQL statement preparation error
     }
-
-    // Bind parameters
-    sqlite3_bind_text(stmt, 1, candidate.candidate_name.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_int(stmt, 2, candidate.candidate_age);
-    sqlite3_bind_text(stmt, 3, &candidate.candidate_gender, 1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 4, candidate.candidate_phone_number.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 5, candidate.candidate_email.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 6, candidate.candidate_living_area.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_double(stmt, 7, candidate.candidate_experience);
-    sqlite3_bind_text(stmt, 8, candidate.candidate_specialty.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 9, candidate.password.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 10, candidate.candidate_free_text.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 11, candidate.resumePath.c_str(), -1, SQLITE_STATIC);
-
-    // Execute the SQL statement
-    rc = sqlite3_step(stmt);
-    if (rc != SQLITE_DONE) {
-        // Handle error
-    }
-
-    // Finalize the statement
-    sqlite3_finalize(stmt);
 }
