@@ -42,7 +42,16 @@ void Employer::Edit_Job() {
     bool flag = false;
     for (int i = 0; i < num_of_jobs; i++) {
         if (my_job[i]->get_job_id() == numofjob) {
-            cout<< "tap 1 for edit your company name, 2 for edit your requirements, 3 for edit your location, 4 for edit your occupation, 5 for edit your job type, 6 for your experience, 7 for your contact number, 8 for cancel \n";
+            cout<< "Please enter :\n"
+                   "1 for edit your company name.\n"
+                   "2 for edit your requirements.\n"
+                   "3 for edit your location.\n"
+                   "4 for edit your occupation.\n"
+                   "5 for edit your job type.\n"
+                   "6 for your experience.\n"
+                   "7 for your contact number.\n"
+                   "8 for cancel \n";
+
             cin>>num;
             switch (num) {
                 case 1: {
@@ -51,17 +60,18 @@ void Employer::Edit_Job() {
                         string newName;
                         cout << "Please enter the new company name: " << endl;
                         cin >> newName;
-                        flag2=my_job[i]->set_name(newName);
+                        flag2=my_job[i]->set_job_name(newName);
                     }
                 }
                 case 2: {
-                    bool flag2= true;
-                    while (flag2) {
-                        string newRequirements;
-                        cout << "Please enter the new requirements : " << endl;
-                        cin >> newRequirements;
-                        flag2=my_job[i]->set_requirements(newRequirements);
-                    }
+                    cout << "Option currently unavailable\n";
+//                    bool flag2= true;
+//                    while (flag2) {
+//                        string newRequirements;
+//                        cout << "Please enter the new requirements : " << endl;
+//                        cin >> newRequirements;
+//                        flag2=my_job[i]->set_requirements(newRequirements);
+//                    }
                 }
                 case 3: {
                     bool flag2= true;
@@ -84,8 +94,7 @@ void Employer::Edit_Job() {
                         int newJobType;
                         cout << "Please enter for full time job 0 and for part time job 1 : " << endl;
                         cin >> newJobType;
-                        auto x = Job_scope(newJobType);
-                        flag2 = my_job[i]->set_scope(x);
+                        flag2 = my_job[i]->set_scope(newJobType);
                     }
                 }
                 case 6: {
@@ -100,7 +109,7 @@ void Employer::Edit_Job() {
                         string newContactNumber;
                         cout << "Please enter the new contact number : " << endl;
                         cin >> newContactNumber;
-                        flag2=my_job[i]->set_number(newContactNumber);
+                        flag2=my_job[i]->set_phone_number(newContactNumber);
                     }
                 }
                 case 8: {

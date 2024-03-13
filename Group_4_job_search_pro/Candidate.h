@@ -59,7 +59,7 @@ public:
 
 
     //set
-    bool setResumeFilePath(const string& newResumePath);
+    bool setResumeFilePath(const string& newResumePath); //Fix error checking wrong file
     bool setPersonalInformation(const string &newPersonalInformation);
     bool setAge(int inputAge);
     bool setGender(char inputGender);

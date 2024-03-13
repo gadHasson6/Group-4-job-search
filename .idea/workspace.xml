@@ -20,12 +20,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91f8e96d-9248-4a74-baae-8e3a6141dac5" name="Changes" comment="update after fixing link problems and circular inclusion #10">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_02_2024_19_55_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_02_2024_19_58_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_02_2024_19_59_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_02_2024_19_59_[Changes]1/shelved.patch" beforeDir="false" />
+    <list default="true" id="91f8e96d-9248-4a74-baae-8e3a6141dac5" name="Changes" comment="update after fixing link problems and circular inclusion #11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Candidate.h" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Candidate.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Date.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Date.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Date.h" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Date.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Employer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Employer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.h" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,9 +104,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.Group_4_job_search" />
       <item itemvalue="Attach to Node.js/Chrome.Unnamed" />
       <item itemvalue="C/C++ File.Unnamed" />
+      <item itemvalue="CMake Application.Group_4_job_search" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -120,7 +123,7 @@
       <workItem from="1709327112294" duration="14949000" />
       <workItem from="1709387677307" duration="38973000" />
       <workItem from="1709456191649" duration="37941000" />
-      <workItem from="1710349338221" duration="4000" />
+      <workItem from="1710349338221" duration="8965000" />
     </task>
     <task id="LOCAL-00001" summary="vbv">
       <option name="closed" value="true" />
@@ -314,7 +317,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709501925479</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="update after fixing link problems and circular inclusion #11">
+      <option name="closed" value="true" />
+      <created>1710349796769</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1710349796769</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,6 +384,7 @@
     <MESSAGE value="update after fixing link problems and circular inclusion #8" />
     <MESSAGE value="update after fixing link problems and circular inclusion #9" />
     <MESSAGE value="update after fixing link problems and circular inclusion #10" />
-    <option name="LAST_COMMIT_MESSAGE" value="update after fixing link problems and circular inclusion #10" />
+    <MESSAGE value="update after fixing link problems and circular inclusion #11" />
+    <option name="LAST_COMMIT_MESSAGE" value="update after fixing link problems and circular inclusion #11" />
   </component>
 </project>

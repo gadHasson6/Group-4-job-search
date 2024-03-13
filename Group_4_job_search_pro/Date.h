@@ -34,6 +34,7 @@ public:
     ~Date();
     bool operator <(const Date& other) const;
     bool operator >(const Date& other)const;
+    bool operator==(const Date& other) const;
     Date& operator = (const Date& other);
 };
 

@@ -297,6 +297,7 @@ int Date::daysInMonth() {
             return 31;
             break;
     }
+    return -1;
 }
 
 //This function will calculate the next day
@@ -360,6 +361,12 @@ bool Date::operator>(const Date& other) const {
 
     // If months are equal, compare days
     return day > other.day;
+}
+
+
+//operator ==
+bool Date::operator==(const Date& other) const {
+    return (day == other.day) && (month == other.month) && (year == other.year);
 }
 
 

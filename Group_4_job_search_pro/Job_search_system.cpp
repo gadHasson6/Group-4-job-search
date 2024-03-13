@@ -84,7 +84,7 @@ void Job_search_system::employer_login_registration_menu() {
                 break;
             }
             case 2: {
-                flag = employer_registration();
+//                flag = employer_registration();
                 break;
             }
             case 3: {
@@ -126,8 +126,11 @@ void Job_search_system::candidate_login_registration_menu() {
                     candidate_main_menu();
                     updateForCandidate_login();
                     delete [] current_candidate;
+                    for (int i = 0; i < num_of_jobs; ++i) {
+                        delete jobs_list[i];
+                    }
                     delete [] jobs_list;
-                    delete [] submissions_list;
+//                    delete [] submissions_list;
                 }
                 break;
             }
@@ -295,11 +298,18 @@ bool Job_search_system::candidate_registration() {
             // Clear the input buffer before taking a new choice
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Please try again\n";
+        } else {
+            cout << "Personal information updated successfully!" << endl;
         }
     }
     flag = true;
     while (flag){
-        flag = current_candidate->setResidence();
+        flag = !current_candidate->setResidence();
+        if (flag) {
+            cout << "Please try again\n";
+        } else {
+            cout << "Residence updated successfully!" << endl;
+        }
     }
     char gender = 'm';
     flag = true;
@@ -399,7 +409,7 @@ bool Job_search_system::candidate_registration() {
     sqlite3 * db3 = openSQLiteFile(fff);
     insertCandidateData(db3, cc);
     closeSQLiteFile(db3);
-    delete [] current_candidate;
+    delete current_candidate;
     return true;
 }
 
@@ -485,14 +495,18 @@ bool Job_search_system::candidate_login() {
     }
     sqlite3 * db2 = openSQLiteFile(fff);
     int size4 = countRowsByApplyingID(db2,newId);
-    num_of_all_submissions = countRowsInApplyTable(db2);
-    Apply ** submissions = new Apply * [num_of_submissions];
+//    num_of_all_submissions = countRowsInApplyTable(db2);
+    Apply ** submissions = new Apply * [size4];
     vector <ApplyInfo> apply_list = getSubmissionsForApplicant(db2, newId);
     for (int i = 0; i < size4; ++i) {
         Date t_date (apply_list[i].submissionDay, apply_list[i].submissionMonth, apply_list[i].submissionYear);
         submissions[i] = new Apply(apply_list[i].applyID, apply_list[i].candidateID, apply_list[i].jobID, t_date, apply_list[i].submissionStatus, apply_list[i].jobName, apply_list[i].companyName);
     }
     current_candidate->setAppliedJobs(submissions, size4);
+    for (int i = 0; i < size4; ++i) {
+        delete submissions[i];
+    }
+    delete[] submissions;
     num_of_jobs = countRowsInJobTable(db2);
     vector<JobInfo> job_list = getAllJobs(db2);
     jobs_list = new Job * [num_of_jobs];
@@ -749,22 +763,22 @@ void Job_search_system::updateForCandidate_login() {
     cc.password = current_candidate->getPassword();
     cc.candidate_free_text = current_candidate->getPersonalInformation();
     cc.resumePath = current_candidate->getResumePath();
-    for (int i = 0; i < num_of_jobs; ++i) {
-        JobInfo jj;
-        jj.jobID = jobs_list[i]->get_job_id();
-        jj.location = jobs_list[i]->get_location();
-        jj.profession = jobs_list[i]->get_occupation();
-        jj.job_type = jobs_list[i]->get_scope();
-        jj.experience = jobs_list[i]->get_experience();
-        jj.name = jobs_list[i]->get_job_name();
-        jj.company_name = jobs_list[i]->get_company_name();
-        jj.contact = jobs_list[i]->get_phone_number();
-        jj.posting_status = jobs_list[i]->get_status();
-        jj.posting_day = jobs_list[i]->get_posting_date().getDay();
-        jj.posting_month = jobs_list[i]->get_posting_date().getMonth();
-        jj.posting_year = jobs_list[i]->get_posting_date().getYear();
-        updateJobData(db5, jj);
-    }
+//    for (int i = 0; i < num_of_jobs; ++i) {
+//        JobInfo jj;
+//        jj.jobID = jobs_list[i]->get_job_id();
+//        jj.location = jobs_list[i]->get_location();
+//        jj.profession = jobs_list[i]->get_occupation();
+//        jj.job_type = jobs_list[i]->get_scope();
+//        jj.experience = jobs_list[i]->get_experience();
+//        jj.name = jobs_list[i]->get_job_name();
+//        jj.company_name = jobs_list[i]->get_company_name();
+//        jj.contact = jobs_list[i]->get_phone_number();
+//        jj.posting_status = jobs_list[i]->get_status();
+//        jj.posting_day = jobs_list[i]->get_posting_date().getDay();
+//        jj.posting_month = jobs_list[i]->get_posting_date().getMonth();
+//        jj.posting_year = jobs_list[i]->get_posting_date().getYear();
+//        updateJobData(db5, jj);
+//    }
     for (int i = 0; i < current_candidate->getAppliedJobSize(); ++i) {
         ApplyInfo aa;
         aa.candidateID = current_candidate->getAppliedJob()[i]->getCandidateID();

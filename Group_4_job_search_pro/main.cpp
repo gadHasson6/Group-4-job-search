@@ -6,8 +6,8 @@ using namespace std;
 
 
 int main() {
-    cout << true << endl;
-    cout << false << endl;
+    Job_search_system j;
+    j.employer_candidate_menu();
 //    int x =0, y= 2, z=3;
 //    int * h = &y;
 //    int * k[3];
