@@ -22,9 +22,16 @@
   <component name="ChangeListManager">
     <list default="true" id="91f8e96d-9248-4a74-baae-8e3a6141dac5" name="Changes" comment="Code runs until the end of candidate registration (without actions at the employer) Memory exception must be corrected at the end of registration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Candidate.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Candidate.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Work_with_data_base.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Work_with_data_base.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.h" beforeDir="false" afterPath="$PROJECT_DIR$/Group_4_job_search_pro/Job_search_system.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +80,7 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Avigail's__branch",
+    "git-widget-placeholder": "Gad2",
     "last_opened_file_path": "C:/Users/aviga/CLionProjects/Group-4-job-search",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -86,6 +93,11 @@
   }
 }]]></component>
   <component name="RunManager" selected="CMake Application.Group_4_job_search">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Group_4_job_search" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Group_4_job_search" TARGET_NAME="Group_4_job_search" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Group_4_job_search" RUN_TARGET_NAME="Group_4_job_search">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -121,6 +133,7 @@
       <workItem from="1709456191649" duration="37941000" />
       <workItem from="1710349338221" duration="9330000" />
       <workItem from="1710363082301" duration="4630000" />
+      <workItem from="1711564282814" duration="3311000" />
     </task>
     <task id="LOCAL-00001" summary="vbv">
       <option name="closed" value="true" />

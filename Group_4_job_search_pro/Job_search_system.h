@@ -16,9 +16,9 @@
 
 using namespace std;
 
-#define DATA_BASE_PATH "C:/Users/LENOVO/CLionProjects/search_job.db"
+//#define DATA_BASE_PATH "C:/Users/LENOVO/CLionProjects/search_job.db"
 #define START_INDEX 0
-
+#define DATA_BASE_PATH "C:/Users/gadih/CLionProjects/search_job.db"
 
 class Job_search_system {
 private:

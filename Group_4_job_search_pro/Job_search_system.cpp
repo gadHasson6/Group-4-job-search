@@ -26,12 +26,14 @@ void Job_search_system::employer_candidate_menu() {
                 "2) Candidate\n"
                 "3) Cancel\n";
         int choice = 0;
+        fflush(stdin);
         cin >> choice;
 
         // Validate input
         if (cin.fail()) {
             cin.clear(); // Clear the error flag
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            fflush(stdin);
             cout << "Invalid input. Please enter a valid integer." << endl;
             continue; // Go to the next iteration of the loop
         }
@@ -703,8 +705,12 @@ bool Job_search_system::employer_login() {
     const char  * fff = DATA_BASE_PATH;
     sqlite3 * db = openSQLiteFile(fff);
     vector<EmployerId> e_id_list = getEmployerId(db);
-    int size = countRowsInCandidatesTable(db);
+    int size = countRowsInEmployersTable(db);
     closeSQLiteFile(db);
+    if(size == 0){
+        cout << "There are no existing employers in the system - you must register first!\n";
+        return true;
+    }
     bool flag = true;
     long newId = 0;
     while (flag) {
@@ -744,7 +750,7 @@ bool Job_search_system::employer_login() {
             }
         }
     }
-
+    return false;
 }
 
 
