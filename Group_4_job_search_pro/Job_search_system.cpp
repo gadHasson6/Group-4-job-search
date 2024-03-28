@@ -28,6 +28,10 @@ void Job_search_system::employer_candidate_menu() {
         int choice = 0;
         fflush(stdin);
         cin >> choice;
+        if(stdin != nullptr){
+            choice = 50;
+            fflush(stdin);
+        }
 
         // Validate input
         if (cin.fail()) {
